@@ -31,6 +31,10 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -71,7 +75,39 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'TeachSenpai.wsgi.application'
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+#This is incase you are running multiple sites
+SITE_ID = 1
+
+#log in via username or email 
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+#Wheter user must provide email
+ACCOUNT_EMAIL_REQUIRED = True
+
+#must the user clicl on a link to verify his email before log in
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+
+#need to enter twice?
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
+
+#min length of username
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+
+#url to log in
+LOGIN_URL = '/accounts/login/'
+
+#url to go after successful log in 
+LOGIN_REDIRECT_URL = '/'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # Database

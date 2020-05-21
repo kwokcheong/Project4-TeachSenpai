@@ -1,6 +1,8 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse, get_object_or_404
 from .models import Product
 from .forms import ProductForm
+from django.contrib.auth.decorators import login_required, permission_required
+
 # Create your views here.
 def index(request):
     products = Product.objects.all()
@@ -8,7 +10,7 @@ def index(request):
         'products': products
     })
 
-
+@login_required
 def create_product(request):
     if request.method == 'POST': 
             create_form = ProductForm(request.POST) 
