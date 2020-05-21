@@ -1,0 +1,27 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+    <body>
+        <h1>products page</h1>
+        <p>
+            Here you can see all the products that we have.
+        </p>
+        <ul> 
+            {%for product in products%}
+                <li>{{product.title}} 
+                    <a href="{% url 'update_product_route' product_id=product.id %}">Edit</a>
+                    <a href="{% url 'delete_product_route' product_id=product.id %}">Delete</a>
+                </li>
+                <li>{{product.desc}}</li>
+            {%endfor%}
+            <a href="{% url 'create_product_route' %}">Create new</a>
+        </ul>
+    </body>
+</html>
