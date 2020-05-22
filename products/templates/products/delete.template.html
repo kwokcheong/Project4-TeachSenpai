@@ -1,13 +1,6 @@
-books/templates/books/delete_book.template.html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'base.template.html' %}
+{%load static %}
+{%block content%}
     <h1>Delete Product {{product.title}}</h1>
     <p>Are you sure?</p>
     <form method="POST">
@@ -15,5 +8,4 @@ books/templates/books/delete_book.template.html
         <input type="submit" value="Yes"/>
         <a href="{% url 'show_product_route' %}">No</a>
     </form>
-</body>
-</html>
+{%endblock%}

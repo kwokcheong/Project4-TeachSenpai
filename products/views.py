@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect, reverse, get_object
 from .models import Product
 from .forms import ProductForm
 from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
@@ -13,9 +14,10 @@ def index(request):
 @login_required
 def create_product(request):
     if request.method == 'POST': 
-            create_form = ProductForm(request.POST) 
+            create_form = ProductForm(request.POST)
             if create_form.is_valid(): 
                 create_form.save() 
+                messages.success(request, "New product has been created")
                 return redirect(reverse(index))
             else:
                 return render(request, 'books/create.template.html', {

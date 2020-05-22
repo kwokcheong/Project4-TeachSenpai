@@ -21,9 +21,6 @@ import reviews.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('products/', products.views.index, name='show_product_route'),
     path('reviews/', reviews.views.index),
-    path('products/create', products.views.create_product, name="create_product_route"),
-    path('products/update/<product_id>', products.views.update_product, name='update_product_route'),
-    path('products/delete/<product_id>', products.views.delete_product, name='delete_product_route')
+    path('products/', include('products.urls'))
 ]
