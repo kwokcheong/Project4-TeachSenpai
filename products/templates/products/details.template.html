@@ -1,0 +1,18 @@
+{% extends 'base.template.html' %}
+
+{% block content %}
+<h1>{{product.title}}</h1>
+<p>
+    Category: {{product.category.title}}
+</p>
+<p>
+    Tags: {% for t in product.tag.all %} <span class="label">{{t.title}}</span> {%endfor%}
+</p>
+{{product.orders}}
+{%for r in product.orders.all %}
+<div class="card">
+    <h3>{{r.title}}</h3>
+    {{r.content}}
+</div>
+{%endfor%}
+{% endblock %}

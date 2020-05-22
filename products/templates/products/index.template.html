@@ -1,7 +1,6 @@
 {% extends 'base.template.html' %}
 {%load static %}
 {%block content%}
-<h1> this is extended</h1>
     <body>
         {% if request.user.is_authenticated  %}
         <p>Welcome {{request.user}}</p>
@@ -15,11 +14,19 @@
         </p>
         <ul> 
             {%for product in products%}
-                <li>{{product.title}} 
+                <li><a href="{% url 'view_product_details' product_id=product.id %}">{{product.title}} </a> 
                     <a href="{% url 'update_product_route' product_id=product.id %}">Edit</a>
                     <a href="{% url 'delete_product_route' product_id=product.id %}">Delete</a>
                 </li>
                 <li>{{product.desc}}</li>
+
+                {% if product.video %}
+                    <div class="flex-video widescreen">
+                        <iframe width="500" height="281" src="{{product.video}}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                {% else %}
+                    <p> no video </p>
+                {%endif%}
             {%endfor%}
             <a href="{% url 'create_product_route' %}">Create new</a>
         </ul>

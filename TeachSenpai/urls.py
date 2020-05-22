@@ -17,10 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 import products.views
 import reviews.views
+import orders.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('reviews/', reviews.views.index),
-    path('products/', include('products.urls'))
+    path('products/', include('products.urls')),
+    path('orders/', orders.views.index),
+    path('orders/create', orders.views.create_order, name="create_order_route"),
 ]

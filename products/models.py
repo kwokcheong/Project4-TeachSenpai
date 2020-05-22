@@ -20,6 +20,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tag = models.ManyToManyField(Tag)
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    video = models.URLField(blank=True, max_length = 200)
 
     def __str__(self):
         return self.title

@@ -20,7 +20,7 @@ def create_product(request):
                 messages.success(request, "New product has been created")
                 return redirect(reverse(index))
             else:
-                return render(request, 'books/create.template.html', {
+                return render(request, 'products/create.template.html', {
                     'form': create_form
                 })
     else:
@@ -62,4 +62,11 @@ def delete_product(request, product_id):
         return redirect(reverse(index))
     return render(request, 'products/delete.template.html', {
         'product': product_to_delete
+    })
+
+
+def view_product_details(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    return render(request, 'products/details.template.html', {
+        'product': product
     })
