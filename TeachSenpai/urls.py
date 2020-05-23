@@ -25,5 +25,5 @@ urlpatterns = [
     path('reviews/', reviews.views.index),
     path('products/', include('products.urls')),
     path('orders/', orders.views.index),
-    path('orders/create', orders.views.create_order, name="create_order_route"),
+    path('orders/create/<product_id>', orders.views.create_order, name="create_order_route"),
 ]

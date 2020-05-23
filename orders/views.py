@@ -14,13 +14,18 @@ def index(request):
 def create_order(request, product_id):
     if request.method == "POST":
         form = OrderForm(request.POST)
+        if form.is_valid():
         # create an instance of order, but don't commit, so that we have a chance to set the user
-        order = form.save(commit=False)
-        order.owner = request.user
-        order.product = get_object_or_404(Product, pk=product_id)
-        order.save()
-        messages.success(request, "New order has been added - " + order.title)
-        return redirect(reverse(index))
+            order = form.save(commit=False)
+            order.owner = request.user
+            order.product = get_object_or_404(Product, pk=product_id)
+            order.save()
+            messages.success(request, "New order has been added - " + order.title)
+            return redirect(reverse(index))
+        else:
+            return render(request, 'orders/create_order.template.html', {
+                'form': form
+            })
     else:
         form = OrderForm()
         return render(request, 'orders/create_order.template.html', {

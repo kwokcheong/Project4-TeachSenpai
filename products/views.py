@@ -3,6 +3,7 @@ from .models import Product
 from .forms import ProductForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
+from orders.forms import OrderForm
 
 # Create your views here.
 def index(request):
@@ -67,6 +68,8 @@ def delete_product(request, product_id):
 
 def view_product_details(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
+    order_form = OrderForm()
     return render(request, 'products/details.template.html', {
-        'product': product
+        'product': product,
+        'form': order_form
     })

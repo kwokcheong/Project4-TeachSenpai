@@ -1,5 +1,5 @@
 {% extends 'base.template.html' %}
-
+{%load crispy_forms_tags %}
 {% block content %}
 <h1>{{product.title}}</h1>
 <p>
@@ -8,11 +8,24 @@
 <p>
     Tags: {% for t in product.tag.all %} <span class="label">{{t.title}}</span> {%endfor%}
 </p>
-{{product.orders}}
-{%for r in product.orders.all %}
-<div class="card">
-    <h3>{{r.title}}</h3>
-    {{r.content}}
-</div>
-{%endfor%}
+
+
+{% for order in product.order_set.all%}
+    <section class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{order.title}}</h3>
+            <div class="card-text">
+                {{order.content}}
+            </div>
+            <a href="#" class="btn btn-primary">Accept</a>
+            <a href="#" class="btn btn-danger">Decline</a>
+        </div>
+    </section>
+{% endfor%}
+
+<form method="POST" action="{% url 'create_order_route' product_id=product.id %}">
+    {% csrf_token %}
+    {{ form|crispy}}
+    <input type="submit"/>
+    </form>
 {% endblock %}
