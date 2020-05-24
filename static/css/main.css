@@ -133,6 +133,27 @@ body, html{
   display: block;
 }
 
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3) { 
+    .sidebar{
+      display: none;
+    }
+
+    .hamburger{
+      display: none;
+    }
+
+    #main{
+      width: (100% - 200px);
+      margin-top: 10px;
+      margin-left: 0px;
+      padding:10px;
+      transition: all 0.3s ease;
+    }
+}
+
 .wrapper .main_container{
   width: (100% - 200px);
   margin-top: 70px;

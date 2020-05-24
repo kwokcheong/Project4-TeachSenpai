@@ -18,7 +18,8 @@
   <body>
 
     <div class="wrapper">
-  
+
+      <!-- Top nav bar -->
       <div class="top_navbar">
         <div class="hamburger" id="hamburger" onclick="toggleNav()">
           <i class="fa fa-bars" style="font-size:24px"></i>
@@ -41,31 +42,33 @@
         </div>
       </div>
       
+
+      <!-- Side Bar -->
       <div class="sidebar" id="mySidenav">
           <ul>
             <li><a href="{% url 'show_product_route' %}">
               <span class="icon"><i class="fas fa-book"></i></span>
               <span class="title" id="navtext1">Home</span>
               </a></li>
-            <li><a href="#">
+            <li><a href="{% url 'show_product_route' %}">
               <span class="icon"><i class="fas fa-file-video"></i></span>
               <span class="title" id="navtext2">Teach</span>
               </a></li>
-            <li><a href="#">
+            <li><a href="{% url 'show_product_route' %}">
               <span class="icon"><i class="fas fa-volleyball-ball"></i></span>
-              <span class="title" id="navtext3">Sports</span>
+              <span class="title" id="navtext3">Explore</span>
               </a></li>
-            <li><a href="#" >
+            <li><a href="{% url 'show_order_route' %}" >
               <span class="icon"><i class="fas fa-file-video"></i></span>
-              <span class="title" id="navtext4">Your orders</span>
+              <span class="title" id="navtext4">Your Orders</span>
               </a></li>
-            <li><a href="#">
+            <li><a href="{% url 'show_product_route' %}">
               <span class="icon"><i class="fas fa-leaf"></i></span>
-              <span class="title" id="navtext5">Nature</span>
+              <span class="title" id="navtext5">Your Profile</span>
               </a></li>
         </ul>
       </div>
-      
+      <!-- end of side bar -->
 
       <div class="main_container" id="main">
         {% if messages %}  
@@ -81,7 +84,9 @@
         </div>
        {% endif %}
   
-  
+       <div class='header'>
+        <a href="{% url 'view_cart' %}">Shopping Cart ({{number_of_items}})</a>
+      </div>
        
         
         <div id="main">
