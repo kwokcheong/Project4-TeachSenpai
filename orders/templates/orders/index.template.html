@@ -13,17 +13,19 @@
             Here you can see all the orders that you have.
         </p>
             {%for order in orders%}
-            <div class="card" style="width: 30rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{order.title}} </h5>
-                    Price:
-                    <h5 class="card-title">{{order.product.price}}</h5>
-                    <p class="card-text">{{order.content}}</p>
+                {%if order.owner == user%}
+                <div class="card" style="width: 30rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{order.title}} </h5>
+                        Price:
+                        <h5 class="card-title">{{order.product.price}}</h5>
+                        <p class="card-text">{{order.content}}</p>
 
-                    <a href="#" class="btn btn-primary">Accept</a>
-                    <a href="#" class="btn btn-danger">Decline</a>
+                        <a href="#" class="btn btn-primary">Accept</a>
+                        <a href="#" class="btn btn-danger">Decline</a>
+                    </div>
                 </div>
-            </div>
+                {%endif%}
             {%endfor%}
     </body>
 

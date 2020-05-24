@@ -17,6 +17,7 @@
                 <li><a href="{% url 'view_product_details' product_id=product.id %}">{{product.title}} </a> 
                     <a href="{% url 'update_product_route' product_id=product.id %}">Edit</a>
                     <a href="{% url 'delete_product_route' product_id=product.id %}">Delete</a>
+                    <a href="{% url 'add_to_cart' product_id=product.id %}">Add to Cart</a>  
                 </li>
                 <li>{{product.desc}}</li>
 

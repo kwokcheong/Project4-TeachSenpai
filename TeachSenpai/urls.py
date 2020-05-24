@@ -18,12 +18,14 @@ from django.urls import path, include
 import products.views
 import reviews.views
 import orders.views
+import profiles.views
+import cart.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('reviews/', reviews.views.index),
     path('products/', include('products.urls')),
-    path('orders/', orders.views.index),
-    path('orders/create/<product_id>', orders.views.create_order, name="create_order_route"),
+    path('orders/', include('orders.urls')),
+    path('cart/', include('cart.urls'))
 ]

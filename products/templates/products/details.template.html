@@ -5,6 +5,9 @@
 <p>
     Category: {{product.category.title}}
 </p>
+<div>
+    <img src="{{product.image.cdn_url}}"/>
+</div>
 <p>
     Tags: {% for t in product.tag.all %} <span class="label">{{t.title}}</span> {%endfor%}
 </p>

@@ -7,8 +7,10 @@ from .forms import OrderForm
 # Create your views here.
 def index(request):
     orders = Order.objects.all()
+    user = request.user
     return render(request, 'orders/index.template.html', {
-        'orders': orders
+        'orders': orders,
+        'user': user
     })
 
 def create_order(request, product_id):

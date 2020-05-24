@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from pyuploadcare.dj.models import ImageField
 
 # Create your models here.
 
@@ -21,6 +22,7 @@ class Product(models.Model):
     tag = models.ManyToManyField(Tag)
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     video = models.URLField(blank=True, max_length = 200)
+    image = ImageField(blank=True, manual_crop="")
 
     def __str__(self):
         return self.title
