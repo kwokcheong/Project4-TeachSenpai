@@ -20,6 +20,7 @@ import reviews.views
 import orders.views
 import profiles.views
 import cart.views
+import contents.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +28,6 @@ urlpatterns = [
     path('reviews/', reviews.views.index),
     path('products/', include('products.urls')),
     path('orders/', include('orders.urls')),
-    path('cart/', include('cart.urls'))
+    path('cart/', include('cart.urls')),
+    path('contents/', include('contents.urls'))
 ]
