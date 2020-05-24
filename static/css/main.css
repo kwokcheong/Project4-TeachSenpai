@@ -33,16 +33,10 @@ body, html{
   width: 70px;
   height: 100%;
   background: #ffffff;
-  padding: 15px 17px;
+  padding: 17px 17px;
   cursor: pointer;
 }
 
-.wrapper .top_navbar .hamburger div{
-  width: 35px;
-  height: 4px;
-  background: #363636;
-  margin: 5px 0;
-}
 
 .wrapper .top_navbar .top_menu{
   width: 100%;
