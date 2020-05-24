@@ -28,7 +28,7 @@ def add_to_cart(request, product_id):
         cart[product_id] = {
             'id': product_id,
             'title': product.title,
-            'cost': float(product.cost),
+            'cost': float(product.price),
             'qty': 1
         }
         messages.success(request, f"product: {product.title} has been added to your cart")
@@ -38,7 +38,7 @@ def add_to_cart(request, product_id):
         cart[product_id]['qty'] += 1
         messages.success(request, f"One more product: {product.title} has been added to your cart")
 
-    # REMEMEBR to save back to the session
+    #  save back to the session
     request.session[SHOPPING_CART] = cart
 
     return redirect(reverse('show_product_route'))
@@ -57,3 +57,12 @@ def remove_from_cart(request, product_id):
         messages.success(request, "Item removed from cart successfully!")
         
     return redirect(reverse('show_product_route'))
+
+def update_quantity(request, product_id):
+    cart = request.session.get('shopping_cart')
+    if product_id in cart:
+        cart[product_id]['qty'] = request.POST['qty']
+        request.session['shopping_cart'] = cart
+        messages.success(request, f"Quantity for {cart[product_id]['title']} has been changed")
+
+    return redirect(reverse('view_cart_route'))

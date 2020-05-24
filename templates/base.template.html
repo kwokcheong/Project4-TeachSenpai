@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
   <head>
@@ -5,32 +6,99 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS Jquery-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+    <script src="{% static 'js/script.js' %}"></script>
     <title>{%block title%}{%endblock%}</title>
+    
     {%block 'head'%}{%endblock%}
   </head>
   <body>
-    <div class="container">
-      {% if messages %}  
-      <div class='alert alert-success'>    
-          <div>
-              {% for message in messages %}
-              <div class="message">
-               {{ message }} 
-               <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-              </div>
-               {% endfor %}
+
+    <div class="wrapper">
+  
+      <div class="top_navbar">
+        <div class="hamburger" id="hamburger" onclick="toggleNav()">
+           <div class="one"></div>
+           <div class="two"></div>
+           <div class="three"></div>
+        </div>
+        <div class="top_menu">
+          <div class="logo">
+            <a href="{% url 'show_product_route' %}" style="text-decoration: none;">TeachSenpai</a>
           </div>
+          <ul>
+            <li><a href="#">
+              <i class="fas fa-search"></i>
+              </a></li>
+            <li><a href="#">
+              <i class="fas fa-bell"></i>
+              </a></li>
+            <li><a href="#">
+              <i class="fas fa-user"></i>
+              </a></li>
+          </ul>
+        </div>
       </div>
-     {% endif %}
-    {%block content%}{%endblock%}
+      
+      <div class="sidebar" id="mySidenav">
+          <ul>
+            <li><a href="{% url 'show_product_route' %}">
+              <span class="icon"><i class="fas fa-book"></i></span>
+              <span class="title" id="navtext1">Home</span>
+              </a></li>
+            <li><a href="#">
+              <span class="icon"><i class="fas fa-file-video"></i></span>
+              <span class="title" id="navtext2">Movies</span>
+              </a></li>
+            <li><a href="#">
+              <span class="icon"><i class="fas fa-volleyball-ball"></i></span>
+              <span class="title" id="navtext3">Sports</span>
+              </a></li>
+            <li><a href="#" >
+              <span class="icon"><i class="fas fa-blog"></i></span>
+              <span class="title" id="navtext4">Blogs</span>
+              </a></li>
+            <li><a href="#">
+              <span class="icon"><i class="fas fa-leaf"></i></span>
+              <span class="title" id="navtext5">Nature</span>
+              </a></li>
+        </ul>
+      </div>
+      
+
+      <div class="main_container" id="main">
+        {% if messages %}  
+        <div class='alert alert-success'>    
+            <div>
+                {% for message in messages %}
+                <div class="message">
+                 {{ message }} 
+                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                </div>
+                 {% endfor %}
+            </div>
+        </div>
+       {% endif %}
+  
+  
+       
+        
+        <div id="main">
+           {%block content%}{%endblock%}
+        </div>
+  
+    </div>
+
     </div>
 
     {%block js %}
     <!-- Optional JavaScript -->
     <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
