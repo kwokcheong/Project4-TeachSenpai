@@ -2,16 +2,27 @@
 {%load static %}
 {%block content%}
     <body>
-        {% if request.user.is_authenticated  %}
-        <p>Welcome {{request.user}}</p>
-        {% else %}
-        <p>Please <a href="accounts/login">Login</a></p>
-        {%endif%}
+        {%for material in materials%}
+        {% if order_id == material.order.id %}
+        <div class="row">
+            <div class='alert alert-success' style="height: 50px;">    
+                <div>
+                    <div class="message">
+                       <p> Your tutor has uploaded your material. Enjoy!    
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"> &times;</button> </p>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+           {% endif %}
+           {%endfor%}
         
-        <h1>Material page for one order</h1>
+        <h1>Material </h1>
+            <div class="row">
             {%for material in materials%}
                 {% if order_id == material.order.id %}
-                    <div class="card" style="width: 40rem;">
+                    <div class="card" style="width: 110rem;">
                         <div class="card-body">
                             <h5 class="card-title">RE: {{material.order.title}} </h5>
                             <h5 class="card-title">From: {{material.product.title}} </h5>
@@ -21,7 +32,7 @@
 
                             {% if material.video %}
                             <div class="flex-video widescreen">
-                                <iframe width="500" height="281" src="{{material.video}}" frameborder="0" allowfullscreen></iframe>
+                                <iframe width="400" height="290" src="{{material.video}}" frameborder="0" allowfullscreen></iframe>
                             </div>
                             {% else %}
                         </div>
@@ -32,6 +43,7 @@
                     {%endif%}
                 {%endif%}
             {%endfor%}
+        </div>
     </body>
 
 

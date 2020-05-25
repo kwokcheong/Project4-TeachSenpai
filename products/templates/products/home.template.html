@@ -1,0 +1,79 @@
+{% extends 'base.template.html' %}
+{%load static %}
+{%block content%}
+    <body>
+        {% if request.user.is_authenticated  %}
+        <p>Welcome {{request.user}}</p>
+        {% else %}
+        <p>Please <a href="accounts/login">Login</a></p>
+        {%endif%}
+    
+        <div id="homepage_img" style="padding-top:120px;">
+            <div class="col">
+              <h2 style="font-family: 'Fredoka One', cursive; color:rgb(126, 37, 37); text-align: center;">
+                Pick up a new skill while quarantined
+              </h2>
+            </div>
+            <div class="col">
+              <h4 style="font-family: 'Roboto', sans-serif; color:rgb(70, 70, 70); text-align: center;">
+                Ask anything, learn everything.
+              </h4>
+            </div>
+          </div>
+
+
+    <section>
+        <div class="col" style="margin-top: 80px; margin-bottom: 0px;">
+          <h2 style="font-family: 'Fredoka One', cursive; color:rgb(120, 23, 199); text-align: center;">Your tutors at your fingertips</h2>
+          <h2 style="font-family: 'Work Sans', sans-serif; color:rgb(43, 43, 43); text-align: center; font-size: 20px;">All you gotta do is ask</h2>
+        </div>
+      </section>
+      
+      
+      <section>
+        <div class="card mb-4 mt-4" style="border-color: white;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="https://image.freepik.com/free-vector/man-working-with-his-team-online_23-2148490929.jpg" style="object-fit: cover;" class="card-img"
+                alt="join_img">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body" style="margin-top: 180px; font-family: 'Work Sans', sans-serif;">
+                <h3 class="card-title"> 24/7 Access to help for your studies</h3>
+                <p class="card-text">Stuck on a problem? Just ask! Find fellow Senpai's to help you out. Show them your appreciation for a small fee equivalent to buying them a coffee!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4 mt-4" style="border-color: white;">
+          <div class="row no-gutters" id="swap">
+            <div class="col-md-8">
+              <div class="card-body" style="margin-top: 180px; font-family: 'Work Sans', sans-serif;">
+                <h3 class="card-title">Want to teach? Get started by setting up your teaching profile</h3>
+                <p class="card-text">It's simple! Create a profile and upload a subject! Upload a video of your tutorial to youtube and input the embedded link.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <img src="https://image.freepik.com/free-vector/woman-taking-break-from-work_23-2148508515.jpg" class="card-img" alt="create_img">
+            </div>
+          </div>
+        </div>
+        <div class="card mb-4 mt-4" style="border-color: white;">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img
+                src="https://image.freepik.com/free-vector/man-multitasking-work_23-2148390869.jpg"
+                class="card-img" alt="motiv_img">
+            </div>
+            <div class="col-md-8" style="font-family: 'Work Sans', sans-serif;">
+              <div class="card-body" style="margin-top: 180px;">
+                <h3 class="card-title">Teach and learn anything</h3>
+                <p class="card-text">From programming, science to arts. Teach or learn anything you wish. Get real advices and help.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </body>
+
+{%endblock%}

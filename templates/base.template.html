@@ -7,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS Jquery-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <script src="{% static 'js/script.js' %}"></script>
     <title>{%block title%}{%endblock%}</title>
     
@@ -20,36 +22,25 @@
     <div class="wrapper">
 
       <!-- Top nav bar -->
-      <div class="top_navbar">
+      <div class="col" id="navbar">
+
+      <div class="top_navbar" >
         <div class="hamburger" id="hamburger" onclick="toggleNav()">
           <i class="fa fa-bars" style="font-size:24px"></i>
         </div>
         <div class="top_menu">
           <div class="logo">
-            <a href="{% url 'show_product_route' %}" style="text-decoration: none;">TeachSenpai</a>
+            <a href="{% url 'homepage' %}" style="text-decoration: none; color:rgb(26, 26, 26); font-family: 'Fredoka One', cursive; font-size: 20px;">Teach<span style="color:rgb(53, 2, 196); font-family: 'Fredoka One', cursive; font-size: 26px;">S</span>enpai</a>
           </div>
-          <ul>
-            <li><a href="#">
-              <i class="fas fa-search"></i>
-              </a></li>
-            <li><a href="#">
-              <i class="fas fa-bell"></i>
-              </a></li>
-            <li><a href="#">
-              <i class="fas fa-user"></i>
-              </a></li>
-          </ul>
+            <a href="{% url 'view_cart' %}" style="text-decoration: none; color:black">Saved ({{number_of_items}})</a>
         </div>
       </div>
-
-      
-
-
+    </div>
 
       <!-- Side Bar -->
       <div class="sidebar" id="mySidenav">
           <ul>
-            <li><a href="{% url 'show_product_route' %}">
+            <li><a href="{% url 'homepage' %}">
               <span class="icon"><i class="fas fa-book"></i></span>
               <span class="title" id="navtext1">Home</span>
               </a></li>
@@ -88,12 +79,13 @@
        {% endif %}
   
        <div class='header'>
-        <a href="{% url 'view_cart' %}">Shopping Cart ({{number_of_items}})</a>
+        
       </div>
        
         
+        <div id="main">
            {%block content%}{%endblock%}
-
+        </div>
   
     </div>
 

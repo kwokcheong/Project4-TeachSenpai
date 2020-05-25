@@ -22,7 +22,9 @@ import profiles.views
 import cart.views
 import contents.views
 
+
 urlpatterns = [
+    path('', products.views.home, name="homepage"),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path('reviews/', reviews.views.index),

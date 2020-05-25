@@ -7,6 +7,12 @@ from orders.forms import OrderForm
 
 # Create your views here.
 
+def home(request):
+    products = Product.objects.all()
+    return render(request, 'products/home.template.html', {
+        'products': products
+    })
+
 def index(request):
     products = Product.objects.all()
     return render(request, 'products/index.template.html', {
