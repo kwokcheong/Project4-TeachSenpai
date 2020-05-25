@@ -20,9 +20,7 @@
                         Price:
                         <h5 class="card-title">{{order.product.price}}</h5>
                         <p class="card-text">{{order.content}}</p>
-
-                        <a href="#" class="btn btn-primary">Accept</a>
-                        <a href="#" class="btn btn-danger">Decline</a>
+                        <a href="{% url 'show_content_route' order_id=order.id %}">Edit</a>
                     </div>
                 </div>
                 {%endif%}

@@ -19,6 +19,11 @@ body, html{
 
 .wrapper{
   margin: 0px;
+  top: 60px;
+   bottom:0; 
+   width: 100%; 
+   position: fixed; 
+   overflow: scroll;
 }
 
 .wrapper .top_navbar{
@@ -154,9 +159,10 @@ body, html{
     }
 }
 
+
 .wrapper .main_container{
   width: (100% - 200px);
-  margin-top: 70px;
+  margin-top: 0px;
   margin-left: 150px;
   padding: 15px;
   transition: all 0.3s ease;

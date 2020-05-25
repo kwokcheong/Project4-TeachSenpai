@@ -14,21 +14,26 @@
         </p>
             {%for material in materials%}
                 {%if material.owner == user%}
-                <div class="card" style="width: 30rem;">
+                <div class="card" style="width: 40rem;">
                     <div class="card-body">
                         <h5 class="card-title">RE: {{material.order.title}} </h5>
                         <h5 class="card-title">From: {{material.product.title}} </h5>
                         Price:
                         <h5 class="card-title">{{material.order.product.price}}</h5>
                         <p class="card-text">{{material.content}}</p>
+
+                        {% if material.video %}
+                        <div class="flex-video widescreen">
+                            <iframe width="500" height="281" src="{{material.video}}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                        {% else %}
+                        {%endif%}
                     </div>
                 </div>
-                {%endif%}
-                {% if material.video %}
-                <div class="flex-video widescreen">
-                    <iframe width="500" height="281" src="{{material.video}}" frameborder="0" allowfullscreen></iframe>
-                </div>
-                {% else %}
+
+                <a href="{% url 'update_content_route' order_id=material.id %}">Edit</a>
+
+
                 <p> no video </p>
             {%endif%}
             {%endfor%}

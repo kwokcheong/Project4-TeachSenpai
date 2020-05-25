@@ -14,6 +14,7 @@ def index(request):
         'user': user
     })
 
+@login_required
 def create_order(request, product_id):
     if request.method == "POST":
         form = OrderForm(request.POST)
@@ -34,6 +35,7 @@ def create_order(request, product_id):
         return render(request, 'orders/create_order.template.html', {
             'form': form
         })
+
 
 
 def view_order_details(request, order_id):

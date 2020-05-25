@@ -1,0 +1,38 @@
+{% extends 'base.template.html' %}
+{%load static %}
+{%block content%}
+    <body>
+        {% if request.user.is_authenticated  %}
+        <p>Welcome {{request.user}}</p>
+        {% else %}
+        <p>Please <a href="accounts/login">Login</a></p>
+        {%endif%}
+        
+        <h1>Material page for one order</h1>
+            {%for material in materials%}
+                {% if order_id == material.order.id %}
+                    <div class="card" style="width: 40rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">RE: {{material.order.title}} </h5>
+                            <h5 class="card-title">From: {{material.product.title}} </h5>
+                            Price:
+                            <h5 class="card-title">{{material.order.product.price}}</h5>
+                            <p class="card-text">{{material.content}}</p>
+
+                            {% if material.video %}
+                            <div class="flex-video widescreen">
+                                <iframe width="500" height="281" src="{{material.video}}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            {% else %}
+                        </div>
+                    </div>
+
+                    <a href="{% url 'update_content_route' order_id=material.id %}">Edit</a>
+                        <p> no video </p>
+                    {%endif%}
+                {%endif%}
+            {%endfor%}
+    </body>
+
+
+{%endblock%}
