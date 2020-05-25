@@ -6,32 +6,19 @@
     Category: {{product.category.title}}
 </p>
 <div>
-    <img src="{{product.image.cdn_url}}"/>
+    <img src="{{product.image.cdn_url}}" style="height: 200px; width: 400px;"/>
 </div>
+<h3> Tutor: {{product.owner}}</h3>
+<h3> Price: {{product.price}}</h3>
 <p>
     Tags: {% for t in product.tag.all %} <span class="label">{{t.title}}</span> {%endfor%}
 </p>
+<p>
+    Details: {{product.desc}}
+</p>
+
+<a href="{% url 'create_order_route' product_id=product.id %}">Im interested</a>
 
 
-{% for order in product.order_set.all%}
-    <section class="card">
-        <div class="card-body">
-            <h3 class="card-title">{{order.title}}</h3>
-            <div class="card-text">
-                {{order.content}}
-            </div>
-            <div class="card-text">
-                <h5>Offer: {{order.product.price}}</h5>
-            </div>
-            <a href="#" class="btn btn-primary">Accept</a>
-            <a href="#" class="btn btn-danger">Decline</a>
-        </div>
-    </section>
-{% endfor%}
-
-<form method="POST" action="{% url 'create_order_route' product_id=product.id %}">
-    {% csrf_token %}
-    {{ form|crispy}}
-    <input type="submit"/>
-    </form>
 {% endblock %}
+

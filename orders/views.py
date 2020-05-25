@@ -3,6 +3,7 @@ from .models import Order, Product
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from .forms import OrderForm
+from contents.forms import MaterialForm
 
 # Create your views here.
 def index(request):
@@ -33,3 +34,12 @@ def create_order(request, product_id):
         return render(request, 'orders/create_order.template.html', {
             'form': form
         })
+
+
+def view_order_details(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
+    material_form = MaterialForm()
+    return render(request, 'order/details.template.html', {
+        'order': order,
+        'form': material_form
+    })
