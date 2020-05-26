@@ -4,32 +4,48 @@
 {%block navbar%}
 <form class="form-inline" method="GET" style="justify-content: center;">
     <input class="form-control form-control-sm mr-3 w-30" type="text" aria-label="Search" name="title" placeholder="Search for a topic">
+    
     <button class="btn btn-primary theme btn-sm" type="submit" value="Search">Search</button>
-</form>
 {%endblock%}
+
 {%block content%}
-<h1> Online help available</h1>
+
+
+<div class="row" style="justify-content: center;">
+    <img src="https://image.freepik.com/free-vector/online-courses-tutorials_52683-37860.jpg" alt="explore-banner"/>
+</div>
+<div class="col">
+    <h2 style="font-family: 'Fredoka One', cursive; color:rgb(53, 2, 196); text-align: center;">
+      Find tutors to help you!
+    </h2>
+  </div>
+<div class="col" style="display:inline-flex;">
+    {{category_form|crispy}}
+    
+    <input type="submit" value="Filter" style="max-height: 30px; margin: 35px;">
+
+</div>
 <div class="card-body">
     <div id="ordercards" class="row">
     <body>
         {%for product in products%}
         <div class="card" style="width: 320px; margin:13px">
             <a href="{% url 'view_product_details' product_id=product.id %}" style="text-decoration: none; background-color: none; color:black">
-                <img class="card-img-top" src="{{product.image.cdn_url}}" style="height: 230px;"/>
-            <div class="card-header">
-                {{order.product.title}}
-              </div>
-            <div class="card-body">
+                <img class="card-img-top" src="{{product.image.cdn_url}}" style="height: 230px; object-fit: cover;"/>
+            <div class="card-body" >
+                <h5 class="card-title"><img src="{{product.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/> {{product.owner.profile.username}}</h5>
                 <h5 class="card-title">{{product.title}} </h5>
                 Price:
                 <h5 class="card-title">{{product.price}}</h5>
+                <p class="card-text">{{product.category}}</p>
                 <p class="card-text">{{product.content}}</p>
+            </div>
+            <div class="card-footer">
                 <a href="{% url 'add_to_cart' product_id=product.id %}"><i class="far fa-heart"></i></a> 
+                <small class="text-muted">Like</small>
             </div>
         </div>
     {%endfor%}
 </div>
 </div>
-    </body>
 {%endblock%}
-

@@ -21,6 +21,7 @@ import orders.views
 import profiles.views
 import cart.views
 import contents.views
+import checkout.views
 
 
 urlpatterns = [
@@ -32,5 +33,6 @@ urlpatterns = [
     path('orders/', include('orders.urls')),
     path('cart/', include('cart.urls')),
     path('contents/', include('contents.urls')),
-    path('profiles/', include('profiles.urls'))
+    path('profiles/', include('profiles.urls')),
+    path('checkout/', include('checkout.urls'))
 ]

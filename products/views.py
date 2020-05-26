@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse, get_object_or_404
 from .models import Product, Category
-from .forms import ProductForm, SearchForm
+from .forms import ProductForm, SearchForm, CategoryForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from orders.forms import OrderForm
@@ -12,6 +12,7 @@ def home(request):
     products = Product.objects.all()
     search_form = SearchForm(request.GET)
     category = Category.objects.all()
+    category_form = CategoryForm(request.GET)
         # if there is any search queries submitted
     if request.GET:
         # always true query:
@@ -32,6 +33,7 @@ def home(request):
         return render(request, 'products/index.template.html', {
             'products': products,
             'search_form': search_form,
+            'category_form': category_form,
             'category': category
         })
     else:
@@ -43,6 +45,7 @@ def index(request):
     products = Product.objects.all()
     search_form = SearchForm(request.GET)
     category = Category.objects.all()
+    category_form = CategoryForm(request.GET)
         # if there is any search queries submitted
     if request.GET:
         # always true query:
@@ -63,8 +66,46 @@ def index(request):
     return render(request, 'products/index.template.html', {
         'products': products,
         'search_form': search_form,
+        'category_form': category_form,
         'category': category
     })
+
+
+def explore(request):
+    products = Product.objects.all()
+    search_form = SearchForm(request.GET)
+    category_form = CategoryForm(request.GET)
+    category = Category.objects.all()
+        # if there is any search queries submitted
+    if request.GET:
+        # always true query:
+        queries = ~Q(pk__in=[])
+
+        # if a title is specified, add it to the query
+        if 'title' in request.GET and request.GET['title']:
+            title = request.GET['title']
+            queries = queries & Q(title__icontains=title)
+
+        # if a genre is specified, add it to the query
+        if 'category' in request.GET and request.GET['category']:
+            category = request.GET['category']
+            queries = queries & Q(category__in=category)
+
+        
+        products = products.filter(queries)
+        return render(request, 'products/index.template.html', {
+            'products': products,
+            'search_form': search_form,
+            'category': category,
+            'category_form' : category_form
+        })
+    else:
+        return render(request, 'products/explore.template.html', {
+            'products': products,
+            'category': category,
+            'search_form': search_form,
+            'category_form' : category_form
+        })
 
 @login_required
 def create_product(request):

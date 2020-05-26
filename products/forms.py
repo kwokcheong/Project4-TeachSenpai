@@ -13,3 +13,6 @@ class ProductForm(forms.ModelForm):
 class SearchForm(forms.Form):
     title = forms.CharField(max_length=100, required=False)
     category = forms.ModelChoiceField(queryset=Category.objects.all(), required=False)
+
+class CategoryForm(forms.Form):
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), required=False)
