@@ -32,8 +32,36 @@
           <div class="logo">
             <a href="{% url 'homepage' %}" style="text-decoration: none; color:rgb(26, 26, 26); font-family: 'Fredoka One', cursive; font-size: 20px;">Teach<span style="color:rgb(53, 2, 196); font-family: 'Fredoka One', cursive; font-size: 26px;">S</span>enpai</a>
           </div>
-            <a href="{% url 'view_cart' %}" style="text-decoration: none; color:black">Saved ({{number_of_items}})</a>
+          <ul>
+            <li><a href="{% url 'view_cart' %}" style="text-decoration: none; color:black"><i class="far fa-heart"></i> {{number_of_items}}</a></li>
+
+
+            <li><div class="dropdown" style="margin-top: 15px; margin-left: 15px;">
+              {% if request.user.is_authenticated  %}
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{request.user}}
+                {%else%}
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Sign Up
+                  {%endif%}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <a class="dropdown-item" type="button" style="margin:0;">Profile</a>
+                {% if request.user.is_authenticated  %}
+                <a class="dropdown-item" type="button" style="margin:0;">Help</a>
+                {%else%}
+                <a class="dropdown-item" href="{% url 'account_signup' %}" type="button" style="margin:0;">Sign up</a>
+                {%endif%}
+                {% if request.user.is_authenticated  %}
+                <a class="dropdown-item" href="{% url 'account_logout' %}" type="button" style="margin:0; text-decoration: none;">Logout</a>
+                {%else%}
+                <a class="dropdown-item" href="{% url 'account_login' %}" type="button" style="margin:0; text-decoration: none;">Login</a>
+                {%endif%}
+              </div>
+            </div></li>
+          </ul>
         </div>
+        
       </div>
     </div>
 
@@ -41,23 +69,23 @@
       <div class="sidebar" id="mySidenav">
           <ul>
             <li><a href="{% url 'homepage' %}">
-              <span class="icon"><i class="fas fa-book"></i></span>
+              <span class="icon"><i class="fas fa-home"></i></span>
               <span class="title" id="navtext1">Home</span>
               </a></li>
-            <li><a href="{% url 'show_product_route' %}">
-              <span class="icon"><i class="fas fa-file-video"></i></span>
+            <li><a href="{% url 'show_profile_route' %}">
+              <span class="icon"><i class="fas fa-chalkboard-teacher"></i></span>
               <span class="title" id="navtext2">Teach</span>
               </a></li>
             <li><a href="{% url 'show_product_route' %}">
-              <span class="icon"><i class="fas fa-volleyball-ball"></i></span>
+              <span class="icon"><i class="fas fa-book"></i></span>
               <span class="title" id="navtext3">Explore</span>
               </a></li>
             <li><a href="{% url 'show_order_route' %}" >
-              <span class="icon"><i class="fas fa-file-video"></i></span>
+              <span class="icon"><i class="fas fa-sticky-note"></i></span>
               <span class="title" id="navtext4">Your Orders</span>
               </a></li>
             <li><a href="{% url 'show_product_route' %}">
-              <span class="icon"><i class="fas fa-leaf"></i></span>
+              <span class="icon"><i class="fas fa-user-alt"></i></span>
               <span class="title" id="navtext5">Your Profile</span>
               </a></li>
         </ul>

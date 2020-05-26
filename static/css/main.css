@@ -77,24 +77,11 @@ display: flex;
 
 .wrapper .top_navbar .top_menu ul li a{
 display: block;
-margin: 0;
-width: 35px;
-height: 35px;
+margin-top: 15px;
 line-height: 35px;
 text-align: center;
-border: 1px solid #2e4ead;
-border-radius: 50%;
-color: #2e4ead;
 }
 
-.wrapper .top_navbar .top_menu ul li a:hover{
-background: #4360b5;
-color: #fff;
-}
-
-.wrapper .top_navbar .top_menu ul li a:hover i{
-color: #fff;
-}
 
 .wrapper .sidebar{
 position: fixed;
@@ -148,10 +135,19 @@ color: rgb(39, 39, 39);
 display: block;
 }
 
+#ordercards{
+  margin-left: 150px;
+}
+
 @media only screen 
 and (min-device-width: 375px) 
 and (max-device-width: 812px) 
 and (-webkit-min-device-pixel-ratio: 3) { 
+  #ordercards{
+    padding: 10px;
+    margin:0px;
+  }
+
   .sidebar{
     display: none;
   }
@@ -171,10 +167,9 @@ and (-webkit-min-device-pixel-ratio: 3) {
 
 .wrapper .main_container{
 width: 100%;
-max-width: 1750px;
-margin-top: 70px;
-margin-left: 150px;
-padding: 15px;
+max-width: 1800px;
+margin-left: 110px;
+padding: 80px;
 transition: all 0.3s ease;
 }
 

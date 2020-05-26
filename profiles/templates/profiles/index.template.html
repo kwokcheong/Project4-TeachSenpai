@@ -1,0 +1,40 @@
+{%extends 'base.template.html' %}
+{%load static%}
+
+{%block content%}
+
+<div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'show_profile_route' %}">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'show_profile_orders_route' %}">Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'show_profile_reviews_route' %}" tabindex="-1">Reviews</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+        <div class="container">
+    
+            <h1>Profile page</h1>
+            <img src="{{user.profile.profileimg}}" alt="profilepic" style="border-radius: 100%; height: 100px; width: 100px;"/>
+            <p> user: {{user}}</p>
+            <p> username: {{user.profile.username}} </p>
+            <p> desc: {{user.profile.profiledesc}} </p>
+            
+            {%for product in products%}
+            {% if product.owner == user%}
+            {{product.title}}
+            {%endif%}
+            {%endfor%}
+        </div>
+    </div>
+  </div>
+
+
+
+{%endblock%}

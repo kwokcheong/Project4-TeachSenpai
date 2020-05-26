@@ -23,6 +23,7 @@ class Product(models.Model):
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     video = models.URLField(blank=True, max_length = 200)
     image = ImageField(blank=True, manual_crop="")
+    
 
     def __str__(self):
         return self.title
