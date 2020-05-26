@@ -7,6 +7,16 @@ body, html{
   overflow-x: hidden;
 }
 
+.theme  {
+  background-color: rgb(53, 2, 196);
+  color: white;   
+  border:none;
+}
+
+.theme:hover{
+  background-color: rgb(53, 2, 196);
+}
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
 
 *{

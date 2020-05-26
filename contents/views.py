@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse, get_object_or_404
 from .models import Material
 from django.contrib.auth.decorators import login_required, permission_required
-from .models import Order
+from .models import Order, Product
 from django.contrib import messages
 from .forms import MaterialForm
 
@@ -22,13 +22,14 @@ def show_material(request, order_id):
     })
 
 @login_required
-def create_material(request, order_id): 
+def create_material(request, order_id, product_id): 
     if request.method == "POST":
         form = MaterialForm(request.POST)
         if form.is_valid():
             material = form.save(commit=False)
             material.owner = request.user
             material.order = get_object_or_404(Order, pk=order_id)
+            material.product = get_object_or_404(Product, pk=product_id)
             material.save()
             return redirect(reverse(index))
         else:

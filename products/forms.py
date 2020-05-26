@@ -8,3 +8,8 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
         fields = ('title', 'image', 'desc', 'price', 'category', 'tag', 'owner', 'video')
+
+
+class SearchForm(forms.Form):
+    title = forms.CharField(max_length=100, required=False)
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), required=False)

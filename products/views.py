@@ -1,22 +1,69 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse, get_object_or_404
-from .models import Product
-from .forms import ProductForm
+from .models import Product, Category
+from .forms import ProductForm, SearchForm
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from orders.forms import OrderForm
+from django.db.models import Q
 
 # Create your views here.
 
 def home(request):
     products = Product.objects.all()
-    return render(request, 'products/home.template.html', {
-        'products': products
-    })
+    search_form = SearchForm(request.GET)
+    category = Category.objects.all()
+        # if there is any search queries submitted
+    if request.GET:
+        # always true query:
+        queries = ~Q(pk__in=[])
+
+        # if a title is specified, add it to the query
+        if 'title' in request.GET and request.GET['title']:
+            title = request.GET['title']
+            queries = queries & Q(title__icontains=title)
+
+        # if a genre is specified, add it to the query
+        if 'category' in request.GET and request.GET['category']:
+            category = request.GET['category']
+            queries = queries & Q(category__in=category)
+
+        # update the existing book found
+        products = products.filter(queries)
+        return render(request, 'products/index.template.html', {
+            'products': products,
+            'search_form': search_form,
+            'category': category
+        })
+    else:
+        return render(request, 'products/home.template.html', {
+            'products': products
+        })
 
 def index(request):
     products = Product.objects.all()
+    search_form = SearchForm(request.GET)
+    category = Category.objects.all()
+        # if there is any search queries submitted
+    if request.GET:
+        # always true query:
+        queries = ~Q(pk__in=[])
+
+        # if a title is specified, add it to the query
+        if 'title' in request.GET and request.GET['title']:
+            title = request.GET['title']
+            queries = queries & Q(title__icontains=title)
+
+        # if a genre is specified, add it to the query
+        if 'category' in request.GET and request.GET['category']:
+            category = request.GET['category']
+            queries = queries & Q(category__in=category)
+
+        # update the existing book found
+        products = products.filter(queries)
     return render(request, 'products/index.template.html', {
-        'products': products
+        'products': products,
+        'search_form': search_form,
+        'category': category
     })
 
 @login_required

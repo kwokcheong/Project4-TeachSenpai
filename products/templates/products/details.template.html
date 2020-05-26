@@ -17,8 +17,9 @@
     Details: {{product.desc}}
 </p>
 
+{% if product.owner != user%}
 <a href="{% url 'create_order_route' product_id=product.id %}">Im interested</a>
-
+{%endif%}
 
 {% endblock %}
 

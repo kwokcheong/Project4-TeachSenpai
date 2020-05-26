@@ -1,33 +1,35 @@
 {% extends 'base.template.html' %}
 {%load static %}
-{%block content%}
-    <body>
-    
-        
-        <h1>products page</h1>
-        <p>
-            Here you can see all the products that we have.
-        </p>
-        <ul> 
-            {%for product in products%}
-                <li><a href="{% url 'view_product_details' product_id=product.id %}">{{product.title}} </a> 
-                    <a href="{% url 'update_product_route' product_id=product.id %}">Edit</a>
-                    <a href="{% url 'delete_product_route' product_id=product.id %}">Delete</a>
-                    <a href="{% url 'add_to_cart' product_id=product.id %}">Add to Cart</a>  
-                </li>
-                <li>{{product.desc}}</li>
-
-                {% if product.video %}
-                    <div class="flex-video widescreen">
-                        <iframe width="500" height="281" src="{{product.video}}" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                {% else %}
-                    <p> no video </p>
-                {%endif%}
-            {%endfor%}
-            <a href="{% url 'create_product_route' %}">Create new</a>
-        </ul>
-    </body>
-
-
+{% load crispy_forms_tags %}
+{%block navbar%}
+<form class="form-inline" method="GET" style="justify-content: center;">
+    <input class="form-control form-control-sm mr-3 w-30" type="text" aria-label="Search" name="title" placeholder="Search for a topic">
+    <button class="btn btn-primary theme btn-sm" type="submit" value="Search">Search</button>
+</form>
 {%endblock%}
+{%block content%}
+<h1> Online help available</h1>
+<div class="card-body">
+    <div id="ordercards" class="row">
+    <body>
+        {%for product in products%}
+        <div class="card" style="width: 320px; margin:13px">
+            <a href="{% url 'view_product_details' product_id=product.id %}" style="text-decoration: none; background-color: none; color:black">
+                <img class="card-img-top" src="{{product.image.cdn_url}}" style="height: 230px;"/>
+            <div class="card-header">
+                {{order.product.title}}
+              </div>
+            <div class="card-body">
+                <h5 class="card-title">{{product.title}} </h5>
+                Price:
+                <h5 class="card-title">{{product.price}}</h5>
+                <p class="card-text">{{product.content}}</p>
+                <a href="{% url 'add_to_cart' product_id=product.id %}"><i class="far fa-heart"></i></a> 
+            </div>
+        </div>
+    {%endfor%}
+</div>
+</div>
+    </body>
+{%endblock%}
+

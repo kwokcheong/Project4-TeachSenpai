@@ -32,6 +32,9 @@
           <div class="logo">
             <a href="{% url 'homepage' %}" style="text-decoration: none; color:rgb(26, 26, 26); font-family: 'Fredoka One', cursive; font-size: 20px;">Teach<span style="color:rgb(53, 2, 196); font-family: 'Fredoka One', cursive; font-size: 26px;">S</span>enpai</a>
           </div>
+          <div class="logo">
+            {%block navbar%}{%endblock%}
+          </div>
           <ul>
             <li><a href="{% url 'view_cart' %}" style="text-decoration: none; color:black"><i class="far fa-heart"></i> {{number_of_items}}</a></li>
 

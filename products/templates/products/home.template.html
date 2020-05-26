@@ -1,9 +1,13 @@
 {% extends 'base.template.html' %}
 {%load static %}
+{%block navbar%}
+<form class="form-inline" method="GET" style="justify-content: center;">
+    <input class="form-control form-control-sm mr-3 w-30" type="text" aria-label="Search" name="title" placeholder="Search for a topic">
+    <button class="btn btn-primary theme btn-sm" type="submit" value="Search">Search</button>
+</form>
+{%endblock%}
 {%block content%}
     <body>
-  
-    
         <div id="homepage_img" style="padding-top:120px;">
             <div class="col">
               <h2 style="font-family: 'Fredoka One', cursive; color:rgb(126, 37, 37); text-align: center;">
@@ -16,11 +20,6 @@
               </h4>
             </div>
           </div>
-
-
-
-      
-      
       <section>
         <div class="card mb-4 mt-4" style="border-color: white;">
           <div class="row no-gutters">
