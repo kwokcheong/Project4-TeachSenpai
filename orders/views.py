@@ -25,8 +25,17 @@ def create_order(request, product_id):
             order.owner = request.user
             order.product = get_object_or_404(Product, pk=product_id)
             # order.save()
+            # messages.success(request, "New order has been added - " + order.title)
+
+            cart = request.session.get('shopping_cart', {})
+            cart[product_id] = {
+                'order_title': order.title,
+                'order_content': order.content
+            }
+
+            request.session['shopping_cart'] = cart
             messages.success(request, "New order has been added - " + order.title)
-            return redirect(reverse(add_to_cart, product_id, order.title, order.content))
+            return redirect(reverse(add_to_cart, args=(product_id,)))
         else:
             return render(request, 'orders/create_order.template.html', {
                 'form': form

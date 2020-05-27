@@ -18,30 +18,27 @@ def view_cart(request):
         'cart':cart
     })
 
-def add_to_cart(request, product_id, title, content):
+def add_to_cart(request, product_id):
 
     cart = request.session.get(SHOPPING_CART, {})
 
     product = get_object_or_404(Product, pk=product_id)
 
-    obtain_order = Order.objects.filter(product=product)
-
     # CASE ONE: The product that the user is adding is not in the shopping cart yet
-    if product_id not in cart:
+    if product_id in cart :
 
-        cart[product_id] = {
-            'id': product_id,
-            'title': product.title,
-            'cost': float(product.price),
-            'qty': 1,
-            'order_title': request.POST.get('title', False),
-            'order_content': request.POST.get('content', False)
-        }
-        messages.success(request, f"product: {product.title} has been added to your cart")
+        cart[product_id]['id'] = product_id
+        cart[product_id]['title'] = product.title
+        cart[product_id]['cost'] = float(product.price)
+        cart[product_id]['qty'] = 1
+
+        request.session['shopping_cart'] = cart
+
+        messages.success(request, f"One more product: {product.title} has been added to your cart")
     # CASE TWO: the product that the user is adding is ALREADY in the shopping cart
     else:
         cart[product_id]['qty'] += 1
-        messages.success(request, f"One more product: {product.title} has been added to your cart")
+        
 
     #  save back to the session
     request.session[SHOPPING_CART] = cart

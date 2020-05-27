@@ -11,6 +11,10 @@
         Quantity:{{cart_item.qty}}<br/>
         Price: {{cart_item.cost}}
     </p>
+
+    {{cart_item.order_title}}
+    {{cart_item.order_content}}
+
     <a class="btn btn-danger btn-sm" href="{% url 'remove_from_cart_route' product_id=cart_item.id %}">Remove</a>
     </div>
 </div>
