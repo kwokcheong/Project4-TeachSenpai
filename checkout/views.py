@@ -19,20 +19,19 @@ def checkout(request):
     line_items = []
     
     # Explanation A: generate the line_items
-    for id, product in cart.items():
+    for id, order in cart.items():
         # For each item in the cart, get its details from the database
-        product_object = get_object_or_404(Product, pk=id)
+        product_object = get_object_or_404(Product, pk=order.product.id)
+        
         line_items.append({
             'name': product_object.title,
             'amount': int(product_object.price*100), #convert to cents, in integer
-            'currency':'usd',
-            'quantity':product['qty']
+            'currency':'sgd',
+            'quantity': 1
         })
-    
-    current_site = Site.objects.get_current()
-    domain = current_site.domain
- 
 
+    # current_site = Site.objects.get_current()
+    domain = "https://teachsenpai.herokuapp.com/checkout"
 
     # Explanation B: generate the session
     session = stripe.checkout.Session.create(
@@ -68,31 +67,37 @@ def checkout_success(request):
 def checkout_cancelled(request):
     return HttpResponse("Checkout cancelled")
 
+
+
 @csrf_exempt
 def payment_completed(request):
-  payload = request.body
-  sig_header = request.META['HTTP_STRIPE_SIGNATURE']
-  event = None
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
 
-  try:
-      event = stripe.Webhook.construct_event(
-      payload, sig_header, endpoint_secret
-    )
-  except ValueError as e:
-    # Invalid payload
-    return HttpResponse(status=400)
-  except stripe.error.SignatureVerificationError as e:
-    # Invalid signature
-    return HttpResponse(status=400)
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.SIGNING_SECRET
+        )
+    except ValueError as e:
+        # Invalid payload
+        print(e)
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        print(e)
+        return HttpResponse(status=400)
 
-  # Handle the checkout.session.completed event
-  if event['type'] == 'checkout.session.completed':
-    session = event['data']['object']
+    # Handle the checkout.session.completed event
+    if event['type'] == 'checkout.session.completed':
+        session = event['data']['object']
 
     # Fulfill the purchase...
-  handle_checkout_session(session)
+    handle_checkout_session(session)
 
-  return HttpResponse(status=200)
+
+
+    return HttpResponse(status=200)
 
 
 def handle_checkout_session(session):

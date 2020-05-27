@@ -1,8 +1,10 @@
-{% extends 'base.html' %}
+{% extends  'base.template.html' %}
 
-{% block content %}
+{%block content%}
+
 <!-- Stripe JavaScript Library -->
 <script src="https://js.stripe.com/v3/"></script>
+
 {% autoescape off %}
 <script>
     var stripe = Stripe('{{public_key}}');
@@ -18,6 +20,6 @@
     });
     
 </script>
-{% endautoescape %}
+{%endautoescape%}
 
-{% endblock %}
+{%endblock%}
