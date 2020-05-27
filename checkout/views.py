@@ -30,8 +30,9 @@ def checkout(request):
             'quantity': 1
         })
 
-    # current_site = Site.objects.get_current()
-    domain = "https://teachsenpai.herokuapp.com/checkout"
+    current_site = Site.objects.get_current()
+    domain = current_site.domain
+
 
     # Explanation B: generate the session
     session = stripe.checkout.Session.create(
