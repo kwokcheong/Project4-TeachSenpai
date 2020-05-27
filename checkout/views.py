@@ -4,6 +4,7 @@ from django.shortcuts import render, reverse, HttpResponse, get_object_or_404
 from django.conf import settings
 import stripe
 from products.models import Product
+from orders.models import Order
 from django.contrib.sites.models import Site
 
 from django.views.decorators.csrf import csrf_exempt
@@ -49,6 +50,19 @@ def checkout(request):
     
 def checkout_success(request):
     
+    cart = request.session.get('shopping_cart', {})
+
+    for id, order in cart.items():
+      product_object = get_object_or_404(Product, pk=id)
+
+      record_order = Order.objects.create(
+          title=order['order_title'],
+          product=product_object,
+          owner=request.user,
+          content=order['order_content']
+      )
+
+    request.session['shopping_cart'] = {}
     return HttpResponse("Checkout success")
     
 def checkout_cancelled(request):
