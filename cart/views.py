@@ -36,10 +36,7 @@ def add_to_cart(request, product_id):
 
         messages.success(request, f"One more product: {product.title} has been added to your cart")
     # CASE TWO: the product that the user is adding is ALREADY in the shopping cart
-    else:
-        cart[product_id]['qty'] += 1
-        
-
+    
     #  save back to the session
     request.session[SHOPPING_CART] = cart
 
