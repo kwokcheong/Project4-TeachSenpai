@@ -21,7 +21,7 @@ def checkout(request):
     # Explanation A: generate the line_items
     for id, order in cart.items():
         # For each item in the cart, get its details from the database
-        product_object = get_object_or_404(Product, pk=order.product.id)
+        product_object = get_object_or_404(Product, pk=id)
         
         line_items.append({
             'name': product_object.title,
