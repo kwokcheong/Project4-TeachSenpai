@@ -98,7 +98,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 #This is incase you are running multiple sites
-SITE_ID = 1
+SITE_ID = 2
 
 #log in via username or email 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
