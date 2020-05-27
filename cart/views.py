@@ -56,7 +56,7 @@ def remove_from_cart(request, product_id):
         messages.success(request, "Item removed from cart successfully!")
         
     return redirect(reverse('show_product_route'))
-
+#update
 def update_quantity(request, product_id):
     cart = request.session.get('shopping_cart')
     if product_id in cart:
