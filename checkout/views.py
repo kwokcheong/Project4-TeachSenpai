@@ -9,21 +9,24 @@ from django.contrib.sites.models import Site
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
-def checkout(request, product_id):
+def checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     
-    # retrieve product
-    product = request.get('shopping_cart')
+    # retrieve shopping cart
+    cart = request.session.get('shopping_cart', {})
     
     line_items = []
-
-    # For each item in the cart, get its details from the database
-    product_object = get_object_or_404(product, pk=product.id)
-    line_items.append({
-        'name': product_object.title,
-        'amount': int(product_object.price*100), #convert to cents, in integer
-        'currency':'sgd'
-    })
+    
+    # Explanation A: generate the line_items
+    for id, product in cart.items():
+        # For each item in the cart, get its details from the database
+        product_object = get_object_or_404(Product, pk=id)
+        line_items.append({
+            'name': product_object.title,
+            'amount': int(product_object.price*100), #convert to cents, in integer
+            'currency':'usd',
+            'quantity':product['qty']
+        })
     
     current_site = Site.objects.get_current()
     domain = current_site.domain
@@ -45,6 +48,7 @@ def checkout(request, product_id):
     })
     
 def checkout_success(request):
+    
     return HttpResponse("Checkout success")
     
 def checkout_cancelled(request):
@@ -57,7 +61,7 @@ def payment_completed(request):
   event = None
 
   try:
-    event = stripe.Webhook.construct_event(
+      event = stripe.Webhook.construct_event(
       payload, sig_header, endpoint_secret
     )
   except ValueError as e:
@@ -72,6 +76,10 @@ def payment_completed(request):
     session = event['data']['object']
 
     # Fulfill the purchase...
-    handle_checkout_session(session)
+  handle_checkout_session(session)
 
   return HttpResponse(status=200)
+
+
+def handle_checkout_session(session):
+    print(session)

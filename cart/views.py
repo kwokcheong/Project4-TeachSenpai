@@ -3,6 +3,8 @@ from django.contrib import messages
 
 from products.models import Product
 from products.views import index
+from orders.models import Order
+from orders.forms import OrderForm
 
 SHOPPING_CART = "shopping_cart"
 
@@ -16,11 +18,13 @@ def view_cart(request):
         'cart':cart
     })
 
-def add_to_cart(request, product_id):
+def add_to_cart(request, product_id, title, content):
 
     cart = request.session.get(SHOPPING_CART, {})
 
     product = get_object_or_404(Product, pk=product_id)
+
+    obtain_order = Order.objects.filter(product=product)
 
     # CASE ONE: The product that the user is adding is not in the shopping cart yet
     if product_id not in cart:
@@ -29,10 +33,11 @@ def add_to_cart(request, product_id):
             'id': product_id,
             'title': product.title,
             'cost': float(product.price),
-            'qty': 1
+            'qty': 1,
+            'order_title': request.POST.get('title', False),
+            'order_content': request.POST.get('content', False)
         }
         messages.success(request, f"product: {product.title} has been added to your cart")
-
     # CASE TWO: the product that the user is adding is ALREADY in the shopping cart
     else:
         cart[product_id]['qty'] += 1

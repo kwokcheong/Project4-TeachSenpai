@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from .forms import OrderForm
 from contents.forms import MaterialForm
+from cart.views import add_to_cart
 
 # Create your views here.
 def index(request):
@@ -23,9 +24,9 @@ def create_order(request, product_id):
             order = form.save(commit=False)
             order.owner = request.user
             order.product = get_object_or_404(Product, pk=product_id)
-            order.save()
+            # order.save()
             messages.success(request, "New order has been added - " + order.title)
-            return redirect(reverse(index))
+            return redirect(reverse(add_to_cart, product_id, order.title, order.content))
         else:
             return render(request, 'orders/create_order.template.html', {
                 'form': form
@@ -33,7 +34,8 @@ def create_order(request, product_id):
     else:
         form = OrderForm()
         return render(request, 'orders/create_order.template.html', {
-            'form': form
+            'form': form,
+            'product_id': product_id
         })
 
 
