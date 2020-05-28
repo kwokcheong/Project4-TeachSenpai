@@ -31,10 +31,9 @@ def add_to_cart(request, product_id):
         cart[product_id]['title'] = product.title
         cart[product_id]['cost'] = float(product.price)
         cart[product_id]['qty'] = 1
+        cart[product_id]['product_image']: product.image.cdn_url
 
         request.session['shopping_cart'] = cart
-
-        messages.success(request, f"One more product: {product.title} has been added to your cart")
     # CASE TWO: the product that the user is adding is ALREADY in the shopping cart
     
     #  save back to the session
@@ -56,12 +55,3 @@ def remove_from_cart(request, product_id):
         messages.success(request, "Item removed from cart successfully!")
         
     return redirect(reverse('show_product_route'))
-#update
-def update_quantity(request, product_id):
-    cart = request.session.get('shopping_cart')
-    if product_id in cart:
-        cart[product_id]['qty'] = request.POST['qty']
-        request.session['shopping_cart'] = cart
-        messages.success(request, f"Quantity for {cart[product_id]['title']} has been changed")
-
-    return redirect(reverse('view_cart_route'))

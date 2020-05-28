@@ -1,22 +1,66 @@
 {%extends 'base.template.html'%}
 
+
 {%block content %}
-
-<h1> Cart </h1>
-{%for key, cart_item in cart.items %}
-<div class="card">
-    <div class="card-title">{{cart_item.title}}</div>
-    <div class="card-body">
-    <p>
-        Quantity:{{cart_item.qty}}<br/>
-        Price: {{cart_item.cost}}
-    </p>
-
-    {{cart_item.order_title}}
-    {{cart_item.order_content}}
-
-    <a class="btn btn-danger btn-sm" href="{% url 'remove_from_cart_route' product_id=cart_item.id %}">Remove</a>
+<div class="container-fluid p-md-5 p-3">
+<h3 class="border-btm-gold"> Cart Details </h3>
+<div class="row d-none d-md-flex">
+    <div class="col-1">
+        <b>No.</b>
+    </div>
+    <div class="col-3">
+        <b>Item</b>
+    </div>
+    <div class="col-2">
+        <b>Order Title</b>
+    </div>
+    <div class="col-2">
+        <b>Request</b>
+    </div>
+    <div class="col-2">
+        <b>Unit Cost</b>
+    </div>
+    <div class="col-2">
+        <b>Actions</b>
     </div>
 </div>
+<hr>
+{%for key, cart_item in cart.items %}
+<div class="row mt-3">
+    <div class="col-1">
+        <p>{{forloop.counter}}.</p>
+    </div>
+    <div class="col-md-3 col-10">
+        <b>{{cart_item.title}}</b>
+        <div class="mb-3 mt-3 text-center">
+            <img style="width:50%;" class="img-fluid" src="{{cart_item.product_image}}" alt="">
+        </div>
+    </div>
+    <div class="col-md-2 col-7">
+        <p>{{cart_item.order_title}}</p>
+    </div>
+    <div class="col-2 d-none d-md-block">
+        <p>{{cart_item.order_content}}</p>
+    </div>
+    <div class="col-2 d-none d-md-block">
+        <p>${{cart_item.cost}}</p>
+    </div>
+    <div class="col-2">
+        <a class="btn btn-danger btn-sm" href="{% url 'remove_from_cart_route' product_id=cart_item.id %}">Remove</a>
+    </div>
+</div>
+    
 {%endfor%}
+
+
+
+
+
+
+
+<!-- this part will show the total number of item in cart, subtotal, Allow user to deduct from balance or pay stripes-->
+</div>
+<div class="container-fluid">
+<a class="btn btn-primary theme btn-sm" href="{% url 'checkout' %}">Checkout</a>
+</div>
 {%endblock%}

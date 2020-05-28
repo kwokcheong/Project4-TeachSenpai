@@ -197,3 +197,7 @@ line-height: 22px;
   object-fit: cover;
   background: url(https://news.stlpublicradio.org/sites/kwmu/files/styles/x_large/public/202004/040820_NT_DistanceLearningIllustration_01.jpg);
 }
+
+.border-btm-gold {
+  border-bottom: 3px solid rgb(53, 2, 196);
+}

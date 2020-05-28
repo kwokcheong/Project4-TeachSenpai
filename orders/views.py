@@ -24,8 +24,6 @@ def create_order(request, product_id):
             order = form.save(commit=False)
             order.owner = request.user
             order.product = get_object_or_404(Product, pk=product_id)
-            # order.save()
-            # messages.success(request, "New order has been added - " + order.title)
 
             cart = request.session.get('shopping_cart', {})
             cart[product_id] = {
