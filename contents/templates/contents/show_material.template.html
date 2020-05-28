@@ -32,11 +32,11 @@
                             <h5 class="card-title">{{material.order.product.price}}</h5>
                             <p class="card-text">{{material.content}}</p>
 
-                            {% if material.video %}
+                            
                             <div class="flex-video widescreen">
                                 <iframe width="400" height="290" src="{{material.video}}" frameborder="0" allowfullscreen></iframe>
                             </div>
-                            {% else %}
+                            
                         </div>
                     </div>
                     <form method="POST">
@@ -47,8 +47,6 @@
                         <input type="Submit" value="resolve"/>
                         </form>
                     <a href="{% url 'update_content_route' order_id=material.id %}">Edit</a>
-                    
-                    {%endif%}
                 {%endif%}
                 
             {%endfor%}
