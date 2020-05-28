@@ -1,5 +1,6 @@
 {% extends 'base.template.html' %}
 {%load static %}
+{%load crispy_forms_tags %}
 {%block content%}
     <body>
         <div class="container" style="text-align: center;">
@@ -20,10 +21,9 @@
                         Price:
                         <h5 class="card-title">{{order.product.price}}</h5>
                         <p class="card-text">{{order.content}}</p>
+                        <p class="card-text">{{order.resolve}}</p>
                     </div>
                 </a>
-                </div>
-            
                 {%endif%}
             {%endfor%}
         </div>

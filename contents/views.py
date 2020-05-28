@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from .models import Order, Product
 from django.contrib import messages
 from .forms import MaterialForm
+from orders.forms import ResolveForm
 
 # Create your views here.
 def index(request):
@@ -15,11 +16,20 @@ def index(request):
     })
 
 def show_material(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
     materials = Material.objects.all()
+    form = ResolveForm()
+    if request.method == "POST":
+        form = ResolveForm(request.POST, instance=order)
+        form.save()
+        
+
     return render(request, 'contents/show_material.template.html', {
         'materials': materials,
-        'order_id': int(order_id)
+        'order_id': int(order_id),
+        'form': form
     })
+
 
 @login_required
 def create_material(request, order_id, product_id): 

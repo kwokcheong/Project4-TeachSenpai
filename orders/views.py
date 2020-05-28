@@ -2,12 +2,13 @@ from django.shortcuts import render, HttpResponse, redirect, reverse, get_object
 from .models import Order, Product
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
-from .forms import OrderForm
+from .forms import OrderForm, ResolveForm
 from contents.forms import MaterialForm
 from cart.views import add_to_cart
 
 # Create your views here.
 def index(request):
+    form = ResolveForm()
     orders = Order.objects.all()
     user = request.user
     return render(request, 'orders/index.template.html', {
@@ -54,3 +55,4 @@ def view_order_details(request, order_id):
         'order': order,
         'form': material_form
     })
+
