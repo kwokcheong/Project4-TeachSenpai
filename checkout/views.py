@@ -59,7 +59,8 @@ def checkout_success(request):
           title=order['order_title'],
           product=product_object,
           owner=request.user,
-          content=order['order_content']
+          content=order['order_content'],
+          resolve= "unresolved"
       )
 
     request.session['shopping_cart'] = {}

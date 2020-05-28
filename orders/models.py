@@ -11,6 +11,7 @@ class Order(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     posted_when = models.DateTimeField(blank=False, auto_now=True)
     content = models.TextField(blank=False)
+    resolve = models.CharField(blank=False, max_length=30)
     
 
     #potentially add in the youtube video url here 

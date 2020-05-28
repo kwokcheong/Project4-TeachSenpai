@@ -33,7 +33,7 @@
     <div class="col-md-3 col-10">
         <b>{{cart_item.title}}</b>
         <div class="mb-3 mt-3 text-center">
-            <img style="width:50%;" class="img-fluid" src="{{cart_item.product_image}}" alt="">
+            <img style="width:50%;" class="img-fluid" src="..." alt="">
         </div>
     </div>
     <div class="col-md-2 col-7">
@@ -49,7 +49,6 @@
         <a class="btn btn-danger btn-sm" href="{% url 'remove_from_cart_route' product_id=cart_item.id %}">Remove</a>
     </div>
 </div>
-    
 {%endfor%}
 
 

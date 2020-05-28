@@ -24,7 +24,6 @@ def add_to_cart(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
 
-    # CASE ONE: The product that the user is adding is not in the shopping cart yet
     if product_id in cart :
 
         cart[product_id]['id'] = product_id
@@ -34,7 +33,6 @@ def add_to_cart(request, product_id):
         cart[product_id]['product_image']: product.image.cdn_url
 
         request.session['shopping_cart'] = cart
-    # CASE TWO: the product that the user is adding is ALREADY in the shopping cart
     
     #  save back to the session
     request.session[SHOPPING_CART] = cart
