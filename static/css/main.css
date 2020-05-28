@@ -202,3 +202,21 @@ line-height: 22px;
 .border-btm-gold {
   border-bottom: 3px solid rgb(53, 2, 196);
 }
+
+
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: rgb(53, 2, 196);
+  background-color: transparent;
+  border-color: transparent transparent #f3f3f3;
+  border-bottom: 3px solid !important;
+  font-size: 16px;
+  font-weight: bold;
+}
+.nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  color: rgb(53, 2, 196);
+  font-size: 16px;
+  font-weight: 600;
+}
