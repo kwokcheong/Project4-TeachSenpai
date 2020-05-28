@@ -8,7 +8,6 @@ from cart.views import add_to_cart
 
 # Create your views here.
 def index(request):
-    form = ResolveForm()
     orders = Order.objects.all()
     user = request.user
     return render(request, 'orders/index.template.html', {

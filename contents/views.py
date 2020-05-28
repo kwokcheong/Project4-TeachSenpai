@@ -18,11 +18,12 @@ def index(request):
 def show_material(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     materials = Material.objects.all()
-    form = ResolveForm()
+    form = ResolveForm(initial={'resolve': "resolve"})
+
     if request.method == "POST":
         form = ResolveForm(request.POST, instance=order)
         form.save()
-        
+    
 
     return render(request, 'contents/show_material.template.html', {
         'materials': materials,
