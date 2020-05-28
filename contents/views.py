@@ -19,7 +19,7 @@ def show_material(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     materials = Material.objects.all()
     form = ResolveForm(initial={'resolve': "resolved"})
-
+    user = request.user
     if request.method == "POST":
         form = ResolveForm(request.POST, instance=order)
         form.save()
@@ -28,7 +28,9 @@ def show_material(request, order_id):
     return render(request, 'contents/show_material.template.html', {
         'materials': materials,
         'order_id': int(order_id),
-        'form': form
+        'order': order,
+        'form': form,
+        'user': user
     })
 
 

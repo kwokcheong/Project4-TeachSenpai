@@ -6,6 +6,7 @@
     <body>
         {%for material in materials%}
         {% if order_id == material.order.id %}
+        {% if order.owner == user %}
         <div class="row">
             <div class='alert alert-success' style="height: 50px;">    
                 <div>
@@ -17,6 +18,7 @@
                 </div>
             </div>
             </div>
+            {%endif%}
            {% endif %}
            {%endfor%}
         
