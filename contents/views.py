@@ -77,3 +77,19 @@ def update_material(request, order_id):
             'form': material_form,
             'order_id': order_id
         })
+
+def delete_material(request, material_id):
+    material_to_delete = get_object_or_404(Material, pk=material_id)
+
+    if request.method == "POST":
+        material_to_delete.delete()
+        orders = Order.objects.all()
+        user = request.user
+        return render(request, 'profiles/profile_orders.template.html', {
+            'orders': orders,
+            'user': user
+        })
+    return render(request, 'contents/delete.template.html',{
+        'material': material_to_delete
+    })
+    

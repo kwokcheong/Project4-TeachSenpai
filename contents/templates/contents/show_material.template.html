@@ -47,6 +47,7 @@
                         <input type="Submit" value="resolve"/>
                         </form>
                     <a href="{% url 'update_content_route' order_id=material.id %}">Edit</a>
+                    <a href="{% url 'delete_content_route' material_id=material.id %}">delete</a>
                 {%endif%}
                 
             {%endfor%}

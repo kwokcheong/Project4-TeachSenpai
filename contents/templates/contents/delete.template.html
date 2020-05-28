@@ -1,0 +1,11 @@
+{% extends 'base.template.html' %}
+{%load static %}
+{%block content%}
+    <h1>Delete Material {{material.title}}</h1>
+    <p>Are you sure?</p>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Yes"/>
+        <a href="{% url 'show_content_route' order_id=material.order.id %}">No</a>
+    </form>
+{%endblock%}
