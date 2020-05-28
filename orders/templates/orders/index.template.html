@@ -6,6 +6,7 @@
         <div class="container" style="text-align: center;">
         <h3 style="font-family: 'Source Sans Pro', sans-serif; color:rgb(0, 0, 0)"> Your Orders</h3>
         </div>
+
         <div id="ordercards" class="row">
             {%for order in orders%}
                 {%if order.owner == user%}
@@ -24,6 +25,7 @@
                         <p class="card-text">{{order.resolve}}</p>
                     </div>
                 </a>
+                </div>
                 {%endif%}
             {%endfor%}
         </div>
