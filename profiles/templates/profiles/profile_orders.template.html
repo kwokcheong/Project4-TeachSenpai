@@ -3,20 +3,21 @@
 
 {%block content%}
 
-<div class="card mb-3" style="max-width: 540px; border-color: white;">
-    <div class="row no-gutters">
-      <div class="col-md-4">
-        <img src="{{user.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 120px; width: 120px;"/>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title">{{user.profile.username}}</h5>
-          <p class="card-text">{{user.profile.profiledesc}}</p>
-          <p class="card-text"><small class="text-muted">joined since</small></p>
-        </div>
+<div id="profilebox" class="card mb-3" style=" height:190px; border-color: white;  background: linear-gradient(180deg, rgb(27, 1, 97) 50%, rgb(255, 255, 255) 50%);">
+  <div class="row no-gutters mt-5" >
+    <div class="col-md-0 ml-3">
+      <img src="{{user.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 120px; width: 120px;"/>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title" style="color: white">{{user.profile.username}}</h5>
+        <p class="card-text">{{user.profile.profiledesc}}</p>
+        <p class="card-text"><small class="text-muted">joined since {{user.date}}</small></p>
       </div>
     </div>
   </div>
+</div>
+
 
 <div class="card text-center">
     <div class="card-header">
