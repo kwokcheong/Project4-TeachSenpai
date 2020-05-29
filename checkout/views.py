@@ -6,10 +6,11 @@ import stripe
 from products.models import Product
 from orders.models import Order
 from django.contrib.sites.models import Site
-
+from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
+@login_required
 def checkout(request):
     stripe.api_key = settings.STRIPE_SECRET_KEY
     
@@ -51,7 +52,6 @@ def checkout(request):
 def checkout_success(request):
     
     cart = request.session.get('shopping_cart', {})
-    record_order = "no_item"
     for id, order in cart.items():
       product_object = get_object_or_404(Product, pk=id)
 
@@ -64,9 +64,7 @@ def checkout_success(request):
       )
 
     request.session['shopping_cart'] = {}
-    return render(request, 'checkout/checkout_success.template.html',{
-        'orders': record_order
-    })
+    return render(request, 'checkout/checkout_success.template.html')
     
 def checkout_cancelled(request):
     return HttpResponse("Checkout cancelled")
