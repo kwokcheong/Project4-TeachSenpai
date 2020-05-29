@@ -1,34 +1,86 @@
 {% extends 'base.template.html' %}
+{%load static %}
 {%load crispy_forms_tags %}
 {% block content %}
-<h1>{{product.title}}</h1>
 
 <div class="container-fluid">
 
 <div class="row double" style="display: flex; justify-content: space-evenly;"> 
-    <div class="column-2 left" style="width: 70rem;" >
-        <p>
-            Category: {{product.category.title}}
-        </p>
-        <div class="mb-3 mt-3 text-left">
-            <img src="{{product.image.cdn_url}}" style="width:50%" class="image-fluid"/>
-        </div>
-        <h3> Tutor: {{product.owner}}</h3>
-        <h3> Price: {{product.price}}</h3>
-        <p>
-            Tags: {% for t in product.tag.all %} <span class="label">{{t.title}}</span> {%endfor%}
-        </p>
-        <p>
-            Details: {{product.desc}}
-        </p>
+    <div class="column-2 left" style="width: 73rem;" >
 
-        {% if product.owner != user%}
-        <a href="{% url 'create_order_route' product_id=product.id %}">Im interested</a>
-        {%endif%}
+              
+            
+
+        <div class="container">
+            <div class="row" >
+                <div class="col-md-11">
+                    <nav>
+                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active" id="nav-active-tab" data-toggle="tab" href="#nav-active" role="tab" aria-controls="nav-active" aria-selected="true">Overview</a>
+                            <a class="nav-item nav-link" id="nav-resolved-tab" data-toggle="tab" href="#nav-resolved" role="tab" aria-controls="nav-resolved" aria-selected="false">About the tutor</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-active" role="tabpanel" aria-labelledby="nav-active-tab">
+                          <div class="container" style="padding: 0px;">
+        
+                                <div class="card" style="width:100%;">
+                                    <div class="card-header">
+                                        {{product.title}}
+                                    </div>
+                                    <h5 class="card-title"> {{product.category.title}}</h5>
+                                    <div class="card-body">
+                                        <div class="mb-3 mt-3 text-left">
+                                            <img src="{{product.image.cdn_url}}" style="width:80%" class="image-fluid"/>
+                                          </div>
+                                          <p class="card-text"> {{product.desc}}</p>
+                                          <div class="flex-video widescreen">
+                                            <iframe width="400" height="290" src="{{product.video}}" frameborder="0" allowfullscreen></iframe>
+                                        </div>
+                                        Tags: {% for t in product.tag.all %} <span class="label">{{t.title}}</span> {%endfor%}
+                                    </div>
+                                  </div>
+
+                        </div>
+                        </div>
+                        <div class="tab-pane fade" id="nav-resolved" role="tabpanel" aria-labelledby="nav-resolved-tab">
+                          <div class="container">
+
+                                <div class="card" style="width:100%;">
+                                    <div class="card-body">
+                                      <img src="{{product.owner.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 50px; width: 50px;"/>
+                                      <h5 class="card-title">{{product.owner.profile.username}}</h5>
+                                      <h5 class="card-title">{{product.owner.profile.profiledesc}}</h5>
+
+                                      <p class="card-text">{{order.content}}</p>
+                                    </div>
+                                  </div>
+
+                        </div>
+                        </div>
+                  
+                        </div>
+                    </div>
+                </div>
+            </div>
 </div>   
 
-    <div class="column-2 right">
-        info
+    <div class="column-2 right" style="margin-top: 40px;">
+        <div class="card text-center" style="max-width: 400px;">
+            <div class="card-header">
+              Featured
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Ask away!</h5>
+              <p class="card-text text-muted">Our tutor will support and answer your questions. Please include a topic header and topic requirements before placing an order.</p>
+              {% if product.owner != user%}
+            <a class="btn btn-success" href="{% url 'create_order_route' product_id=product.id %}">Continue (S${{product.price}})</a>
+            {%endif%}
+            </div>
+            <div class="card-footer text-muted">
+                Link above will lead you to questions form.
+            </div>
+          </div>
     </div>
 
 </div>
