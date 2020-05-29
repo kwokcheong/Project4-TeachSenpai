@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from orders.models import Order
 from .models import Profile
+from django.core.exceptions import ObjectDoesNotExist
 
 # Create your views here.
 
@@ -71,7 +72,20 @@ def update_profile(request):
         })
 
 def prompt_profile(request):
-    if hasattr(request.user, 'Profile'):
-        return redirect(reverse(update_profile))
-    else:
+
+    try:
+        user = request.user
+        user.profile
+    except ObjectDoesNotExist:
         return redirect(reverse(create_profile))
+ 
+    return redirect(reverse(update_profile))
+    
+def prompt_teaching_profile(request):
+    try:
+        user = request.user
+        user.profile
+    except ObjectDoesNotExist:
+        return redirect(reverse(create_profile))
+ 
+    return redirect(reverse(index))
