@@ -9,21 +9,24 @@
 
 
 {%block content%}
-<h4> my profile </h4>
 <div class="container-fluid">
 
     <div class="row double" style="display: flex; justify-content: space-evenly;"> 
-        <div class="column-2 left" style="width: 10rem;" >
-            things
+        <div class="column-2 left" style="width: 10rem; margin-top: 40px;" >
+            {{user.profile.username}}
+            
         </div>   
     
         <div class="column-2 right" style="margin-top: 40px;">
+            <h4>My Profile</h4>
+            <h5>Manage and protect your account</h5>
             <form method="POST">
                 {% csrf_token %}
                 {{ form|crispy}}
-                <input type="Submit"/>
+                <input class="btn btn-primary theme" type="Submit"/>
                 </form>
                 </div>
+                <a href="{% url 'delete_profile_route' profile_id=user.profile.id %}" class="btn btn-danger">Delete profile</a>
 
         </div>
 </div>

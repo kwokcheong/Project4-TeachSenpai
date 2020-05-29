@@ -45,7 +45,7 @@ def create_profile(request):
             'form': create_form
         })
 
-
+@login_required
 def update_profile(request): 
     #1. Get the product id
     user = request.user
@@ -62,13 +62,15 @@ def update_profile(request):
         
         else: 
             return render(request, 'profiles/update.template.html',{
-                'form': profile_form
+                'form': profile_form,
+                'user': user
             })
         
     else:
         profile_form = ProfileForm(instance = profile_being_updated)
         return render(request, 'profiles/update.template.html', {
-            'form': profile_form
+            'form': profile_form,
+            'user': user
         })
 
 def prompt_profile(request):
@@ -89,3 +91,15 @@ def prompt_teaching_profile(request):
         return redirect(reverse(create_profile))
  
     return redirect(reverse(index))
+
+@login_required
+def delete_profile(request, profile_id):
+    profile_to_delete = get_object_or_404(Profile, pk=profile_id)
+
+    if request.method == "POST":
+        profile_to_delete.delete()
+        messages.success(request, "Your profile has been successfully deleted.")
+        return render(request, 'products/home.template.html')
+    return render(request, 'profiles/delete.template.html', {
+        'profile': profile_to_delete
+    })
