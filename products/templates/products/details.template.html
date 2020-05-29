@@ -2,24 +2,40 @@
 {%load crispy_forms_tags %}
 {% block content %}
 <h1>{{product.title}}</h1>
-<p>
-    Category: {{product.category.title}}
-</p>
-<div>
-    <img src="{{product.image.cdn_url}}" style="height: 200px; width: 400px;"/>
+
+<div class="container-fluid">
+
+<div class="row double" style="display: flex; justify-content: space-evenly;"> 
+    <div class="column-2 left" >
+        <p>
+            Category: {{product.category.title}}
+        </p>
+        <div class="mb-3 mt-3 text-left">
+            <img src="{{product.image.cdn_url}}" style="width:50%" class="image-fluid"/>
+        </div>
+        <h3> Tutor: {{product.owner}}</h3>
+        <h3> Price: {{product.price}}</h3>
+        <p>
+            Tags: {% for t in product.tag.all %} <span class="label">{{t.title}}</span> {%endfor%}
+        </p>
+        <p>
+            Details: {{product.desc}}
+        </p>
+
+        {% if product.owner != user%}
+        <a href="{% url 'create_order_route' product_id=product.id %}">Im interested</a>
+        {%endif%}
+</div>   
+
+    <div class="column-2 right">
+        info
+    </div>
+
 </div>
-<h3> Tutor: {{product.owner}}</h3>
-<h3> Price: {{product.price}}</h3>
-<p>
-    Tags: {% for t in product.tag.all %} <span class="label">{{t.title}}</span> {%endfor%}
-</p>
-<p>
-    Details: {{product.desc}}
-</p>
 
-{% if product.owner != user%}
-<a href="{% url 'create_order_route' product_id=product.id %}">Im interested</a>
-{%endif%}
 
+
+</div>
 {% endblock %}
+
 
