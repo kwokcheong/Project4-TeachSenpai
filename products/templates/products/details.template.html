@@ -24,9 +24,19 @@
                         <div class="tab-pane fade show active" id="nav-active" role="tabpanel" aria-labelledby="nav-active-tab">
                           <div class="container" style="padding: 0px;">
         
-                                <div class="card" style="width:100%;">
+                                <div class="card" style="width:100%; border:white;">
                                     <div class="card-header">
-                                        {{product.title}}
+                                        <h3 style="font-family: 'Source Sans Pro', sans-serif;"><b>{{product.title}}</b></h3>
+                                    </div>
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-xs-12" >
+                                        <img src="{{product.owner.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 50px; width: 50px;"/>
+                                    </div>
+                                        <div class="col">
+                                            miso
+                                        </div>
+                                    </div>
                                     </div>
                                     <h5 class="card-title"> {{product.category.title}}</h5>
                                     <div class="card-body">
