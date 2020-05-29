@@ -7,7 +7,7 @@ class ProductForm(forms.ModelForm):
     image = ImageField(label='', required=False)
     class Meta:
         model = Product
-        fields = ('title', 'image', 'desc', 'price', 'category', 'tag', 'owner', 'video')
+        fields = ('title', 'image', 'desc', 'price', 'category', 'tag', 'video')
 
 
 class SearchForm(forms.Form):

@@ -9,10 +9,23 @@
 
 
 {%block content%}
-<h1> update profile </h1>
-    <form method="POST">
-    {% csrf_token %}
-    {{ form|crispy}}
-    <input type="Submit"/>
-    </form>
+<h4> my profile </h4>
+<div class="container-fluid">
+
+    <div class="row double" style="display: flex; justify-content: space-evenly;"> 
+        <div class="column-2 left" style="width: 10rem;" >
+            things
+        </div>   
+    
+        <div class="column-2 right" style="margin-top: 40px;">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form|crispy}}
+                <input type="Submit"/>
+                </form>
+                </div>
+
+        </div>
+</div>
+
 {%endblock%}

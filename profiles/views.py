@@ -29,7 +29,10 @@ def create_profile(request):
     if request.method == 'POST':
         create_form = ProfileForm(request.POST)
         if create_form.is_valid():
-            create_form.save()
+            profile = create_form.save(commit=False)
+            profile.owner = request.user
+            profile.save()
+            messages.success(request, "Your profile has been successfully created.")
             return redirect(reverse(index))
         else:
             return render(request, 'profiles/create.template.html',{
@@ -67,3 +70,8 @@ def update_profile(request):
             'form': profile_form
         })
 
+def prompt_profile(request):
+    if hasattr(request.user, 'Profile'):
+        return redirect(reverse(update_profile))
+    else:
+        return redirect(reverse(create_profile))

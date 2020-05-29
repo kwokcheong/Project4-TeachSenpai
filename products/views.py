@@ -112,7 +112,9 @@ def create_product(request):
     if request.method == 'POST': 
             create_form = ProductForm(request.POST)
             if create_form.is_valid(): 
-                create_form.save() 
+                product = create_form.save(commit=False)
+                product.owner = request.user
+                product.save()
                 messages.success(request, "New product has been created")
                 return redirect(reverse(index))
             else:
