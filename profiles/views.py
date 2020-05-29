@@ -7,6 +7,7 @@ from django.contrib import messages
 from orders.models import Order
 from .models import Profile
 from django.core.exceptions import ObjectDoesNotExist
+from products.views import home
 
 # Create your views here.
 
@@ -99,7 +100,7 @@ def delete_profile(request, profile_id):
     if request.method == "POST":
         profile_to_delete.delete()
         messages.success(request, "Your profile has been successfully deleted.")
-        return render(request, 'products/home.template.html')
+        return redirect(reverse(home))
     return render(request, 'profiles/delete.template.html', {
         'profile': profile_to_delete
     })
