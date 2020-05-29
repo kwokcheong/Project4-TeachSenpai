@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 from products.models import Product
+import uuid
 
 # Create your models here.
 
@@ -12,9 +13,7 @@ class Order(models.Model):
     posted_when = models.DateTimeField(blank=False, auto_now=True)
     content = models.TextField(blank=False)
     resolve = models.CharField(blank=False, max_length=30)
-    
-
-    #potentially add in the youtube video url here 
+    secret_id = models.CharField(blank=False, max_length=255)
 
     def __str__(self):
         return self.title + " for: " + self.product.title

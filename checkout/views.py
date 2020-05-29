@@ -8,6 +8,7 @@ from orders.models import Order
 from django.contrib.sites.models import Site
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+import uuid
 
 # Create your views here.
 @login_required
@@ -52,6 +53,7 @@ def checkout(request):
 def checkout_success(request):
     
     cart = request.session.get('shopping_cart', {})
+    secret_id_key = str(uuid.uuid4())
     for id, order in cart.items():
       product_object = get_object_or_404(Product, pk=id)
 
@@ -60,11 +62,14 @@ def checkout_success(request):
           product=product_object,
           owner=request.user,
           content=order['order_content'],
-          resolve= "unresolved"
+          resolve= "unresolved",
+          secret_id = secret_id_key
       )
-
+    
     request.session['shopping_cart'] = {}
-    return render(request, 'checkout/checkout_success.template.html')
+    return render(request, 'checkout/checkout_success.template.html',{
+        'secret_id': secret_id_key
+    })
     
 def checkout_cancelled(request):
     return HttpResponse("Checkout cancelled")
