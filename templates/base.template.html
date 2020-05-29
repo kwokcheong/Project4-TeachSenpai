@@ -23,14 +23,15 @@
     <div class="wrapper">
 
       <!-- Top nav bar -->
-      <div class="col" id="navbar">
+      <div class="row" id="navbar">
 
       <div class="top_navbar" >
-        <div class="hamburger" id="hamburger" onclick="toggleNav()" style="margin-top: 4px;">
-          <i class="fa fa-bars" style="font-size:24px"></i>
-        </div>
+
         <div class="top_menu">
+          
+          
           <div class="logo">
+            <i class="fa fa-bars" style="font-size:24px" class="hamburger" id="hamburger" onclick="toggleNav()" style="margin-top: 4px;"></i>
             <a href="{% url 'homepage' %}" style="text-decoration: none; color:rgb(26, 26, 26); font-family: 'Fredoka One', cursive; font-size: 20px;">Teach<span style="color:rgb(53, 2, 196); font-family: 'Fredoka One', cursive; font-size: 26px;">S</span>enpai</a>
           </div>
           <div class="logo">
@@ -88,7 +89,7 @@
               <span class="icon"><i class="fas fa-sticky-note"></i></span>
               <span class="title" id="navtext4">Your Orders</span>
               </a></li>
-            <li><a href="{% url 'show_product_route' %}">
+            <li><a href="{% url 'update_profile_route' %}">
               <span class="icon"><i class="fas fa-user-alt"></i></span>
               <span class="title" id="navtext5">Your Profile</span>
               </a></li>
