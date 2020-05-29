@@ -88,7 +88,11 @@
             {%endif%}
             </div>
             <div class="card-footer text-muted">
+                {%if product.owner != user%}
                 Link above will lead you to questions form.
+                {%else%}
+                You are the owner of this product.
+                {%endif%}
             </div>
           </div>
     </div>

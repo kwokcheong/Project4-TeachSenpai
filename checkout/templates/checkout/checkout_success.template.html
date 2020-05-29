@@ -1,0 +1,14 @@
+{% extends 'base.template.html' %}
+{%load static %}
+{%load crispy_forms_tags %}
+{%block content%}
+    <body>
+        great it is working : Checkout success
+
+        {% for order in orders%}
+        {{order.title}}
+        {%endfor%}
+    </body>
+
+
+{%endblock%}

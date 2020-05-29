@@ -51,7 +51,7 @@ def checkout(request):
 def checkout_success(request):
     
     cart = request.session.get('shopping_cart', {})
-
+    record_order = "no_item"
     for id, order in cart.items():
       product_object = get_object_or_404(Product, pk=id)
 
@@ -64,7 +64,9 @@ def checkout_success(request):
       )
 
     request.session['shopping_cart'] = {}
-    return HttpResponse("Checkout success")
+    return render(request, 'checkout/checkout_success.template.html',{
+        'orders': record_order
+    })
     
 def checkout_cancelled(request):
     return HttpResponse("Checkout cancelled")
