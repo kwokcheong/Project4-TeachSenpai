@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from .models import Order, Product
 from profiles.models import Profile
 from django.contrib import messages
-from .forms import MaterialForm
+from .forms import MaterialForm, CommentForm
 from orders.forms import ResolveForm
 from django.db.models import F, Count
 
@@ -38,6 +38,27 @@ def show_material(request, order_id):
         'form': form,
         'user': user
     })
+
+def comment_room(request, material_id):
+    material = get_object_or_404(Material,pk=material_id )
+    user = request.user
+    comments = material.comments.order_by("-created_on")
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.name = user.username
+            new_comment.material = material
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+    
+    return render(request, 'contents/comment_room.template.html',{
+        'form': comment_form,
+        'comments': comments,
+        'material': material
+    })
+
 
 
 @login_required

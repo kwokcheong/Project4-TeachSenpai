@@ -4,6 +4,7 @@ from pyuploadcare.dj.models import ImageField
 from django.utils.timezone import now
 from products.models import Product
 from orders.models import Order
+from pyuploadcare.dj.models import ImageField
 
 # Create your models here.
 class Material(models.Model):
@@ -18,3 +19,17 @@ class Material(models.Model):
 
     def __str__(self):
         return "RE: " + self.order.title
+
+
+class Comment(models.Model):
+    material = models.ForeignKey(Material, on_delete=models.CASCADE, related_name="comments")
+    name = models.CharField(max_length=80)
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    image = ImageField(blank=True, manual_crop="")
+
+    class Meta:
+        ordering = ['created_on']
+
+    def __str__(self):
+        return 'Comment {} by {}'.format(self.body, self.name)
