@@ -8,6 +8,7 @@ from orders.models import Order
 from .models import Profile
 from django.core.exceptions import ObjectDoesNotExist
 from products.views import home
+from reviews.models import Review
 
 # Create your views here.
 
@@ -33,6 +34,17 @@ def view_profile_balance(request):
         'user': user,
         'orders': orders
     })
+
+def view_profile_reviews(request):
+    user = request.user
+    orders = Order.objects.all()
+    reviews = Review.objects.all()
+    return render(request, 'profiles/profile_reviews.template.html',{
+        'user': user,
+        'orders': orders,
+        'reviews': reviews
+    })
+
 
 @login_required
 def create_profile(request):
