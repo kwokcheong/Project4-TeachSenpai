@@ -50,7 +50,7 @@ def create_material(request, order_id, product_id):
             material.order = get_object_or_404(Order, pk=order_id)
             material.product = get_object_or_404(Product, pk=product_id)
             material.save()
-            return redirect(reverse(show_material, args=(order_id,product_id,)))
+            return redirect(reverse(show_material, args=(order_id,)))
         else:
             return render(request, 'contents/create_content.template.html', {
                 'form': form
