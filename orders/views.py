@@ -50,7 +50,7 @@ def create_order(request, product_id):
 def view_order_details(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
     material_form = MaterialForm()
-    return render(request, 'order/details.template.html', {
+    return render(request, 'orders/details.template.html', {
         'order': order,
         'form': material_form
     })

@@ -12,8 +12,16 @@
 <div class="container-fluid">
 
     <div class="row double" style="display: flex; justify-content: space-evenly;"> 
-        <div class="column-2 left" style="width: 10rem; margin-top: 40px;" >
+        <div class="column-2 left" style=" margin-top: 40px;" >
             {{user.profile.username}}
+            
+            <h2 style="border-bottom: 2px solid blue;">Transaction History</h2>
+            {%for order in orders%}
+            {%if order.owner == user%}
+            <a href="{% url 'view_order_detail_route' order_id=order.id  %}">{{order.secret_id}}</a>
+            </br>
+            {%endif%}
+            {%endfor%}
             
         </div>   
     
@@ -26,9 +34,12 @@
                 <input class="btn btn-primary theme" type="Submit"/>
                 </form>
                 </div>
-                <a href="{% url 'delete_profile_route' profile_id=user.profile.id %}" class="btn btn-danger">Delete profile</a>
+                
 
         </div>
 </div>
+
+
+
 
 {%endblock%}

@@ -52,6 +52,7 @@ def update_profile(request):
     user = request.user
     profile_being_updated = get_object_or_404(Profile, pk=user.profile.id)
     profile_form = ProfileForm(request.POST, instance = profile_being_updated)
+    orders = Order.objects.all()
     if request.method == "POST":
         #2. Make the form to edit
         profile_form = ProfileForm(request.POST, instance = profile_being_updated)
@@ -64,14 +65,16 @@ def update_profile(request):
         else: 
             return render(request, 'profiles/update.template.html',{
                 'form': profile_form,
-                'user': user
+                'user': user,
+                'orders': orders,
             })
         
     else:
         profile_form = ProfileForm(instance = profile_being_updated)
         return render(request, 'profiles/update.template.html', {
             'form': profile_form,
-            'user': user
+            'user': user,
+            'orders': orders,
         })
 
 def prompt_profile(request):
