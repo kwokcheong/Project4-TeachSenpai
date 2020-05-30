@@ -219,3 +219,6 @@ line-height: 22px;
   font-weight: 600;
 }
 
+.card-header , .card-footer{
+  background-color: white;
+}

@@ -9,6 +9,7 @@ class Profile(models.Model):
     owner = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     profiledesc = models.TextField(blank=False)
     profileimg = ImageField(blank=True, manual_crop="")
+    balance = models.DecimalField(max_digits= 9, decimal_places=2, default=0)
 
     def __str__(self):
         return self.username
