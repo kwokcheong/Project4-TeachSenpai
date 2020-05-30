@@ -2,9 +2,11 @@ from django.shortcuts import render, HttpResponse, redirect, reverse, get_object
 from .models import Material
 from django.contrib.auth.decorators import login_required, permission_required
 from .models import Order, Product
+from profiles.models import Profile
 from django.contrib import messages
 from .forms import MaterialForm
 from orders.forms import ResolveForm
+from django.db.models import F, Count
 
 # Create your views here.
 def index(request):
@@ -21,6 +23,10 @@ def show_material(request, order_id):
     form = ResolveForm(initial={'resolve': "resolved"})
     user = request.user
     if request.method == "POST":
+        product_id = order.product.id
+        product = get_object_or_404(Product, pk=product_id)
+        user = product.owner
+        Profile.objects.filter(pk=user.profile.id).update(balance= (F('balance') + int(product.price)) )
         form = ResolveForm(request.POST, instance=order)
         form.save()
     
@@ -44,7 +50,7 @@ def create_material(request, order_id, product_id):
             material.order = get_object_or_404(Order, pk=order_id)
             material.product = get_object_or_404(Product, pk=product_id)
             material.save()
-            return redirect(reverse(index))
+            return redirect(reverse(show_material, args=(order_id,product_id,)))
         else:
             return render(request, 'contents/create_content.template.html', {
                 'form': form

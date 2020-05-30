@@ -12,7 +12,7 @@
                 {%if order.owner == user%}
                 
                 <div class="card" style="width: 320px; margin:13px">
-                    <a href="{% url 'show_content_route' order_id=order.id %}" style="text-decoration: none; background-color: none; color:black">
+                    <a href="{% url 'show_content_route' order_id=order.id%}" style="text-decoration: none; background-color: none; color:black">
                         <img class="card-img-top" src="{{order.product.image.cdn_url}}" style="height: 230px;"/>
                     <div class="card-header">
                         {{order.product.title}}
