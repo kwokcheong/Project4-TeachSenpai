@@ -26,6 +26,14 @@ def view_profile_orders(request):
         'user': user
     })
 
+def view_profile_balance(request):
+    user = request.user
+    orders = Order.objects.all()
+    return render(request, 'profiles/profile_balance.template.html',{
+        'user': user,
+        'orders': orders
+    })
+
 @login_required
 def create_profile(request):
     if request.method == 'POST':
