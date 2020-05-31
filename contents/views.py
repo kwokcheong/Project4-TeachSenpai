@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect, reverse, get_object_or_404
-from .models import Material
+from .models import Material, Comment
 from django.contrib.auth.decorators import login_required, permission_required
 from .models import Order, Product
 from profiles.models import Profile
@@ -59,6 +59,12 @@ def comment_room(request, material_id):
         'comments': comments,
         'material': material
     })
+
+def delete_comment(request,comment_id):
+    comment_to_delete = get_object_or_404(Comment, pk=comment_id)
+    material_id = comment_to_delete.material.id
+    comment_to_delete.delete()
+    return redirect(reverse(comment_room, args=(material_id,)))
 
 
 
