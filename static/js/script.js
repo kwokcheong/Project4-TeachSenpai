@@ -3,7 +3,7 @@
   function toggleNav(){
       if (flag === 0){
         document.getElementById("mySidenav").style.width = "150px";
-        document.getElementById("main").style.marginLeft = "150px";
+        document.getElementById("main").style.marginLeft = "110px";
         document.getElementById("navtext1").style.display='inline-block';
         document.getElementById("navtext2").style.display='inline-block';
         document.getElementById("navtext3").style.display='inline-block';
