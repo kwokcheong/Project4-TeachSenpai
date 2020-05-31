@@ -108,6 +108,7 @@ transition: all 0.3s ease;
 .wrapper .sidebar ul li a{
   display: block;
   padding: 20px;
+  padding-right: 1px;
   color: rgb(46, 46, 46);
   position: relative;
   margin-bottom: 1px;
@@ -180,7 +181,10 @@ and (-webkit-min-device-pixel-ratio: 3) {
 width: 100%;
 max-width: 1800px;
 margin-left: 110px;
-padding: 80px;
+padding-top: 80px;
+padding-bottom: 80px;
+padding-left: 0px;
+padding-right: 150px;
 transition: all 0.3s ease;
 }
 
