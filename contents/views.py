@@ -48,6 +48,7 @@ def comment_room(request, material_id):
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
             new_comment.name = user.username
+            new_comment.owner = user
             new_comment.material = material
             new_comment.save()
             return redirect(reverse(comment_room, args=(material.id,)))

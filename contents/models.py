@@ -27,6 +27,7 @@ class Comment(models.Model):
     body = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
     image = ImageField(blank=True, manual_crop="")
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['created_on']

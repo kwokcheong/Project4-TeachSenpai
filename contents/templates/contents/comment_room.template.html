@@ -8,7 +8,7 @@
 <div class="container">
     {% for comment in comments%}
     <div class="row">
-    <h5 class="card-title"><img src="{{user.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/> {{product.owner.profile.username}}</h5>
+    <h5 class="card-title"><img src="{{comment.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/> {{product.owner.profile.username}}</h5>
     <p>{{comment.body}}</p>
     <a href="{% url 'delete_comment_route' comment_id=comment.id %}">delete</a>
     </div>
