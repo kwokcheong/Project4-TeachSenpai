@@ -18,6 +18,8 @@ body, html{
 }
 
 
+
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
 
 *{
@@ -193,8 +195,11 @@ line-height: 22px;
 #homepage_img{ 
   height: 450px;
   width: 100%;
-  object-fit: cover;
-  background: url(https://news.stlpublicradio.org/sites/kwmu/files/styles/x_large/public/202004/040820_NT_DistanceLearningIllustration_01.jpg);
+  object-fit: contain;
+  background: linear-gradient(rgba(255, 255, 255, 0.356), rgba(255, 255, 255, 0.356)), url(https://news.stlpublicradio.org/sites/kwmu/files/styles/x_large/public/202004/040820_NT_DistanceLearningIllustration_01.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-: rgb(175, 175, 175);
 }
 
 .border-btm-gold {
