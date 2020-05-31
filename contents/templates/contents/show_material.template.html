@@ -4,7 +4,7 @@
 
 {%block content%}
     <body>
-
+    <div class="col">
         {%for material in materials%}
         {% if order_id == material.order.id %}
         {% if order.owner == user %}
@@ -64,6 +64,7 @@
                 
             {%endfor%}
         </div>
+    </div>
     </body>
 
 
