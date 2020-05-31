@@ -7,7 +7,10 @@
 
 <div class="container">
     {% for comment in comments%}
-    {{comment.body}}
+    <div class="row">
+    <h5 class="card-title"><img src="{{user.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/> {{product.owner.profile.username}}</h5>
+    <p>{{comment.body}}</p>
+    </div>
     {%endfor%}
 </div>
 

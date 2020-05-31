@@ -42,7 +42,7 @@ def show_material(request, order_id):
 def comment_room(request, material_id):
     material = get_object_or_404(Material,pk=material_id )
     user = request.user
-    comments = material.comments.order_by("-created_on")
+    comments = material.comments.order_by("-created_on")[::-1]
     if request.method == "POST":
         comment_form = CommentForm(request.POST)
         if comment_form.is_valid():
@@ -50,6 +50,7 @@ def comment_room(request, material_id):
             new_comment.name = user.username
             new_comment.material = material
             new_comment.save()
+            return redirect(reverse(comment_room, args=(material.id,)))
     else:
         comment_form = CommentForm()
     
