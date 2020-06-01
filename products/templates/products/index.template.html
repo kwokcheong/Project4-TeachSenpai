@@ -25,6 +25,8 @@
     <input type="submit" value="Filter" style="max-height: 30px; margin: 35px;">
 
 </div>
+
+<div class="container-fluid">
 <div class="card-body">
     <div id="ordercards" class="row">
     <body>
@@ -35,17 +37,15 @@
             <div class="card-body" >
                 <h5 class="card-title"><img src="{{product.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/> {{product.owner.profile.username}}</h5>
                 <h5 class="card-title">{{product.title}} </h5>
-                Price:
-                <h5 class="card-title">{{product.price}}</h5>
                 <p class="card-text">{{product.category}}</p>
                 <p class="card-text">{{product.content}}</p>
             </div>
             <div class="card-footer">
-                <a href="{% url 'add_to_cart' product_id=product.id %}"><i class="far fa-heart"></i></a> 
-                <small class="text-muted">Like</small>
+                <small class="text-muted">{{product.price}}</small>
             </div>
         </div>
     {%endfor%}
+</div>
 </div>
 </div>
 {%endblock%}

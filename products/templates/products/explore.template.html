@@ -25,28 +25,22 @@
         <input type="submit" value="Filter" style="max-height: 30px; margin: 35px;">
 
     </div>
-<div class="card-body">
-    <div id="ordercards" class="row">
-    <body>
+<div class="container-fluid" style="display: block;">
         {%for product in products%}
-        <div class="card" style="width: 320px; margin:13px">
+        <div class="card" style="max-width: 250px; margin:4px; display:inline-block;">
             <a href="{% url 'view_product_details' product_id=product.id %}" style="text-decoration: none; background-color: none; color:black">
                 <img class="card-img-top" src="{{product.image.cdn_url}}" style="height: 230px; object-fit: cover;"/>
             <div class="card-body" >
                 <h5 class="card-title"><img src="{{product.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/> {{product.owner.profile.username}}</h5>
                 <h5 class="card-title">{{product.title}} </h5>
-                Price:
-                <h5 class="card-title">{{product.price}}</h5>
                 <p class="card-text">{{product.category}}</p>
                 <p class="card-text">{{product.content}}</p>
             </div>
             <div class="card-footer">
-                <a href="{% url 'add_to_cart' product_id=product.id %}"><i class="far fa-heart"></i></a> 
-                <small class="text-muted">Like</small>
+                <small class="text-muted">SGD$<b>{{product.price}}</b></small>
             </div>
         </div>
     {%endfor%}
-</div>
 </div>
 {%endblock%}
 
