@@ -51,9 +51,6 @@
         <div class="container-fluid p-md-5 p-3">
           <h3 class="border-btm-gold"> Transaction Details </h3>
           <div class="row d-none d-md-flex">
-              <div class="col-1">
-                  <b>No.</b>
-              </div>
               <div class="col-3">
                   <b>Item</b>
               </div>
@@ -74,9 +71,6 @@
           {%for order in orders %}
           {%if order.product.owner == user%}
           <div class="row mt-3">
-              <div class="col-1">
-                  <p>{{forloop.counter}}.</p>
-              </div>
               <div class="col-md-3 col-10">
                   <b>{{order.title}}</b>
               </div>

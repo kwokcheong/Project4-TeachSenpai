@@ -30,7 +30,7 @@ def create_review(request, order_id):
             messages.success(request, "Thank you for the review.")
             return redirect(reverse(home))
     else:
-        create_form = ReviewForm()
+        create_form = ReviewForm(initial={'title': order.title})
         return render(request, 'reviews/create.template.html',{
             'order': order,
             'form': create_form
