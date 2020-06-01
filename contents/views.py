@@ -20,7 +20,7 @@ def index(request):
 
 def show_material(request, order_id):
     order = get_object_or_404(Order, pk=order_id)
-    materials = Material.objects.all()
+    materials = Material.objects.filter(order=order)
     form = ResolveForm(initial={'resolve': "resolved"})
     user = request.user
     if request.method == "POST":

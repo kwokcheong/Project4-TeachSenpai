@@ -13,4 +13,4 @@ class CommentForm(forms.ModelForm):
     image = ImageField(label='', required=False)
     class Meta:
         model = Comment
-        fields = ('body',)
+        fields = ('body','image',)

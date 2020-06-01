@@ -10,9 +10,14 @@
     <div class="row">
     <h5 class="card-title"><img src="{{comment.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/> {{product.owner.profile.username}}</h5>
     <p>{{comment.body}}</p>
-    <img src="{{comment.image.cdn_url}}"/>
-    <a href="{% url 'delete_comment_route' comment_id=comment.id %}">delete</a>
     </div>
+    {%if comment.image%}
+    <div class="row" style="height: 400px; width: 300px; border:0.2px solid rgb(153, 153, 153);"><img style="max-width:100%;
+        max-height:100%;" src="{{comment.image.cdn_url}}" alt="comment_image"/></div>
+    {%endif%}
+    <a href="{% url 'delete_comment_route' comment_id=comment.id %}">delete</a>
+    
+
     {%endfor%}
 </div>
 
