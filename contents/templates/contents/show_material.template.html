@@ -52,23 +52,33 @@
 
                         </div>
                         <div class="card-footer text-muted">
+                            {%if order.resolve == "resolved"%}
+                                <p>Order has been resolved</p>
+                            {%elif order.owner == user%}
+                            Please click resolved if your question has been answered. 
+                            Do note that action is irreversible.
                             <form method="POST">
                                 {% csrf_token %}
                                 <div style="display: none;">
                                 {{ form|crispy}}
                                 </div>
                                 <input type="Submit" class="btn btn-success" value="resolve"/>
+                            {%else%}
+                                You are the product owner
+                                {%endif%}
+
                                 <a class="btn btn-primary theme" href="{% url 'show_comment_room_route' material_id=material.id %}">Enter chat room</a>
                                 </form>
-                        
+                                {%if order.product.owner == user%}
+                                <a href="{% url 'update_content_route' order_id=material.id %}"><i class="fas fa-edit"></i></a>
+                                <a href="{% url 'delete_content_route' material_id=material.id %}"><i class="fas fa-trash-alt"></i></a>
+                                {%endif%}
                         </div>
+                        
                     </div>
 
                     
-                    {%if order.product.owner == user%}
-                    <a href="{% url 'update_content_route' order_id=material.id %}">Edit</a>
-                    <a href="{% url 'delete_content_route' material_id=material.id %}">delete</a>
-                    {%endif%}
+
                 {%endif%}
             {%endfor%}
         </div>

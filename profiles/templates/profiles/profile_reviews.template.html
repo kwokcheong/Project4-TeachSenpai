@@ -36,10 +36,20 @@
       </ul>
     </div>
     <div class="card-body">
-    
-    this is reviews page
+
     {%for review in reviews%}
-    {{review.title}}
+    {%if review.product.owner == user%}
+    <div class="card" style="margin-bottom: 10px;">
+      <div class="card-header">
+        <p class="card-title"><img src="{{review.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/><b>
+          {{review.owner.username}} </b> </p>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{review.title}}</h5>
+        <p class="card-text">{{review.content}}</p>
+      </div>
+    </div>
+    {%endif%}
     {%endfor%}
 
   </div>
