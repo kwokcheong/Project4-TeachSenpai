@@ -9,7 +9,8 @@
 
 
 {%block content%}
-<h1> Create new Review </h1>
+<h1> Leave a review for {{order.product.owner.username}} </h1>
+<p class="text-muted">How was your experience?</p>
     <form method="POST">
     {% csrf_token %}
     {{ form|crispy}}

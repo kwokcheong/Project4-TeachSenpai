@@ -7,6 +7,7 @@ from orders.models import Order
 from products.models import Product
 from products.views import home
 
+
 # Create your views here.
 def index(request):
     review = Review.objects.all()
@@ -16,6 +17,7 @@ def index(request):
 
 @login_required
 def create_review(request, order_id):
+    order = get_object_or_404(Order, pk=order_id)
     if request.method == "POST":
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -30,5 +32,6 @@ def create_review(request, order_id):
     else:
         create_form = ReviewForm()
         return render(request, 'reviews/create.template.html',{
+            'order': order,
             'form': create_form
         })

@@ -7,6 +7,7 @@ from django.contrib import messages
 from .forms import MaterialForm, CommentForm
 from orders.forms import ResolveForm
 from django.db.models import F, Count
+from reviews.views import create_review
 
 # Create your views here.
 def index(request):
@@ -29,7 +30,7 @@ def show_material(request, order_id):
         Profile.objects.filter(pk=user.profile.id).update(balance= (F('balance') + int(product.price)) )
         form = ResolveForm(request.POST, instance=order)
         form.save()
-    
+        return redirect(reverse(create_review, args=(order_id,)))
 
     return render(request, 'contents/show_material.template.html', {
         'materials': materials,
