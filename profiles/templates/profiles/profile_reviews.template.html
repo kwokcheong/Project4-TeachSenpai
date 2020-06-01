@@ -39,6 +39,7 @@
 
     {%for review in reviews%}
     {%if review.product.owner == user%}
+    
     <div class="card" style="margin-bottom: 10px;">
       <div class="card-header">
         <p class="card-title"><img src="{{review.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/><b>
@@ -49,7 +50,11 @@
         <p class="card-text">{{review.content}}</p>
       </div>
     </div>
+    {%elif forloop.counter == 1 %}
+    No reviews
+    {%else%}
     {%endif%}
+
     {%endfor%}
 
   </div>
