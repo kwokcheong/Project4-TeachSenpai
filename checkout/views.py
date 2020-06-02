@@ -70,6 +70,7 @@ def checkout_success(request):
       )
     
     request.session['shopping_cart'] = {}
+    messages.success(request, "Your payment has been successful.")
     return render(request, 'checkout/checkout_success.template.html',{
         'secret_id': secret_id_key
     })
