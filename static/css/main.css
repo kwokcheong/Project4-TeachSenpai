@@ -241,3 +241,4 @@ line-height: 22px;
     text-overflow: ellipsis;
     max-width: 200px;
 }
+.flex-container{display: flex;justify-content: center; flex-wrap: wrap;}

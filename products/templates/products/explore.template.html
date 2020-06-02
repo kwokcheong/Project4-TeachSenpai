@@ -29,11 +29,11 @@
   </div>
        
 
-<div class="container-fluid" style="display: block;">
+<div class="flex-container">
         {%for product in products%}
-        <div class="card" style="max-width: 250px; margin:4px; display:inline-block;">
+        <div class="card" style="max-width: 200px; margin: 10px; display:inline-block;">
             <a href="{% url 'view_product_details' product_id=product.id %}" style="text-decoration: none; background-color: none; color:black">
-                <img class="card-img-top" src="{{product.image.cdn_url}}" style="height: 230px; object-fit: cover;"/>
+                <img class="card-img-top" src="{{product.image.cdn_url}}" style="height: 190px; object-fit: cover;"/>
             <div class="card-body" >
                 <h5 style="font-size: 16px;" ><img src="{{product.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/> {{product.owner.profile.username}}</h5>
                 <h5 class="card-title" id="card-info">{{product.title}} </h5>
