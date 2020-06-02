@@ -31,7 +31,7 @@
 
 <div class="flex-container">
         {%for product in products%}
-        <div class="card" style="max-width: 200px; margin: 10px; display:inline-block;">
+        <div class="card" id="product_cards" style=" margin: 10px; display:inline-block;">
             <a href="{% url 'view_product_details' product_id=product.id %}" style="text-decoration: none; background-color: none; color:black">
                 <img class="card-img-top" src="{{product.image.cdn_url}}" style="height: 190px; object-fit: cover;"/>
             <div class="card-body" >
