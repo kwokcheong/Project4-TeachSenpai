@@ -81,7 +81,7 @@ font-size: 20px;
 font-weight: 700;
 letter-spacing: 3px;
 }
-
+/*
 .wrapper .top_navbar .top_menu ul{
 display: flex;
 }
@@ -92,7 +92,7 @@ margin-top: 15px;
 line-height: 35px;
 text-align: center;
 }
-
+*/
 
 .wrapper .sidebar{
 position: fixed;
@@ -221,6 +221,141 @@ line-height: 22px;
   flex-wrap: wrap;
 }
 
+
+/* nav bar */
+/* header */
+
+.header {
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  border-right: 1px solid #f4f4f4;
+  text-decoration: none;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: white;
+}
+
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+}
+
+
+
 /* For mobile phones: */
 [class*="col-"] {
   width: 100%;
@@ -263,39 +398,79 @@ and (-webkit-min-device-pixel-ratio: 3) {
       padding:10px;
       transition: all 0.3s ease;
     }
+    #search_top{
+      display: none;
+    }
+
+    #nav_top{
+      display:none;
+    }
+
+    .logo a{
+      margin-left:0px;
+    }
+
+    #profile_pic img{
+      height: 80px;
+      width: 80px;
+    }
+
+    #profile_pic{
+      width: 80px;
+    }
+
+    #profile_desc{
+      font-size: 13px;
+    }
+
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
-    /* For desktop: */
-    .col-1 {width: 8.33%;}
-    .col-2 {width: 16.66%;}
-    .col-3 {width: 25%;}
-    .col-4 {width: 33.33%;}
-    .col-5 {width: 41.66%;}
-    .col-6 {width: 50%;}
-    .col-7 {width: 58.33%;}
-    .col-8 {width: 66.66%;}
-    .col-9 {width: 75%;}
-    .col-10 {width: 83.33%;}
-    .col-11 {width: 91.66%;}
-    .col-12 {width: 100%;}
 
     #product_cards{
-      max-width: 200px;
+      width: 200px;
+  }
+
+
+
+  .logo a{
+    margin-left:20px;
+  }
+
+  #profile_pic img{
+    height: 80px;
+    width: 80px;
+  }
+
+  #profile_desc{
+    margin-left: 30px;
+    font-size: 14px;
   }
 }
 
+
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+
     #product_cards{
-      max-width: 200px;
+      width: 200px;
+  }
+  .logo a{
+    margin-left:20px;
+  }
+  #profile_desc{
+    margin-left: 0px;
+    font-size: 15px;
   }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   #product_cards{
-    max-width: 320px;
+    width: 320px;
+}
+.logo a{
+  margin-left:20px;
 }
 }

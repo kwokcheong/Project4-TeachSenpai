@@ -3,22 +3,22 @@
 
 {%block content%}
 <div id="profilebox" class="card mb-3" style=" height:190px; border-color: white;  background: linear-gradient(180deg, rgb(27, 1, 97) 50%, rgb(255, 255, 255) 50%);">
-    <div class="row no-gutters mt-5" >
-      <div class="col-xs-12-md-0 ml-3">
-        <img src="{{user.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 120px; width: 120px;"/>
-      </div>
-      <div class="col">
-        <div class="card-body">
-          <h5 class="card-title" style="color: white">{{user.profile.username}}</h5>
-          <p class="card-text">{{user.profile.profiledesc}}</p>
-          <p class="card-text"><small class="text-muted">joined since {{user.date}}</small></p>
-        </div>
+  <div class="row mt-5 ml-2" >
+    <div class="col-sm-1 " id="profile_pic">
+      <img src="{{user.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%;"/>
+    </div>
+    <div class="col-sm-11" style="width: min-content;">
+      <div class="card-body" id="profile_desc">
+        <h5 class="card-title" style="color: white">{{user.profile.username}}</h5>
+        <p class="card-text">{{user.profile.profiledesc}}</p>
+        <p class="card-text"><small class="text-muted">joined since {{user.date}}</small></p>
       </div>
     </div>
   </div>
+</div>
 
 
-<div class="card text-center">
+<div class="card text-center" >
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
@@ -40,7 +40,7 @@
     {%for review in reviews%}
     {%if review.product.owner == user%}
     
-    <div class="card" style="margin-bottom: 10px;">
+    <div class="card" id="product_cards" style="margin-bottom: 10px;">
       <div class="card-header">
         <p class="card-title"><img src="{{review.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/><b>
           {{review.owner.username}} </b> </p>
