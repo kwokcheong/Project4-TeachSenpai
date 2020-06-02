@@ -230,3 +230,14 @@ line-height: 22px;
 .card-header , .card-footer{
   background-color: white;
 }
+
+.card, .card-img-top{
+  border-radius: 0%;
+}
+
+#card-info{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}

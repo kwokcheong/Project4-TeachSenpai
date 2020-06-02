@@ -30,7 +30,7 @@ def home(request):
 
         # update the existing book found
         products = products.filter(queries)
-        return render(request, 'products/index.template.html', {
+        return render(request, 'products/explore.template.html', {
             'products': products,
             'search_form': search_form,
             'category_form': category_form,
@@ -63,7 +63,7 @@ def index(request):
 
         # update the existing book found
         products = products.filter(queries)
-    return render(request, 'products/index.template.html', {
+    return render(request, 'products/explore.template.html', {
         'products': products,
         'search_form': search_form,
         'category_form': category_form,
@@ -93,7 +93,7 @@ def explore(request):
 
         
         products = products.filter(queries)
-        return render(request, 'products/index.template.html', {
+        return render(request, 'products/explore.template.html', {
             'products': products,
             'search_form': search_form,
             'category': category,
