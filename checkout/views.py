@@ -1,4 +1,4 @@
-from django.shortcuts import render, reverse, HttpResponse, get_object_or_404
+from django.shortcuts import render, reverse,redirect, HttpResponse, get_object_or_404
 
 #import settings so that we can access the public stripe key
 from django.conf import settings
@@ -9,6 +9,9 @@ from django.contrib.sites.models import Site
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 import uuid
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib import messages
+from cart.views import view_cart
 
 # Create your views here.
 @login_required
@@ -72,7 +75,8 @@ def checkout_success(request):
     })
     
 def checkout_cancelled(request):
-    return HttpResponse("Checkout cancelled")
+    messages.success(request, "Your payment has been cancelled.")
+    return redirect(reverse(view_cart))
 
 
 
