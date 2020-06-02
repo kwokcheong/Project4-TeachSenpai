@@ -68,24 +68,24 @@
               <span class="title" id="navtext4">Your Notes</span>
               </a></li>
             <li><a href="{% url 'prompt_profile_route' %}">
-              <span class="icon"><i class="fas fa-user-alt"></i></span>
-              <span class="title" id="navtext5">Your Profile</span>
+            <span class="icon"><i class="fas fa-user-alt"></i></span>
+            <span class="title" id="navtext5">Your Profile</span>
+            </a></li>
+            {%if request.user.is_authenticated%}
+            <li><a href="{% url 'account_logout' %}">
+              <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+              <span class="title" id="navtext6">Log Out</span>
               </a></li>
-              {%if request.user.is_authenticated%}
-              <li><a href="{% url 'account_logout' %}">
-                <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-                <span class="title" id="navtext6">Log Out</span>
-                </a></li>
-              {%else%}
-              <li><a href="{% url 'account_signup' %}">
-                <span class="icon"><i class="fas fa-sign-in-alt"></i></span>
-                <span class="title" id="navtext6">Register</span>
-                </a></li>
-              {%endif%}
-              <li><a href="{% url 'prompt_profile_route' %}">
-                <span class="icon"><i class="fas fa-question-circle"></i></span>
-                <span class="title" id="navtext7">FAQ</span>
-                </a></li>
+            {%else%}
+            <li><a href="{% url 'account_signup' %}">
+              <span class="icon"><i class="fas fa-sign-in-alt"></i></span>
+              <span class="title" id="navtext6">Register</span>
+              </a></li>
+            {%endif%}
+            <li><a href="{% url 'prompt_profile_route' %}">
+            <span class="icon"><i class="fas fa-question-circle"></i></span>
+            <span class="title" id="navtext7">FAQ</span>
+            </a></li>
         </ul>
       </div>
       <!-- end of side bar -->

@@ -97,6 +97,7 @@ def update_profile(request):
             'orders': orders,
         })
 
+@login_required
 def prompt_profile(request):
 
     try:
@@ -107,6 +108,7 @@ def prompt_profile(request):
  
     return redirect(reverse(update_profile))
     
+@login_required  
 def prompt_teaching_profile(request):
     try:
         user = request.user
