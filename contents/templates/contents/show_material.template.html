@@ -57,12 +57,12 @@
                             {%elif order.owner == user%}
                             Please click resolved if your question has been answered. 
                             Do note that action is irreversible.
-                            <form method="POST">
+                            <form method="POST" class="once-only">
                                 {% csrf_token %}
                                 <div style="display: none;">
                                 {{ form|crispy}}
                                 </div>
-                                <input type="Submit" class="btn btn-success" value="resolve"/>
+                                <button type="Submit" class="btn btn-success" value="resolve">Resolve</button>
                             {%else%}
                                 You are the product owner
                                 {%endif%}

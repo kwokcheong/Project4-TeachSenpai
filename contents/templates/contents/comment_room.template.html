@@ -20,10 +20,10 @@
 
     <div class="container">
     <h3>Your Comment: </h3>
-    <form method="POST">
+    <form method="POST" class="once-only">
     {% csrf_token %}
     {{ form|crispy}}
-    <input type="Submit"/>
+    <button class="btn btn-secondary" type="Submit">Submit</button>
     </form>
 </div>
 {%endblock%}

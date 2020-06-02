@@ -26,7 +26,9 @@
       }
   }
 
+  $(document).ready(function(){
+    $('.once-only').submit(function(){
+        $(this).children('button').prop('disabled', true);
+    });
+});
 
-  $(document).ready( function () {
- 
-  });
