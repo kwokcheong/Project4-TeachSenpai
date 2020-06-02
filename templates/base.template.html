@@ -26,22 +26,20 @@
       <i class="fa fa-bars" style="font-size:24px" class="hamburger" id="hamburger" onclick="toggleNav()"></i>
       <a href="{% url 'homepage' %}" style="text-decoration: none; color:rgb(26, 26, 26); font-family: 'Fredoka One', cursive; font-size: 25px; ">Teach<span style="color:rgb(53, 2, 196); font-family: 'Fredoka One', cursive; font-size: 26px;">S</span>enpai</a>
       </div> 
-      <div class="logo" id="search_top" style="margin-left: 10px; margin-top: 10px;">
+      <div class="logo" id="search_top" style="margin-left: 10px; margin-top: 10px; padding-left:0px; padding-right:0px;">
       {%block navbar%}{%endblock%}
       </div>
       <input class="menu-btn" type="checkbox" id="menu-btn" />
       <label class="menu-icon" for="menu-btn" style="margin-bottom: 0; margin-top:5px;"><span class="navicon"></span></label>
       <ul class="menu" >
       {%if request.user.is_authenticated %}
-        <li><a href="#about" style="text-decoration: none; color: grey;">FAQ</a></li>
-        <li><a href="{% url 'account_logout' %}" style=" text-decoration: none;color: grey;">Logout</a></li>
+        <li><a href="{% url 'view_cart' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-shopping-cart"></i> {{number_of_items}}</a></li>
         <li><a href="{% url 'prompt_profile_route' %}" style="text-decoration: none; color: grey;">
           <p style="margin:0px; "><img src="{{request.user.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/>{{request.user.username}} </p>
         </a></li>
       {%else%}
-        <li><a href="#about" style="text-decoration: none; color: grey;">Become a Teacher</a></li>
-        <li><a href="#careers" style=" text-decoration: none; color: grey;">Sign in</a></li>
-        <li><a href="#contact" style=" text-decoration: none;color: grey;">Join</a></li>
+        <li><a href="{% url 'account_signup' %}" style=" text-decoration: none;color: grey;">Join</a></li>
+        <li><a href="{% url 'account_login' %}" style=" text-decoration: none; color: grey;">Sign in</a></li>
       {%endif%}
       </ul>
     </header>
@@ -73,6 +71,21 @@
               <span class="icon"><i class="fas fa-user-alt"></i></span>
               <span class="title" id="navtext5">Your Profile</span>
               </a></li>
+              {%if request.user.is_authenticated%}
+              <li><a href="{% url 'account_logout' %}">
+                <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span class="title" id="navtext6">Log Out</span>
+                </a></li>
+              {%else%}
+              <li><a href="{% url 'account_signup' %}">
+                <span class="icon"><i class="fas fa-sign-in-alt"></i></span>
+                <span class="title" id="navtext6">Register</span>
+                </a></li>
+              {%endif%}
+              <li><a href="{% url 'prompt_profile_route' %}">
+                <span class="icon"><i class="fas fa-question-circle"></i></span>
+                <span class="title" id="navtext7">FAQ</span>
+                </a></li>
         </ul>
       </div>
       <!-- end of side bar -->

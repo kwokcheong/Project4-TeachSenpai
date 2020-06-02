@@ -9,6 +9,8 @@
         document.getElementById("navtext3").style.display='inline-block';
         document.getElementById("navtext4").style.display='inline-block';
         document.getElementById("navtext5").style.display='inline-block';
+        document.getElementById("navtext6").style.display='inline-block';
+        document.getElementById("navtext7").style.display='inline-block';
         flag = 1;
       } else {
         document.getElementById("mySidenav").style.width = "60px";
@@ -18,6 +20,8 @@
         document.getElementById("navtext3").style.display='none';
         document.getElementById("navtext4").style.display='none';
         document.getElementById("navtext5").style.display='none';
+        document.getElementById("navtext6").style.display='none';
+        document.getElementById("navtext7").style.display='none';
         flag = 0;
       }
   }
