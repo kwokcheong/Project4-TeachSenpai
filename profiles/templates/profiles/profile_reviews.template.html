@@ -35,15 +35,16 @@
           </li>
       </ul>
     </div>
-    <div class="card-body">
 
+    <div class="container" style="padding: 20px;">
+      <h5><b>Reviews: </b></h5>
     {%for review in reviews%}
     {%if review.product.owner == user%}
-    
-    <div class="card" id="product_cards" style="margin-bottom: 10px;">
+
+    <div class="card" style="margin-top: 20px;">
       <div class="card-header">
-        <p class="card-title"><img src="{{review.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/><b>
-          {{review.owner.username}} </b> </p>
+        <img src="{{review.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/><b>
+          {{review.owner.profile.username}} </b>
       </div>
       <div class="card-body">
         <h5 class="card-title">{{review.title}}</h5>
@@ -51,11 +52,10 @@
       </div>
     </div>
     {%endif%}
-
     {%endfor%}
 
   </div>
-
+</div>
 
   
 {%endblock%}

@@ -52,7 +52,6 @@
                         </div>
                         </div>
                         <div class="tab-pane fade" id="nav-resolved" role="tabpanel" aria-labelledby="nav-resolved-tab">
-                            <div class="card" >
         
                                 <div class="card" style="padding: 0px;min-width: 45px; max-width: 65rem; ">
                                     <div class="card-header">
@@ -61,18 +60,35 @@
                                         <img src="{{product.owner.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 50px; width: 50px;"/>
                                             {{product.owner.profile.username}}
                                         </div>
+                                    </div>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="container" style="margin-bottom: 60px;">
                                         <h5><b>About the tutor: </b></h5>
-                                        <h5>{{product.owner.profile.profiledesc}}</h5>
+                                        <p style="white-space: pre-wrap; margin-top:5px; text-align: left;">{{product.owner.profile.profiledesc}}</p>
+                                        </div>
+                                        
+                                        <div class="container" style="justify-content: space-around;">
+                                        <h5><b>Reviews for product: </b></h5>
                                         {%for review in reviews%}
-                                        <p>{{review.title}}</p>
-                                        <p>{{review.content}}</p>
+                                        <div class="card" style="margin-top:20px;">
+                                            <div class="card-header">
+                                                <img src="{{review.owner.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 35px; width: 35px;"/>
+                                                {{review.owner.profile.username}}
+                                            </div>
+                                            <div class="card-body">
+                                              <h5 class="card-title">{{review.title}}</h5>
+                                              <p class="card-text">{{review.content}}</p>
+                                            </div>
+                                          </div>
+                        
                                         {%endfor%}
                                     </div>
                                     </div>
+
      
                                   </div>
 
-                        </div>
                         </div>
                   
                         </div>
