@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from orders.forms import OrderForm
 from django.db.models import Q
+from reviews.models import Review
 
 # Create your views here.
 
@@ -166,7 +167,9 @@ def delete_product(request, product_id):
 def view_product_details(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     order_form = OrderForm()
+    reviews = Review.objects.filter(product=product)
     return render(request, 'products/details.template.html', {
         'product': product,
-        'form': order_form
+        'form': order_form,
+        'reviews': reviews
     })

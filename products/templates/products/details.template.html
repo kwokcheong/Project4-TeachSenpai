@@ -6,64 +6,70 @@
 <div class="container-fluid">
 
 <div class="row double" style="display: flex; justify-content: space-evenly;"> 
-    <div class="column-2 left" style="width: 45rem; " >
-
-              
-            
-
-        <div class="container">
-            <div class="row" >
+    <div class="column-2 left" style="min-width:23rem; max-width: 65rem; " >
+        <div class="container-fluid" >
+            <div class="row" style="display: flex;">
                 <div class="col-md-11">
                     <nav>
                         <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-active-tab" data-toggle="tab" href="#nav-active" role="tab" aria-controls="nav-active" aria-selected="true">Overview</a>
-                            <a class="nav-item nav-link" id="nav-resolved-tab" data-toggle="tab" href="#nav-resolved" role="tab" aria-controls="nav-resolved" aria-selected="false">About the tutor</a>
+                            <a class="nav-item nav-link" id="nav-resolved-tab" data-toggle="tab" href="#nav-resolved" role="tab" aria-controls="nav-resolved" aria-selected="false">Reviews</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-active" role="tabpanel" aria-labelledby="nav-active-tab">
-                          <div class="container" style="padding: 0px;">
+                          <div class="card" style="padding: 0px;">
         
                                 <div class="card" style="width:100%; border:white;">
                                     <div class="card-header">
-                                        <h3 style="font-family: 'Source Sans Pro', sans-serif;"><b>{{product.title}}</b></h3>
-                                    </div>
-                                    <div class="card-header">
                                         <div class="row">
-                                            <div class="col-xs-12" >
+                                            <div class="col-xs-2" >
                                         <img src="{{product.owner.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 50px; width: 50px;"/>
-                                    </div>
-                                        <div class="col">
-                                            miso
+                                            {{product.owner.profile.username}}
                                         </div>
                                     </div>
                                     </div>
-                                    <h5 class="card-title"> {{product.category.title}}</h5>
-                                    <div class="card-body">
+                                    <div class="card-body" style="text-align: center;">
+                                        Tags: {% for t in product.tag.all %} <span class="badge badge-primary">{{t.title}}</span> {%endfor%}
+                                        <span class="badge badge-warning"> {{product.category.title}}</span>
                                         <div class="mb-3 mt-3 text-left">
-                                            <img src="{{product.image.cdn_url}}" style="width:80%" class="image-fluid"/>
+                                            <img src="{{product.image.cdn_url}}" style="width:100%; object-fit: cover;" class="image-fluid" />
                                           </div>
-                                          <p class="card-text"> {{product.desc}}</p>
+                                          <div class="card-header">
+                                            <h3 style="font-family: 'Source Sans Pro', sans-serif;"><b>{{product.title}}</b></h3>
+                                        </div>
+                                          <h5 style="text-align: left; margin-top:20px;"><b>About this consultation:</b> </h5>
+                                          <p class="card-text" style="white-space: pre-wrap; margin-top:5px; text-align: left;"> {{product.desc}}</p>
+                                          {%if product.video%}
+                                          <h5 style="text-align: left; margin-top:20px;"><b>Video introduction: </b> </h5>
                                           <div class="flex-video widescreen">
                                             <iframe width="400" height="290" src="{{product.video}}" frameborder="0" allowfullscreen></iframe>
                                         </div>
-                                        Tags: {% for t in product.tag.all %} <span class="label">{{t.title}}</span> {%endfor%}
+                                        {%endif%}
                                     </div>
                                   </div>
 
                         </div>
                         </div>
                         <div class="tab-pane fade" id="nav-resolved" role="tabpanel" aria-labelledby="nav-resolved-tab">
-                          <div class="container">
-
-                                <div class="card" style="width:100%;">
-                                    <div class="card-body">
-                                      <img src="{{product.owner.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 50px; width: 50px;"/>
-                                      <h5 class="card-title">{{product.owner.profile.username}}</h5>
-                                      <h5 class="card-title">{{product.owner.profile.profiledesc}}</h5>
-
-                                      <p class="card-text">{{order.content}}</p>
+                            <div class="card" >
+        
+                                <div class="card" style="padding: 0px;min-width: 45px; max-width: 65rem; ">
+                                    <div class="card-header">
+                                        <div class="row">
+                                            <div class="col-xs-2" >
+                                        <img src="{{product.owner.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 50px; width: 50px;"/>
+                                            {{product.owner.profile.username}}
+                                        </div>
+                                        <h5><b>About the tutor: </b></h5>
+                                        <h5>{{product.owner.profile.profiledesc}}</h5>
+                                        {%for review in reviews%}
+                                        <p>{{review.title}}</p>
+                                        <p>{{review.content}}</p>
+                                        {%endfor%}
                                     </div>
+                                    </div>
+     
                                   </div>
 
                         </div>
@@ -73,7 +79,7 @@
                     </div>
                 </div>
             </div>
-</div>   
+    </div>   
 
     <div class="column-2 right" style="margin-top: 40px;">
         <div class="card text-center" style="max-width: 400px;">
