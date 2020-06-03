@@ -65,11 +65,11 @@
               </a></li>
             <li><a href="{% url 'show_order_route' %}" >
               <span class="icon"><i class="fas fa-sticky-note"></i></span>
-              <span class="title" id="navtext4">Your Notes</span>
+              <span class="title" id="navtext4">Notes</span>
               </a></li>
             <li><a href="{% url 'prompt_profile_route' %}">
             <span class="icon"><i class="fas fa-user-alt"></i></span>
-            <span class="title" id="navtext5">Your Profile</span>
+            <span class="title" id="navtext5">Profile</span>
             </a></li>
             {%if request.user.is_authenticated%}
             <li><a href="{% url 'account_logout' %}">
