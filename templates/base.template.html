@@ -39,7 +39,7 @@
         <li id="hide"><a href="{% url 'prompt_teaching_profile_route' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-chalkboard-teacher"></i>  Teach</a></li>
         <li id="hide"><a href="{% url 'show_explore_route' %}" style=" text-decoration: none;color: grey;"> <i class="fas fa-book"></i>  Explore</a></li>
         <li id="hide"><a href="{% url 'show_order_route' %}" style=" text-decoration: none;color: grey;"> <i class="fas fa-sticky-note"></i>  Notes</a></li>
-        <li><a href="{% url 'view_cart' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-shopping-cart"></i> {{number_of_items}}</a></li>
+        <li><a href="{% url 'view_cart' %}" style=" text-decoration: none;color: grey; margin-top:2px; margin-right:25px;"><i class="fas fa-shopping-cart"></i> {{number_of_items}}</a></li>
         <li id="hide"><a href="{% url 'account_logout' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-sign-out-alt"></i>  Log Out</a></li>
         <li id="hide"><a href="{% url 'show_faq_route' %}"style=" text-decoration: none;color: grey;"> <i class="fas fa-question-circle"></i>  FAQ</a></li>
       {%else%}

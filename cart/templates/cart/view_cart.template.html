@@ -2,6 +2,10 @@
 
 
 {%block content %}
+<div class="container" style="text-align: start; width: 100%; margin-left:20px;">
+    <a class="btn btn-secondary btn-sm" href="{% url 'show_explore_route' %}">Go back</a>
+</div>
+
 <div class="container-fluid p-md-5 p-3">
 <h3 class="border-btm-gold"> Cart Details </h3>
 <div class="row d-none d-md-flex">
@@ -59,7 +63,9 @@
 
 <!-- this part will show the total number of item in cart, subtotal, Allow user to deduct from balance or pay stripes-->
 </div>
-<div class="container-fluid">
-<a class="btn btn-primary theme btn-sm" href="{% url 'checkout' %}">Checkout</a>
+<div class="container" style="text-align: center;">
+
+<a class="btn btn-success btn" href="{% url 'checkout' %}">Go To Secure Checkout</a>
+
 </div>
 {%endblock%}
