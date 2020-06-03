@@ -513,6 +513,9 @@ and (-webkit-min-device-pixel-ratio: 3) {
     #profile_desc{
       font-size: 13px;
     }
+    #homecontent{
+      margin-top:10px;
+    }
 
 }
 
@@ -541,6 +544,9 @@ and (-webkit-min-device-pixel-ratio: 3) {
   #hide{
     display:none;
   }
+  #homecontent{
+    margin-top:40px;
+  }
 }
 
 
@@ -561,6 +567,9 @@ and (-webkit-min-device-pixel-ratio: 3) {
   #hide{
     display:none;
   }
+  #homecontent{
+    margin-top:60px;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
@@ -574,4 +583,19 @@ and (-webkit-min-device-pixel-ratio: 3) {
 #hide{
   display:none;
 }
+
+#homecontent{
+  margin-top:180px;
+}
+}
+
+/* This swaps the position for create an event for mobile responsive */
+@media screen and (max-width:769px){
+#swap{
+  display: flex;
+  flex-direction:row;
+}
+
+
+	#swap{flex-direction:column-reverse;}
 }

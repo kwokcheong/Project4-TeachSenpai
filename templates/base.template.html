@@ -1,140 +1,163 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS Jquery-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
-    <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <script src="{% static 'js/script.js' %}"></script>
-    <title>{%block title%}{%endblock%}</title>
-    
-    {%block 'head'%}{%endblock%}
-  </head>
-  <body>
-    <!-- Top nav bar -->
-    <header class="header logo">
-      <div class="logo" style="margin-left: 2px;">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS Jquery-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.js"
+    integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+  <script
+    type="text/javascript"> (function () { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <script src="{% static 'js/script.js' %}"></script>
+  <title>{%block title%}{%endblock%}</title>
+
+  {%block 'head'%}{%endblock%}
+</head>
+
+<body>
+  <!-- Top nav bar -->
+  <header class="header logo">
+    <div class="logo" style="margin-left: 2px;">
       <i class="fa fa-bars" style="font-size:24px" class="hamburger" id="hamburger" onclick="toggleNav()"></i>
-      <a href="{% url 'homepage' %}" style="text-decoration: none; color:rgb(26, 26, 26); font-family: 'Fredoka One', cursive; font-size: 25px; ">Teach<span style="color:rgb(53, 2, 196); font-family: 'Fredoka One', cursive; font-size: 26px;">S</span>enpai</a>
-      </div> 
-      <div class="logo" id="search_top" style="margin-left: 10px; margin-top: 10px; padding-left:0px; padding-right:0px;">
+      <a href="{% url 'homepage' %}"
+        style="text-decoration: none; color:rgb(26, 26, 26); font-family: 'Fredoka One', cursive; font-size: 25px; ">Teach<span
+          style="color:rgb(53, 2, 196); font-family: 'Fredoka One', cursive; font-size: 26px;">S</span>enpai</a>
+    </div>
+    <div class="logo" id="search_top" style="margin-left: 10px; margin-top: 10px; padding-left:0px; padding-right:0px;">
       {%block navbar%}{%endblock%}
-      </div>
-      <input class="menu-btn" type="checkbox" id="menu-btn" />
-      <label class="menu-icon" for="menu-btn" style="margin-bottom: 0; margin-top:5px;"><span class="navicon"></span></label>
-      <ul class="menu" >
+    </div>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn" style="margin-bottom: 0; margin-top:5px;"><span
+        class="navicon"></span></label>
+    <ul class="menu">
       {%if request.user.is_authenticated %}
       <li><a href="{% url 'prompt_profile_route' %}" style="text-decoration: none; color: grey;">
-        <p style="margin:0px; "><img src="{{request.user.profile.profileimg}}" style="height: 30px; margin-right:9px; width: 30px; border-radius: 100%;"/>{{request.user.username}} </p>
-      </a></li>
-        <li id="hide"><a href="{% url 'prompt_teaching_profile_route' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-chalkboard-teacher"></i>  Teach</a></li>
-        <li id="hide"><a href="{% url 'show_explore_route' %}" style=" text-decoration: none;color: grey;"> <i class="fas fa-book"></i>  Explore</a></li>
-        <li id="hide"><a href="{% url 'show_order_route' %}" style=" text-decoration: none;color: grey;"> <i class="fas fa-sticky-note"></i>  Notes</a></li>
-        <li><a href="{% url 'view_cart' %}" style=" text-decoration: none;color: grey; margin-top:2px; margin-right:25px;"><i class="fas fa-shopping-cart"></i> {{number_of_items}}</a></li>
-        <li id="hide"><a href="{% url 'account_logout' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-sign-out-alt"></i>  Log Out</a></li>
-        <li id="hide"><a href="{% url 'show_faq_route' %}"style=" text-decoration: none;color: grey;"> <i class="fas fa-question-circle"></i>  FAQ</a></li>
+          <p style="margin:0px; "><img src="{{request.user.profile.profileimg}}"
+              style="height: 30px; margin-right:9px; width: 30px; border-radius: 100%;" />{{request.user.username}} </p>
+        </a></li>
+      <li><a href="{% url 'view_cart' %}"
+          style=" text-decoration: none;color: grey; margin-top:2px; margin-right:25px;"><i
+            class="fas fa-shopping-cart"></i> {{number_of_items}}</a></li>
+      <li id="hide"><a href="{% url 'prompt_teaching_profile_route' %}" style=" text-decoration: none;color: grey;"><i
+            class="fas fa-chalkboard-teacher"></i> Teach</a></li>
+      <li id="hide"><a href="{% url 'show_explore_route' %}" style=" text-decoration: none;color: grey;"> <i
+            class="fas fa-book"></i> Explore</a></li>
+      <li id="hide"><a href="{% url 'show_order_route' %}" style=" text-decoration: none;color: grey;"> <i
+            class="fas fa-sticky-note"></i> Notes</a></li>
+      <li id="hide"><a href="{% url 'account_logout' %}" style=" text-decoration: none;color: grey;"><i
+            class="fas fa-sign-out-alt"></i> Log Out</a></li>
+      <li id="hide"><a href="{% url 'show_faq_route' %}" style=" text-decoration: none;color: grey;"> <i
+            class="fas fa-question-circle"></i> FAQ</a></li>
       {%else%}
-      <li id="hide"><a href="{% url 'prompt_teaching_profile_route' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-chalkboard-teacher"></i>  Teach</a></li>
-      <li id="hide"><a href="{% url 'show_explore_route' %}" style=" text-decoration: none;color: grey;"> <i class="fas fa-book"></i>  Explore</a></li>
-      <li id="hide"><a href="{% url 'show_order_route' %}" style=" text-decoration: none;color: grey;"> <i class="fas fa-sticky-note"></i>  Notes</a></li>
-      <li id="hide"><a href="{% url 'show_faq_route' %}"style=" text-decoration: none;color: grey;"> <i class="fas fa-question-circle"></i>  FAQ</a></li>
-        <li><a href="{% url 'account_signup' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-sign-out-alt"></i>  Register</a></li>
-        <li><a href="{% url 'account_login' %}" style=" text-decoration: none; color: grey;"><i class="fas fa-sign-out-alt"></i>  Sign in</a></li>
+      <li id="hide"><a href="{% url 'prompt_teaching_profile_route' %}" style=" text-decoration: none;color: grey;"><i
+            class="fas fa-chalkboard-teacher"></i> Teach</a></li>
+      <li id="hide"><a href="{% url 'show_explore_route' %}" style=" text-decoration: none;color: grey;"> <i
+            class="fas fa-book"></i> Explore</a></li>
+      <li id="hide"><a href="{% url 'show_order_route' %}" style=" text-decoration: none;color: grey;"> <i
+            class="fas fa-sticky-note"></i> Notes</a></li>
+      <li id="hide"><a href="{% url 'show_faq_route' %}" style=" text-decoration: none;color: grey;"> <i
+            class="fas fa-question-circle"></i> FAQ</a></li>
+      <li><a href="{% url 'account_signup' %}" style=" text-decoration: none;color: grey;"><i
+            class="fas fa-sign-out-alt"></i> Register</a></li>
+      <li><a href="{% url 'account_login' %}" style=" text-decoration: none; color: grey;"><i
+            class="fas fa-sign-out-alt"></i> Sign in</a></li>
       {%endif%}
-      </ul>
-    </header>
+    </ul>
+  </header>
 
-    
-    <div class="wrapper">
 
-      
-      <!-- Side Bar -->
-      <div class="sidebar" id="mySidenav">
-          <ul>
-            <li><a href="{% url 'homepage' %}">
-              <span class="icon"><i class="fas fa-home"></i></span>
-              <span class="title" id="navtext1">Home</span>
-              </a></li>
-            <li><a href="{% url 'prompt_teaching_profile_route' %}">
-              <span class="icon"><i class="fas fa-chalkboard-teacher"></i></span>
-              <span class="title" id="navtext2">Teach</span>
-              </a></li>
-            <li><a href="{% url 'show_explore_route' %}">
-              <span class="icon"><i class="fas fa-book"></i></span>
-              <span class="title" id="navtext3">Explore</span>
-              </a></li>
-            <li><a href="{% url 'show_order_route' %}" >
-              <span class="icon"><i class="fas fa-sticky-note"></i></span>
-              <span class="title" id="navtext4">Notes</span>
-              </a></li>
-            <li><a href="{% url 'prompt_profile_route' %}">
+  <div class="wrapper">
+
+
+    <!-- Side Bar -->
+    <div class="sidebar" id="mySidenav">
+      <ul>
+        <li><a href="{% url 'homepage' %}">
+            <span class="icon"><i class="fas fa-home"></i></span>
+            <span class="title" id="navtext1">Home</span>
+          </a></li>
+        <li><a href="{% url 'prompt_teaching_profile_route' %}">
+            <span class="icon"><i class="fas fa-chalkboard-teacher"></i></span>
+            <span class="title" id="navtext2">Teach</span>
+          </a></li>
+        <li><a href="{% url 'show_explore_route' %}">
+            <span class="icon"><i class="fas fa-book"></i></span>
+            <span class="title" id="navtext3">Explore</span>
+          </a></li>
+        <li><a href="{% url 'show_order_route' %}">
+            <span class="icon"><i class="fas fa-sticky-note"></i></span>
+            <span class="title" id="navtext4">Notes</span>
+          </a></li>
+        <li><a href="{% url 'prompt_profile_route' %}">
             <span class="icon"><i class="fas fa-user-alt"></i></span>
             <span class="title" id="navtext5">Profile</span>
-            </a></li>
-            {%if request.user.is_authenticated%}
-            <li><a href="{% url 'account_logout' %}">
-              <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
-              <span class="title" id="navtext6">Log Out</span>
-              </a></li>
-            {%else%}
-            <li><a href="{% url 'account_signup' %}">
-              <span class="icon"><i class="fas fa-sign-in-alt"></i></span>
-              <span class="title" id="navtext6">Register</span>
-              </a></li>
-            {%endif%}
-            <li><a href="{% url 'show_faq_route' %}">
+          </a></li>
+        {%if request.user.is_authenticated%}
+        <li><a href="{% url 'account_logout' %}">
+            <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+            <span class="title" id="navtext6">Log Out</span>
+          </a></li>
+        {%else%}
+        <li><a href="{% url 'account_signup' %}">
+            <span class="icon"><i class="fas fa-sign-in-alt"></i></span>
+            <span class="title" id="navtext6">Register</span>
+          </a></li>
+        {%endif%}
+        <li><a href="{% url 'show_faq_route' %}">
             <span class="icon"><i class="fas fa-question-circle"></i></span>
             <span class="title" id="navtext7">FAQ</span>
-            </a></li>
-        </ul>
-      </div>
-      <!-- end of side bar -->
-
-      <div class="main_container" id="main">
-        {% if messages %}  
-        <div class='alert alert-success'>    
-            <div>
-                {% for message in messages %}
-                <div class="message">
-                 {{ message }} 
-                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                </div>
-                 {% endfor %}
-            </div>
-        </div>
-       {% endif %}
-  
-       <div class='header'>
-        
-      </div>
-       
-        
-        <div id="main">
-           {%block content%}{%endblock%}
-        </div>
-  
+          </a></li>
+      </ul>
     </div>
+    <!-- end of side bar -->
 
+    <div class="main_container" id="main">
+      {% if messages %}
+      <div class='alert alert-success'>
+        <div>
+          {% for message in messages %}
+          <div class="message">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      <div class='header'>
+      </div>
+      <div id="main">
+        {%block content%}{%endblock%}
+      </div>
     </div>
+  </div>
 
-    {%block js %}
-    <!-- Optional JavaScript -->
-    <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+  {%block js %}
+  <!-- Optional JavaScript -->
+  <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js"></script>
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    {%endblock%}
-  </body>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  {%endblock%}
+</body>
+
 </html>
