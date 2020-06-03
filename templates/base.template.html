@@ -33,13 +33,22 @@
       <label class="menu-icon" for="menu-btn" style="margin-bottom: 0; margin-top:5px;"><span class="navicon"></span></label>
       <ul class="menu" >
       {%if request.user.is_authenticated %}
+      <li><a href="{% url 'prompt_profile_route' %}" style="text-decoration: none; color: grey;">
+        <p style="margin:0px; "><img src="{{request.user.profile.profileimg}}" style="height: 30px; margin-right:9px; width: 30px; border-radius: 100%;"/>{{request.user.username}} </p>
+      </a></li>
+        <li id="hide"><a href="{% url 'prompt_teaching_profile_route' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-chalkboard-teacher"></i>  Teach</a></li>
+        <li id="hide"><a href="{% url 'show_explore_route' %}" style=" text-decoration: none;color: grey;"> <i class="fas fa-book"></i>  Explore</a></li>
+        <li id="hide"><a href="{% url 'show_order_route' %}" style=" text-decoration: none;color: grey;"> <i class="fas fa-sticky-note"></i>  Notes</a></li>
+        <li id="hide"><a href="{% url 'account_logout' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-sign-out-alt"></i>  Log Out</a></li>
         <li><a href="{% url 'view_cart' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-shopping-cart"></i> {{number_of_items}}</a></li>
-        <li><a href="{% url 'prompt_profile_route' %}" style="text-decoration: none; color: grey;">
-          <p style="margin:0px; "><img src="{{request.user.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/>{{request.user.username}} </p>
-        </a></li>
+        <li id="hide"><a href="{% url 'show_faq_route' %}"style=" text-decoration: none;color: grey;"> <i class="fas fa-question-circle"></i>  FAQ</a></li>
       {%else%}
-        <li><a href="{% url 'account_signup' %}" style=" text-decoration: none;color: grey;">Join</a></li>
-        <li><a href="{% url 'account_login' %}" style=" text-decoration: none; color: grey;">Sign in</a></li>
+      <li id="hide"><a href="{% url 'prompt_teaching_profile_route' %}" style=" text-decoration: none;color: grey;"><i class="fas fa-chalkboard-teacher"></i>  Teach</a></li>
+      <li id="hide"><a href="{% url 'show_explore_route' %}" style=" text-decoration: none;color: grey;"> <i class="fas fa-book"></i>  Explore</a></li>
+      <li id="hide"><a href="{% url 'show_order_route' %}" style=" text-decoration: none;color: grey;"> <i class="fas fa-sticky-note"></i>  Notes</a></li>
+      <li id="hide"><a href="{% url 'show_faq_route' %}"style=" text-decoration: none;color: grey;"> <i class="fas fa-question-circle"></i>  FAQ</a></li>
+        <li><a href="{% url 'account_signup' %}" style=" text-decoration: none;color: grey;">Register</a></li>
+        <li><a href="{% url 'account_login' %}" style=" text-decoration: none; color: grey;"><i class="fas fa-sign-out-alt"></i>  Sign in</a></li>
       {%endif%}
       </ul>
     </header>
@@ -82,7 +91,7 @@
               <span class="title" id="navtext6">Register</span>
               </a></li>
             {%endif%}
-            <li><a href="{% url 'prompt_profile_route' %}">
+            <li><a href="{% url 'show_faq_route' %}">
             <span class="icon"><i class="fas fa-question-circle"></i></span>
             <span class="title" id="navtext7">FAQ</span>
             </a></li>

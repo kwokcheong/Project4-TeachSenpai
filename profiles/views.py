@@ -107,7 +107,7 @@ def prompt_profile(request):
         return redirect(reverse(create_profile))
  
     return redirect(reverse(update_profile))
-    
+
 @login_required  
 def prompt_teaching_profile(request):
     try:
@@ -129,3 +129,6 @@ def delete_profile(request, profile_id):
     return render(request, 'profiles/delete.template.html', {
         'profile': profile_to_delete
     })
+
+def view_faq(request):
+    return render(request, 'profiles/faq.template.html')

@@ -18,7 +18,9 @@
             <h2 style="border-bottom: 2px solid blue;">Transaction History</h2>
             {%for order in orders%}
             {%if order.owner == user%}
-            <a href="{% url 'view_order_detail_route' order_id=order.id  %}">{{order.secret_id}}</a>
+            <ul>
+            <li><b>{{order.title}} </b></br> Order No.  {{order.secret_id}}</li>
+            </ul>
             </br>
             {%endif%}
             {%endfor%}
