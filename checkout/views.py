@@ -12,6 +12,12 @@ import uuid
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib import messages
 from cart.views import view_cart
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
+endpoint_secret= os.environ.get('endpoint_secret', '')
+
 
 # Create your views here.
 @login_required
