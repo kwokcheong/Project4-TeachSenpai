@@ -1,11 +1,6 @@
 {% extends 'base.template.html' %}
 {%load static %}
-{%block navbar%}
-<form class="form-inline" method="GET" style="justify-content: center;">
-    <input class="form-control form-control-sm mr-3 w-30" type="text" aria-label="Search" name="title" placeholder="Search for a topic">
-    <button class="btn btn-primary theme btn-sm" type="submit" value="Search">Search</button>
-</form>
-{%endblock%}
+
 {%block content%}
     <body>
         <div id="homepage_img" style="padding-top:120px;">
@@ -13,9 +8,13 @@
               <h2 style="font-family: 'Fredoka One', cursive; color:rgb(32, 43, 110); text-align: center; font-size: 40px;">
                 Pick up a new skill or master a topic
               </h2>
-              <h4 style="font-family: 'Roboto', sans-serif; color:rgb(70, 70, 70); text-align: center; ">
+              <h4 style="font-family: 'Roboto', sans-serif; color:rgb(0, 0, 0); text-align: center; ">
                 <b>Ask anything, learn everything.</b>
               </h4>
+              <form class="form-inline" method="GET" style="justify-content: center;">
+                <input class="form-control form-control-sm mr-3 w-30" type="text" aria-label="Search" name="title" placeholder="Search for a topic">
+                <button class="btn btn-primary theme btn-sm" type="submit" value="Search">Search</button>
+            </form>
             </div>
           </div>
       <section>
