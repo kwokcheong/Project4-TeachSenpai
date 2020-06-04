@@ -1,5 +1,5 @@
 
-<img src="static\images\Annotation 2020-05-20 231446.png"/>
+<img src="static\image\webimg.png"/>
 
 # TeachSenpai - An on-demand, peer-to-peer E-Learning platform web application, allowing people to earn money by helping others overcome their learning hurdles.
 
@@ -12,7 +12,7 @@ The website aims to act as a platform that encourages people to share their know
 
 As a University student, I came to realize how important it was to have teaching assistants(TA) readily available for us to seek help from and the impact it accumulatively had on my studies. There were many times where I found myself stuck on a problem and the guidance from my TA and lecturers were key factors to helping me understand those concepts. 
 
-However, not all students have access to readily available teaching assistants. Some may be self-learners, part-time students, or may simply just have no one to seek help from. This hinders their learning progress and makes it difficult for them to learn new, and more difficult concepts. While many online materials may be available on Udemy, coursera or youtube, pre-made learning courses do not directly address the specific questions or misconceptions a student may have. Thus despite the many materials and thousands of open tabs a student went through on their google chrome page, they may still find themselves scratching their heads over the content, hoping someone could enlighten them on where they went wrong.
+However, not all students have access to readily available teaching assistants. Some may be self-learners, part-time students, or may simply just have no one to seek help from. This hinders their learning progress and makes it difficult for them to learn new, difficult concepts. While many online materials may be available on Udemy, coursera or youtube, pre-made learning courses do not directly address the specific questions or misconceptions a student may have. Thus despite the many materials and thousands of open tabs a student went through on their google chrome page, they may still find themselves scratching their heads over the content, hoping someone could enlighten them on where they went wrong.
 
 My motivation for this project is to bridge the gap between University students and self-learners, so that even self-learners would have access to the same level of support and guidance a university student may have. And ultimately, become the go-to platform for on-demand consultations and learning.
 
@@ -22,18 +22,56 @@ A live demo can be found [here](https://teachsenpai.herokuapp.com/).
 
 link: https://teachsenpai.herokuapp.com/
 ##### Please use the provided test account to view the website
-` username: miso `
-` password: rotiprata123 `
+- username: `miso`
+- password: `rotiprata123` 
 
 ## UX
 
-My goal is to allow users to easily search for events/sessions by entering keywords, or search by category/level of experience. Starting with a search engine placed at the hero image section, this allows users to understand that they have direct access to type in a certain exercise plan that they have in mind to see if there are any available on the server. Site users can also contribute and create events or leave a comment to enquire more on each event. 
+My goal is to allow users to easily search for topics posted by teachers by entering keywords, or search for their content by category. Starting with a search engine placed at the hero image section, this allows users to understand that they have direct access to type in a topic that they have in mind to see if there are any available on the server. 
+
+The features which users wish to access is always accessible by the side panel,
 
 - Users can either directly search from the home page and be redirected to show events page, or alternatively they can click on the [Nav] search icon to be brought to the see all events page.
 - On the show programmes page, users can create a new event by clicking on the [+] button next to the search button. 
 - Users can also filter their search by clicking on key categories or level of difficulty.
 
-I opted to choosing pictures which showcases people training together of all different levels of fitness, to eliminate the underlying concern that one has to be extremely fit to be part of the running community. I segregated the information into seperate cards, giving each a generous amount of space between one another for ease of reading. To prevent overloading of information in database, i used pagination to split excess data into seperate pages to keep the page neat and tidy.
+The overall design of the website follows a purple-pink colour palette that is consistent throughout the interface. Every page communicates its purpose clearly and does not stray too far from the generic e-shop layout which users - who frequently do online shopping, may find easy to use.
+
+In the landing page, the user is greeted with an interactive hero image that encapsulates the title and slogan of the e-shop while capturing their attention as they move their cursor. They can then choose to access the shop via the call-to-action button and browse the products.
+
+If the user attempts to perform an action, a notification would pop-up which informs the user that the action they are trying to complete is successful/unsuccessful.
+
+Since performing certain actions (e.g. Checkout, View Cart, Add to Cart, Add to Wishlist) would require the user to login or register, users would be redirected to the login page and are prompted to login or register if they attempt to perform the actions without signing in.
+
+Illustrations can also be found on majority of the pages as they are visual representations of expressing messages. They also help to elevate the website's aesthetics and improve the overall interface as a whole.
+
+The website also takes on a mobile-first approach and is optimized for mobile viewing.
+
+## User Stories
+
+These are the user stories that highlights the requirements of each feature from an end-user perspective, for development purposes.
+
+Users refer to web surfers, customers and potential customers. As a user...
+
+`I want to browse the products by category, so that I can view a list of products filtered according to my selection.`
+
+`I want the website to be mobile responsive, so I can view the website conveniently from my smartphone or tablet.`
+
+`I would like to read the product description, so I  can know more about the product.`
+
+`I want to add/remove a product to my cart, so I can continue shopping and collating my order before checking out.`
+
+`I want to amend the quantity of products in my cart, so I can decide the amount to purchase.`
+
+`I want to ensure that the payment function, account function and all data stored inside are secure, so that my sensitive information (e.g. passwords, credit card details) will not be vulnerable to cyber threats.`
+
+`I would like to check my order status, so that I can be updated on the whereabouts of my order.`
+
+Superusers refer to the e-commerce platform's administrator or business owner. As a superuser,
+
+`I want to be able to create, read, update and delete information to the website's database, so that I can oversee and control the website's operations.`
+
+`I would like the cart, wishlist and payment features to be member exclusive, so I can get more audiences to register an account with me.`
 
 ### Wireframe mockup
 <img height="500" src="static\images\IMG_0369.jpg"/>
@@ -46,13 +84,13 @@ I opted to choosing pictures which showcases people training together of all dif
 3.	[Bootstrap version 4.4](https://getbootstrap.com/)
 4.	Python (3.6)
 5.	Jinja2 (2.10.3)
-6.	Flask (1.1.1)
-7.	MongoDB
+6.	UploadCare
+7.	Stripe
 8.	Font Awesome (4.7.0)
 9.	Google Fonts API
-10. Flask 
+10. Django python
 11. Javascript
-12. MongoDB noSQL
+12. SQLite to PostGRES
 13. Heroku Deployment
 
 ## Features
