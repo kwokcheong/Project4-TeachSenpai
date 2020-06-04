@@ -1,7 +1,7 @@
 
 <img src="static\image\webimg.png"/>
 
-# TeachSenpai - An on-demand, peer-to-peer E-Learning platform web application, allowing people to earn money by helping others overcome their learning hurdles.
+# TeachSenpai - An on-demand E-Learning platform web application, allowing people to earn money by helping others overcome their learning hurdles.
 
 This e-commerce platform is an e-learning platform which allow users to teach or learn from other users around the world. It shares features similar to Fiveer and Carousell, where users can `simulatenously be a teacher or a student upon registration, browse the database for content, compare prices of products, view details of the product,make an order, add/remove from cart, checkout, make payment, track their order, view the material they bought and chat with their teacher, leave a review,and earn money.`
 
@@ -51,31 +51,42 @@ The website also takes on a mobile-first approach and is optimized for mobile vi
 
 These are the user stories that highlights the requirements of each feature from an end-user perspective, for development purposes.
 
-Users refer to web surfers, customers and potential customers. As a user...
+Users refer to teachers and students. As a user...
 
 `I want to browse the products by category, so that I can view a list of products filtered according to my selection.`
 
 `I want the website to be mobile responsive, so I can view the website conveniently from my smartphone or tablet.`
 
-`I would like to read the product description, so I  can know more about the product.`
+`I would like to click on the product description, so I  can know more about the product and make a purchase.`
 
 `I want to add/remove a product to my cart, so I can continue shopping and collating my order before checking out.`
 
-`I want to amend the quantity of products in my cart, so I can decide the amount to purchase.`
+`I want to ensure that the payment function is secure so that my sensitive information (e.g. passwords, credit card details) will not be vulnerable to cyber threats.`
 
-`I want to ensure that the payment function, account function and all data stored inside are secure, so that my sensitive information (e.g. passwords, credit card details) will not be vulnerable to cyber threats.`
+`I would like to check my order location, so that I can access my learning material`
 
-`I would like to check my order status, so that I can be updated on the whereabouts of my order.`
+`I would like to enter a chat page on my order, so that I can communicate with my tutor`
 
-Superusers refer to the e-commerce platform's administrator or business owner. As a superuser,
+`I would like to review my tutor, so that I can share my experience with others`
 
-`I want to be able to create, read, update and delete information to the website's database, so that I can oversee and control the website's operations.`
+`I would like to view my profile, so that I can see how my page looks like to others`
 
-`I would like the cart, wishlist and payment features to be member exclusive, so I can get more audiences to register an account with me.`
+Every user can be a teacher or a student. There is no requirement for them to specify, as such...
+
+`As a teacher, I want to be able to create, read, update and delete information to the website's database, so that I can add my topics I am willing to teach.`
+
+`As a teacher, I would like to have a control panel, so that I can view resolved, or new orders.`
+
+`As a teacher, I would like to be able to create, read, update learning materials for each order.`
+
+`As a teacher, I would like to know how to upload teaching materials.`
+
+`As a teacher, I would like to know how TeachSenpai's business model works and how much I can earn.`
+
+`As a teacher, I would like to communicate with my students.`
 
 ### Wireframe mockup
-<img height="500" src="static\images\IMG_0369.jpg"/>
-<img height="500" src="static\images\IMG_0370.jpg"/>
+<img height="500" src="static\image\schematic.png"/>
 
 
 ## Technologies
@@ -161,14 +172,21 @@ To ensure compatibility and responsiveness, the site was tested across multiple 
 
 All links have been tested to ensure correct re-direction to desired destination.
 
-- logo -> index.template.html
-- Search Events, join now -> show_programmes.template.html
-- event card -> programme_details.template.html
-- create -> create_programme.template.html 
-- edit icon -> edit_programme.template.html
-
 ## Deployment
 This site is hosted using Heroku, deployed directly from the master branch and Github. The deployed site will update automatically upon new commits to the master branch.
+
+To clone this project:
+
+    Download/clone the master branch of this respository.
+    Ensure that PIP, Visual Studio Code(or other code editors), Python and Git are in your system.
+    Install required extensions/modules from requirements.txt by typing "pip -r requirements.txt" in the terminal.
+
+Heroku:
+
+    Create a new app and a Procfile that will allow the app to be deployed on Heroku.
+    Input .env secret key values inside app settings. Set IP: 0.0.0.0 and Port:5000.
+    Install Heroku CLI on Windows and login.
+    To push to Heroku from VSC, enter 'git push heroku master'.
 
 To run locally, you can clone this repository directly into the editor of your choice by pasting `git clone https://github.com/kwokcheong/Project3_12Run.git` into your terminal.
 
@@ -179,5 +197,17 @@ I do not own any of the photos used for the website and they were taken from var
 Icons are from the [Font Awesome CDN](https://fontawesome.com/v4.7.0/icons/)
 
 ### Acknowledgements
-Template and tutorial of MongoDB, Flask and Jinja provided by the [lecturer]
-w3School for tutorial on javascript validator.
+
+Responsive navbar tutorial by Youtuber [Dev Ed](https://www.youtube.com/watch?v=gXkqy0b4M5g&t=127s)
+
+Parallax effect on cursor credits to CodePen user [GreenSock](https://codepen.io/GreenSock/pen/OeqgrZ)
+
+Gradient background tutorial by Youtuber [DarkCode](https://www.youtube.com/watch?v=NnrBempao2M&t=169s)
+
+Account form layout credits to CodePen user [Tirth Patel](https://codepen.io/T-P/pen/bpWqrr)
+
+Shop cart layout inspired by Dribble user [Olia Gozha's design](https://dribbble.com/shots/5039057-Shopping-cart-V2)
+
+Image hover effect credits to CodePen user [Naoya](https://codepen.io/nxworld/pen/ZYNOBZ) 
+
+- This is for educational use.
