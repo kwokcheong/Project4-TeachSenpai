@@ -29,9 +29,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY','')
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["teachsenpai.herokuapp.com/","*"]
+ALLOWED_HOSTS = [".teachsenpai.herokuapp.com"]
 
 
 # Application definition
@@ -178,9 +178,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static")
-]
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 

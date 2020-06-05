@@ -1,0 +1,608 @@
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+
+body, html{
+  overflow-x: hidden;
+}
+
+.theme  {
+  background-color: rgb(53, 2, 196);
+  color: white;   
+  border:none;
+}
+
+.theme:hover{
+  background-color: rgb(53, 2, 196);
+}
+
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
+
+*{
+margin: 0;
+padding: 0;
+list-style: none;
+text-decoration: none;
+box-sizing: border-box;
+font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper{
+margin: 0px;
+}
+
+
+
+#navbar {
+  background-color:#ffffff;
+  position:fixed;  
+  z-index:1; 
+  width:100%;
+  top:0px;
+}
+
+.wrapper .top_navbar{
+width: 100%;
+height: 60px;
+display: flex;
+position: fixed;
+top: 0px;
+background-color: white;
+}
+
+.wrapper .top_navbar .hamburger{
+width: 70px;
+height: 100%;
+background: #ffffff;
+padding: 17px 3px;
+cursor: pointer;
+}
+
+
+.wrapper .top_navbar .top_menu{
+width: 100%;
+height: 100%;
+background: #fff;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding-left: 40px;
+padding-right: 40px;
+box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.wrapper .top_navbar .top_menu .logo{
+color: #292929;
+font-size: 20px;
+font-weight: 700;
+letter-spacing: 3px;
+}
+
+
+.wrapper .sidebar{
+position: fixed;
+top: 71px;
+left: 0px;
+background: #ffffff;
+width: 150px;
+height: calc(100% - 80px);
+border-bottom-left-radius: 20px;
+transition: all 0.3s ease;
+}
+
+.wrapper .sidebar ul li a{
+  display: block;
+  padding: 20px;
+  padding-right: 1px;
+  color: rgb(46, 46, 46);
+  position: relative;
+  margin-bottom: 1px;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.wrapper .sidebar ul li a:before{
+content: "";
+position: absolute;
+top: 0;
+left: 0;
+width: 3px;
+height: 100%;
+background: #bdbdbd;
+display: none;
+}
+
+.wrapper .sidebar ul li a span.icon{
+margin-right: 10px;
+display: inline-block;
+}
+
+.wrapper .sidebar ul li a span.title{
+display: inline-block;
+}
+
+.wrapper .sidebar ul li a:hover,
+.wrapper .sidebar ul li a.active{
+background: #e0e0e0;
+color: rgb(53, 2, 196);
+}
+
+.wrapper .sidebar ul li a:hover:before,
+.wrapper .sidebar ul li a.active:before{
+display: block;
+}
+
+#ordercards{
+  margin-left: 150px;
+}
+
+.wrapper .main_container{
+width: 100%;
+max-width: 1800px;
+margin-left: 118px;
+padding-top: 80px;
+padding-bottom: 80px;
+padding-left: 40px;
+padding-right: 150px;
+transition: all 0.3s ease;
+background: #fdfdfd;
+}
+
+.wrapper .main_container .item{
+background: #fff;
+margin-bottom: 10px;
+padding: 15px;
+font-size: 14px;
+line-height: 22px;
+}
+
+#homepage_img{ 
+  height: 450px;
+  width: 100%;
+  object-fit: contain;
+  background: linear-gradient(rgba(255, 255, 255, 0.356), rgba(255, 255, 255, 0.356)), url(https://news.stlpublicradio.org/sites/kwmu/files/styles/x_large/public/202004/040820_NT_DistanceLearningIllustration_01.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.border-btm-gold {
+  border-bottom: 3px solid rgb(53, 2, 196);
+}
+
+
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: rgb(53, 2, 196);
+  background-color: transparent;
+  border-color: transparent transparent #f3f3f3;
+  border-bottom: 3px solid !important;
+  font-size: 16px;
+  font-weight: bold;
+}
+.nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  color: rgb(75, 75, 75);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card-header , .card-footer{
+  background-color: white;
+}
+
+.card, .card-img-top{
+  border-radius: 0%;
+}
+
+.card-info{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}
+.flex-container{
+  display: flex;
+  justify-content: center; 
+  flex-wrap: wrap;
+}
+
+
+/* nav bar */
+/* header */
+
+.header {
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 10px;
+  text-decoration: none;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: white;
+}
+
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  max-height: 0;
+  transition: max-height .2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: #333;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background .2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: #333;
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 500px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding: 20px 10px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+}
+
+/*FAQ*/
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.faq {
+  padding: 120px 0 90px;
+
+  min-height: 100vh;
+}
+
+.faq .section-title {
+  margin-bottom: 54px;
+}
+
+.faq .section-title h2 {
+  margin-bottom: 22px;
+}
+
+.faq .accordion .card {
+  border: none;
+  margin-bottom: 30px;
+}
+
+.faq .accordion .card:not(:first-of-type) .card-header:first-child {
+  border-radius: 10px;
+}
+
+.faq .accordion .card .card-header {
+  border: none;
+  border-radius: 10px;
+  padding: 0;
+}
+
+.faq .accordion .card .card-header h5 {
+  padding: 0;
+}
+
+.faq .accordion .card .card-header h5 button {
+  color: #1e3056;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 0 30px 0 70px;
+  height: 80px;
+  display: block;
+  width: 100%;
+  color: rgba(30, 48, 86, 0.8);
+  text-align: left;
+  background: #fff;
+  -webkit-box-shadow: 0px -50px 140px 0px rgba(69, 81, 100, 0.1);
+  box-shadow: 0px -50px 140px 0px rgba(69, 81, 100, 0.1);
+  border-radius: 10px 10px 0 0;
+  position: relative;
+}
+
+.faq .accordion .card .card-header h5 button:after {
+  position: absolute;
+  left: 30px;
+  top: 50%;
+  margin-top: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: transparent;
+  color: #ff5f74;
+  text-align: center;
+  border: 1px solid #ff5f74;
+  border-radius: 50%;
+  line-height: 100%;
+  content: '\f067';
+  font-size: 10px;
+  line-height: 18px;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+.faq .accordion .card .card-header h5 button.collapsed {
+  background: #fff;
+  border-radius: 10px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid rgba(97, 125, 255, 0.2);
+}
+
+.faq .accordion .card .card-header h5 button[aria-expanded="true"]:after {
+  content: '\f068';
+  color: #fff;
+  background-image: -webkit-linear-gradient(-180deg, #5e7eff 0%, #ff5f74 30%, #a85fff 100%);
+}
+
+.faq .accordion .card .card-body {
+  -webkit-box-shadow: 0px 15px 140px 0px rgba(69, 81, 100, 0.1);
+  box-shadow: 0px 15px 140px 0px rgba(69, 81, 100, 0.1);
+  border-radius: 0 0 10px 10px;
+  padding-top: 0;
+  margin-top: -6px;
+  padding-left: 72px;
+  padding-right: 70px;
+  padding-bottom: 23px;
+  color: rgba(30, 48, 86, 0.8);
+  line-height: 30px;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+/* iphone and tablet*/
+@media only screen and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 3) {
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 50%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+
+    #ordercards{
+      padding: 10px;
+      margin:0px;
+    }
+  
+    .sidebar{
+      display: none;
+    }
+  
+    #hamburger_icon{
+      display: none;
+    }
+  
+    #main{
+      width: (100% - 200px);
+      margin-top: 50px;
+      margin-left: 0px;
+      padding:10px;
+      transition: all 0.3s ease;
+    }
+    #main1{
+      width: (100% - 200px);
+      margin-top: 50px;
+      margin-left: 0px;
+      padding:10px;
+      transition: all 0.3s ease;
+    }
+    #search_top{
+      display: none;
+    }
+
+    #nav_top{
+      display:none;
+    }
+
+    .logo a{
+      margin-left:0px;
+    }
+
+    #profile_pic img{
+      height: 80px;
+      width: 80px;
+    }
+
+    #profile_pic{
+      width: 80px;
+    }
+
+    #profile_desc{
+      font-size: 13px;
+    }
+    #homecontent1, #homecontent2, #homecontent3{
+      margin-top:10px;
+    }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    .product_cards{
+      width: 200px;
+  }
+
+
+
+  .logo a{
+    margin-left:20px;
+  }
+
+  #profile_pic img{
+    height: 80px;
+    width: 80px;
+  }
+
+  #profile_desc{
+    margin-left: 30px;
+    font-size: 14px;
+  }
+  #hide1, #hide2, #hide3, #hide4,#hide5{
+    display:none;
+  }
+  #homecontent1, #homecontent2, #homecontent3{
+    margin-top:40px;
+  }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    .product_cards{
+      width: 200px;
+  }
+  .logo a{
+    margin-left:20px;
+  }
+  #profile_desc{
+    margin-left: 0px;
+    font-size: 15px;
+  }
+
+  #hide1, #hide2, #hide3, #hide4,#hide5{
+    display:none;
+  }
+  #homecontent1, #homecontent2, #homecontent3{
+    margin-top:60px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .product_cards{
+    width: 320px;
+}
+.logo a{
+  margin-left:20px;
+}
+#hide1, #hide2, #hide3, #hide4,#hide5{
+  display:none;
+}
+
+#homecontent1, #homecontent2, #homecontent3{
+  margin-top:180px;
+}
+}
+
+/* This swaps the position for create an event for mobile responsive */
+@media screen and (max-width:769px){
+#swap{
+  display: flex;
+  flex-direction:row;
+}
+
+
+	#swap{flex-direction:column-reverse;}
+}
