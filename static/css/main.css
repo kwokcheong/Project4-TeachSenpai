@@ -541,7 +541,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     margin-left: 30px;
     font-size: 14px;
   }
-  #hide{
+  #hide1, #hide2, #hide3, #hide4,#hide5{
     display:none;
   }
   #homecontent{
@@ -564,7 +564,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
     font-size: 15px;
   }
 
-  #hide{
+  #hide1, #hide2, #hide3, #hide4,#hide5{
     display:none;
   }
   #homecontent{
@@ -580,7 +580,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
 .logo a{
   margin-left:20px;
 }
-#hide{
+#hide1, #hide2, #hide3, #hide4,#hide5{
   display:none;
 }
 
