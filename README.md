@@ -29,23 +29,15 @@ link: https://teachsenpai.herokuapp.com/
 
 My goal is to allow users to easily search for topics posted by teachers by entering keywords, or search for their content by category. Starting with a search engine placed at the hero image section, this allows users to understand that they have direct access to type in a topic that they have in mind to see if there are any available on the server. 
 
-The features which users wish to access is always accessible by the side panel,
+The features which users wish to access is always accessible by the side panel, the can access `home`, `teach`, `notes`, `profile`, `explore`, `logout`, `FAQ`. This sidebar makes it easy for them to access and have a farsight on the routes available on the website. 
 
-- Users can either directly search from the home page and be redirected to show events page, or alternatively they can click on the [Nav] search icon to be brought to the see all events page.
-- On the show programmes page, users can create a new event by clicking on the [+] button next to the search button. 
-- Users can also filter their search by clicking on key categories or level of difficulty.
+On mobile responsive, the sizebar will turn into a hamburger dropdown.
 
-The overall design of the website follows a purple-pink colour palette that is consistent throughout the interface. Every page communicates its purpose clearly and does not stray too far from the generic e-shop layout which users - who frequently do online shopping, may find easy to use.
+The overall design of the website follows a white-dark purple theme color palette that is consistent with the brand colors throughout the interface. Every page communicates its purpose clearly and bears resemblance to a gig/freelance webpage. Every profile created can post teaching materials, buy consultations, and view purchased materials. The combination of both user groups simplifies the profile creation experience. People whom have used to `Carousell`, or similar buyer/seller account web applications such as `Shopee`, `Amazon`,`lazada`, would find resemblance to the user experience. A FAQ page is accessible for users to seek common questions such as `How to begin teaching`, `how to upload video materials` etc...
 
-In the landing page, the user is greeted with an interactive hero image that encapsulates the title and slogan of the e-shop while capturing their attention as they move their cursor. They can then choose to access the shop via the call-to-action button and browse the products.
-
-If the user attempts to perform an action, a notification would pop-up which informs the user that the action they are trying to complete is successful/unsuccessful.
+In the landing page, the user is greeted with a hero image that encapsulates the copy-write and slogan of the web application while capturing their attention to the search bar. This would be the first element users see within 1-2 seconds to understand that they can already get started. Upon searching for products in the database, going futher, certain actions (e.g. Checkout, View Cart, Add to Cart, teach) will thereafter prompt users to sign in or make account if they have not already done so yet.
 
 Since performing certain actions (e.g. Checkout, View Cart, Add to Cart, Add to Wishlist) would require the user to login or register, users would be redirected to the login page and are prompted to login or register if they attempt to perform the actions without signing in.
-
-Illustrations can also be found on majority of the pages as they are visual representations of expressing messages. They also help to elevate the website's aesthetics and improve the overall interface as a whole.
-
-The website also takes on a mobile-first approach and is optimized for mobile viewing.
 
 ## User Stories
 
@@ -105,67 +97,66 @@ Every user can be a teacher or a student. There is no requirement for them to sp
 13. Heroku Deployment
 
 ## Features
-The web application achieves these four basic functions of a database, namely CRUD –  an acronym for the four basic types of SQL commands: Create , Read , Update , Delete.
-<img src="static\images\Annotation 2020-05-20 231601.png"/>
+This web application has the following features:
 
-These functions allows users to perform the following features:
-#### 1.	Create
-a)	Add a new event with the following detail: 
+#### 1. Side Bar
 
-- Event image
-- Title
-- Host Name
-- Date/Time of event
-- Estimated Duration of event
-- Location
-- Difficulty
-- Category
-- Description
+**• A collapsible side bar for a tab toggle experience.** 
 
-b) Create a comment on each individual event
+Mobile responsive, turns into hamburger dropdown on smaller devices.
 
-#### 2.	Read
-Find events that matches the queries such as having a searchbox for event titles, alternatively clicking on keyword tags that allows the user to filter their searches via categories or level of difficulty.
-Clicking on event card opens up more information which allows users to read comments left by the public.
+#### 2. Accounts:
+**•	Login/Logout**
 
-#### 3.	Update
-Edit the event details in the database
+**•	Register**
 
-#### 4.	Delete
-Delete the event
+**•	Password Reset**
+
+**•	Profile**
+
+**•	Order tracking**
+
+Able to view unique order id and materials uploaded by tutor.
+
+#### 3. Shop:
+**•	View all products in the explore page**
+
+Search by keyword or by category
+
+**•	View individual product page with details and descriptions of the product**
+
+**•	Add/Remove product to cart**
+
+#### 4. Notes:
+**•	upon successful purchase, once the tutor has uploaded the material, user can view the video and content material**
+
+#### 5. Chat Room:
+**•	Both teacher and student can enter a unique chat room for each material and share images and messages to dive deeper in consultation**
+
+#### 6. Reviews:
+**•	Student can share a review on their experience with the tutor after clicking resolved**
+
+#### 7. Balance:
+**•	Upon successful consultation, the amount earned will be reflected on teacher's account balance**
+
+Once student has indicated that they are happy with the product, they will click on resolved and the amount will be appended into the teacher's bank account. 
+
+#### 6. Checkout:
+**•	Delivery and Payment Form**
+
+**•	Payment Gateway that accepts all forms of credit card payment via Stripe**
 
 ### Features Left to Implement
-- Introduce functionality of likes/im going so that will have a +1 increment each time a user clicks on it.
-- Allow users to upload image files to the website, instead of having to upload the image URL or convert their image to a URL
-- Validate search query by preventing users to type in "[]" in search bar.
+- Add pagination to the explore, order and transaction history. 
 
-## Testing
-#### 1. Create:
-**•	Add a new event archive to the database**
+- implement a transfer to bank account function. Which allow teachers to withdraw their earnings and deposit into their bank accounts. 
 
-All the form input boxes are able to fetch data to the database when the user fills up the form and press the submit button. There is also a javascript validator in date/time, event name, duration, location to prevent the user from submitting an empty field.
+- implement 20% transaction fee. Modify the price students see. This will reflect a price of x1.20. Ie. We will earn 20% for each transaction made.
 
-Selecting the category is optional if host is not sure. Image is also optional and a default image will be added.
+- implement report function for mischieveous use, ie tutor not providing proper materials, students can lodge a complaint and the money will be refunded into student's balance app.
+  another case would be students mischief for abusing the report function, teachers will be able to leave a review on students and thus safeguard them from malicious students.
 
-**•	Create a comment on each individual event**
-
-The comment form is successful in fetching input data to the database with both the commenter’s name and comment. Every single comment entry made on each individual event is added to the database as an object in an array called ‘reviews’, under the specific object ID given for each event. Once the user has submitted the comment, the comments will show up after the page has automatically refreshed.
-
-#### 2. Read:
-**•	Searchbox for event titles**
-
-The search function is able to perform its function by filtering out the results according to the search query input using the regular expression, which would ignore any case sensitivity and parse in the search query as a string.
-
-However, there is a limitation I found during testing that adding in "[]" would cause an error. This will be looked into. 
-
-**•	Keywords to filter the queries**
-
-In addition to the search function, the user has the ability to narrow down their searches by filtering out the results based on the each category/difficulty that the event has been assigned to. 
-
-#### 3. Update:
-**•	Edit the details of the existing event**
-
-The default details of the existing events from the database will reflect in the input form. This is to ensure that the user is aware of the changes they are making to the event archive. Once the form is submitted, the data of the event archive will be updated to the database.
+- implement a reject order function, teacher can opt to reject an order made by students if it is too difficult, unreasonable or due to the notoriety in reviews for student. 
 
 ## Mobile Responsiveness and testing
 To ensure compatibility and responsiveness, the site was tested across multiple browsers such as Chrome, Safari and Internet Explorer and on iOS devices - iPhone Xs Max, iPad and iPad Pro.
@@ -187,8 +178,7 @@ Heroku:
     Input .env secret key values inside app settings. Set IP: 0.0.0.0 and Port:5000.
     Install Heroku CLI on Windows and login.
     To push to Heroku from VSC, enter 'git push heroku master'.
-
-To run locally, you can clone this repository directly into the editor of your choice by pasting `git clone https://github.com/kwokcheong/Project3_12Run.git` into your terminal.
+    
 
 ## Credits
 ### Media
