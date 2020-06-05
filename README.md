@@ -79,14 +79,18 @@ Every user can be a teacher or a student. There is no requirement for them to sp
 
 ### Wireframe mockup
 
-##### Flow Chart
+#### Flow Chart
 <img height="500" src="static\image\schematic.png"/>
 
-##### Wireframe
+#### Wireframe
+
+##### Nav bar and sidebar layout
 <img height="500" src="static\image\IMG_0379.PNG"/>
 
+##### User experience for clicking on product detail to checkout
 <img height="500" src="static\image\IMG_0380.PNG"/>
 
+##### Home page layout
 <img height="500" src="static\image\IMG_0381.PNG"/>
 
 
