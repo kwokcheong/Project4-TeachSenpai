@@ -2,7 +2,7 @@
 {%load static %}
 {%load crispy_forms_tags %}
 {%block content%}
-    <body>
+{%block title%}Orders{%endblock%}
         <div class="container" style="text-align: center;">
         <h3 style="font-family: 'Source Sans Pro', sans-serif; color:rgb(0, 0, 0)"> Your Orders</h3>
         </div>
@@ -29,7 +29,4 @@
                 {%endif%}
             {%endfor%}
         </div>
-    </body>
-
-
 {%endblock%}
