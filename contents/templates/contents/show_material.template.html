@@ -3,88 +3,85 @@
 {%load crispy_forms_tags %}
 {%block title%}Show material{%endblock%}
 {%block content%}
-    <body>
+<body>
     <div class="col">
         {%for material in materials%}
         {% if order_id == material.order.id %}
         {% if order.owner == user %}
         <div class="row">
-            <div class='alert alert-success' style="height: 50px;">    
+            <div class='alert alert-success' style="height: 50px;">
                 <div>
                     <div class="message">
-                       <p> Your tutor has uploaded your material.    
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"> &times;</button> </p>
+                        <p> Your tutor has uploaded your material.
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                &times;</button> </p>
                     </div>
-
                 </div>
             </div>
         </div>
         {%endif%}
         {% endif %}
         {%endfor%}
-        
         <div class="row">
-        <h1 style="border-bottom: 1.5px solid blue;">Viewing material for {{order.product.title}} </h1>
+            <h1 style="border-bottom: 1.5px solid blue;">Viewing material for {{order.product.title}} </h1>
         </div>
-
-            <div class="row">
+        <div class="row">
             {%for material in materials%}
-                {% if order_id == material.order.id %}
-                    <div class="card" style="width: 110rem; padding:5px; border:white">
-                        <div class="card-body">
-
-                            <div class="box row" style="display:flexbox; box-sizing: border-box; box-shadow: rgba(0,0,0,0.16) 0px 3px 10px, rgba(0,0,0,0.23) 0px 3px 10px;"> 
-                            <div class="col" style="padding:0;">
+            {% if order_id == material.order.id %}
+            <div class="card" style="width: 110rem; padding:5px; border:white">
+                <div class="card-body">
+                    <div class="box row"
+                        style="display:flexbox; box-sizing: border-box; box-shadow: rgba(0,0,0,0.16) 0px 3px 10px, rgba(0,0,0,0.23) 0px 3px 10px;">
+                        <div class="col" style="padding:0;">
                             <div class="flex-video widescreen" style="display: flex;">
-                                <iframe width="885" height="498" src="{{material.video}}" frameborder="0" allowfullscreen></iframe>
+                                <iframe width="885" height="498" src="{{material.video}}" frameborder="0"
+                                    allowfullscreen></iframe>
                             </div>
                         </div>
-                            <div class="col">
-                                  <div class="card text-center" style="border:none;">
-                                    <div class="card-body">
-                                        <h5 class="card-title" style="border-bottom: 1px solid rgba(129, 128, 128, 0.678);">Teacher Notes:</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">RE: {{material.order.title}}</h6>
-                                      <p class="card-text" style="white-space: pre-wrap;">{{material.content}}</p>
-                                    </div>
-                                  </div>
-                            </div>
-                        </div>
-
-                        </div>
-                        <div class="card-footer text-muted">
-                            {%if order.resolve == "resolved"%}
-                                <p>Order has been resolved</p>
-                            {%elif order.owner == user%}
-                            Please click resolved if your question has been answered. 
-                            Do note that action is irreversible.
-                            <form method="POST" class="once-only">
-                                {% csrf_token %}
-                                <div style="display: none;">
-                                {{ form|crispy}}
+                        <div class="col">
+                            <div class="card text-center" style="border:none;">
+                                <div class="card-body">
+                                    <h5 class="card-title" style="border-bottom: 1px solid rgba(129, 128, 128, 0.678);">
+                                        Teacher Notes:</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">RE: {{material.order.title}}</h6>
+                                    <p class="card-text" style="white-space: pre-wrap;">{{material.content}}</p>
                                 </div>
-                                <button type="Submit" class="btn btn-success" value="resolve">Resolve</button>
-                            {%else%}
-                                You are the product owner
-                                {%endif%}
-
-                                <a class="btn btn-primary theme" href="{% url 'show_comment_room_route' material_id=material.id %}">Enter chat room</a>
-                                </form>
-                                {%if order.product.owner == user%}
-                                <a href="{% url 'update_content_route' order_id=material.id %}"><i class="fas fa-edit"></i></a>
-                                <a href="{% url 'delete_content_route' material_id=material.id %}"><i class="fas fa-trash-alt"></i></a>
-                                {%endif%}
+                            </div>
                         </div>
-                        
                     </div>
+                </div>
+                <div class="card-footer text-muted">
+                    {%if order.resolve == "resolved"%}
+                    <p>Order has been resolved</p>
+                    {%elif order.owner == user%}
+                    Please click resolved if your question has been answered.
+                    Do note that action is irreversible.
+                    <form method="POST" class="once-only">
+                        {% csrf_token %}
+                        <div style="display: none;">
+                            {{ form|crispy}}
+                        </div>
+                        <button type="Submit" class="btn btn-success" value="resolve">Resolve</button>
+                        {%else%}
+                        You are the product owner
+                        {%endif%}
 
-                    
-
-                {%endif%}
+                        <a class="btn btn-primary theme"
+                            href="{% url 'show_comment_room_route' material_id=material.id %}">Enter chat room</a>
+                    </form>
+                    {%if order.product.owner == user%}
+                    <a href="{% url 'update_content_route' order_id=material.id %}"><i class="fas fa-edit"></i></a>
+                    <a href="{% url 'delete_content_route' material_id=material.id %}"><i
+                            class="fas fa-trash-alt"></i></a>
+                    {%endif%}
+                </div>
+            </div>
+            {%endif%}
             {%endfor%}
         </div>
-        
+
     </div>
-    </body>
+</body>
 
 
 {%endblock%}

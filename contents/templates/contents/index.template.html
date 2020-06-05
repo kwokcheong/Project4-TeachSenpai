@@ -2,43 +2,40 @@
 {%load static %}
 {%block title%}All materials{%endblock%}
 {%block content%}
-    <body>
-        {% if request.user.is_authenticated  %}
-        <p>Welcome {{request.user}}</p>
-        {% else %}
-        <p>Please <a href="accounts/login">Login</a></p>
-        {%endif%}
-        
-        <h1>Content page</h1>
-        <p>
-            Here you can see all the materials that you have.
-        </p>
-            {%for material in materials%}
-                {%if material.owner == user%}
-                <div class="card" style="width: 40rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">RE: {{material.order.title}} </h5>
-                        <h5 class="card-title">From: {{material.product.title}} </h5>
-                        Price:
-                        <h5 class="card-title">{{material.order.product.price}}</h5>
-                        <p class="card-text">{{material.content}}</p>
 
-                        {% if material.video %}
-                        <div class="flex-video widescreen">
-                            <iframe width="500" height="281" src="{{material.video}}" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                        {% else %}
-                        {%endif%}
-                    </div>
-                </div>
+<body>
+    {% if request.user.is_authenticated  %}
+    <p>Welcome {{request.user}}</p>
+    {% else %}
+    <p>Please <a href="accounts/login">Login</a></p>
+    {%endif%}
+    <h1>Content page</h1>
+    <p>
+        Here you can see all the materials that you have.
+    </p>
+    {%for material in materials%}
+    {%if material.owner == user%}
+    <div class="card" style="width: 40rem;">
+        <div class="card-body">
+            <h5 class="card-title">RE: {{material.order.title}} </h5>
+            <h5 class="card-title">From: {{material.product.title}} </h5>
+            Price:
+            <h5 class="card-title">{{material.order.product.price}}</h5>
+            <p class="card-text">{{material.content}}</p>
 
-                <a href="{% url 'update_content_route' order_id=material.id %}">Edit</a>
-
-
-                <p> no video </p>
+            {% if material.video %}
+            <div class="flex-video widescreen">
+                <iframe width="500" height="281" src="{{material.video}}" frameborder="0" allowfullscreen></iframe>
+            </div>
+            {% else %}
             {%endif%}
-            {%endfor%}
-    </body>
+        </div>
+    </div>
+    <a href="{% url 'update_content_route' order_id=material.id %}">Edit</a>
+    <p> no video </p>
+    {%endif%}
+    {%endfor%}
+</body>
 
 
 {%endblock%}

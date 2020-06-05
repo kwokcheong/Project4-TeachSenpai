@@ -3,10 +3,11 @@
 {%block title%}reviews{%endblock%}
 
 {%block content%}
-<div id="profilebox" class="card mb-3" style=" height:190px; border-color: white;  background: linear-gradient(180deg, rgb(27, 1, 97) 50%, rgb(255, 255, 255) 50%);">
-  <div class="row mt-5 ml-2" >
+<div id="profilebox" class="card mb-3"
+  style=" height:190px; border-color: white;  background: linear-gradient(180deg, rgb(27, 1, 97) 50%, rgb(255, 255, 255) 50%);">
+  <div class="row mt-5 ml-2">
     <div class="col-sm-1 " id="profile_pic">
-      <img src="{{user.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%;"/>
+      <img src="{{user.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%;" />
     </div>
     <div class="col-sm-11" style="width: min-content;">
       <div class="card-body" id="profile_desc">
@@ -18,32 +19,32 @@
 </div>
 
 
-<div class="card text-center" >
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'show_profile_route' %}">Listings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'show_profile_orders_route' %}">Orders</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="{% url 'show_profile_reviews_route' %}" tabindex="-1">Reviews</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{% url 'show_profile_balance_route' %}" tabindex="-1">Balance</a>
-          </li>
-      </ul>
-    </div>
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'show_profile_route' %}">Listings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'show_profile_orders_route' %}">Orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'show_profile_reviews_route' %}" tabindex="-1">Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'show_profile_balance_route' %}" tabindex="-1">Balance</a>
+      </li>
+    </ul>
+  </div>
 
-    <div class="container" style="padding: 20px;">
-      <h5><b>Reviews: </b></h5>
+  <div class="container" style="padding: 20px;">
+    <h5><b>Reviews: </b></h5>
     {%for review in reviews%}
     {%if review.product.owner == user%}
 
     <div class="card" style="margin-top: 20px;">
       <div class="card-header">
-        <img src="{{review.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/><b>
+        <img src="{{review.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;" /><b>
           {{review.owner.profile.username}} </b>
       </div>
       <div class="card-body">
@@ -57,5 +58,5 @@
   </div>
 </div>
 
-  
+
 {%endblock%}

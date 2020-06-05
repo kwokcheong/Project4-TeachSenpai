@@ -4,8 +4,9 @@
 {%block title%}Products{%endblock%}
 {%block navbar%}
 <form class="form-inline" method="GET" style="justify-content: center;">
-    <input class="form-control form-control-sm mr-3 w-30" type="text" aria-label="Search" name="title" placeholder="Search for a topic">
-    
+    <input class="form-control form-control-sm mr-3 w-30" type="text" aria-label="Search" name="title"
+        placeholder="Search for a topic">
+
     <button class="btn btn-primary theme btn-sm" type="submit" value="Search">Search</button>
 </form>
 {%endblock%}
@@ -15,38 +16,40 @@
 
 <div class="row">
     <div class="col">
-    <h2 style="font-family: 'Fredoka One', cursive; color:rgb(53, 2, 196); text-align: center;">
-      Find tutors to help you!
-    </h2>
+        <h2 style="font-family: 'Fredoka One', cursive; color:rgb(53, 2, 196); text-align: center;">
+            Find tutors to help you!
+        </h2>
     </div>
     <div class="w-100"></div>
     <div class="col-1"></div>
     <div class="col-9" style="padding-right:0px;">
-    {{category_form|crispy}}
+        {{category_form|crispy}}
     </div>
     <div class="col-1">
-       <button type="submit" class="btn btn-primary theme" style="max-height: 30px; margin-top: 35px; ">Filter</button>
+        <button type="submit" class="btn btn-primary theme" style="max-height: 30px; margin-top: 35px; ">Filter</button>
     </div>
     <div class="col-1"></div>
-  </div>
-       
+</div>
+
 
 <div class="flex-container">
-        {%for product in products%}
-        <div class="card product_cards" style=" margin: 10px; display:inline-block;">
-            <a href="{% url 'view_product_details' product_id=product.id %}" style="text-decoration: none; background-color: white; color:black">
-                <img class="card-img-top" src="{{product.image.cdn_url}}" style="height: 190px; object-fit: cover;" alt="product_img"/>
-            <div class="card-body" >
-                <h5 style="font-size: 16px;" ><img src="{{product.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;" alt="profileimg"/> {{product.owner.profile.username}}</h5>
+    {%for product in products%}
+    <div class="card product_cards" style=" margin: 10px; display:inline-block;">
+        <a href="{% url 'view_product_details' product_id=product.id %}"
+            style="text-decoration: none; background-color: white; color:black">
+            <img class="card-img-top" src="{{product.image.cdn_url}}" style="height: 190px; object-fit: cover;"
+                alt="product_img" />
+            <div class="card-body">
+                <h5 style="font-size: 16px;"><img src="{{product.owner.profile.profileimg}}"
+                        style="height: 30px; width: 30px; border-radius: 100%;" alt="profileimg" />
+                    {{product.owner.profile.username}}</h5>
                 <h5 class="card-title card-info">{{product.title}} </h5>
             </div>
             <div class="card-footer" style="text-align: end;">
                 <small class="text-muted">Consult at <b style="color: black;">SGD${{product.price}}</b></small>
             </div>
-            </a>
-        </div>
+        </a>
+    </div>
     {%endfor%}
 </div>
 {%endblock%}
-
-

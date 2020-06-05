@@ -3,10 +3,11 @@
 {%block title%}balance{%endblock%}
 
 {%block content%}
-<div id="profilebox" class="card mb-3" style=" height:190px; border-color: white;  background: linear-gradient(180deg, rgb(27, 1, 97) 50%, rgb(255, 255, 255) 50%);">
-  <div class="row mt-5 ml-2" >
+<div id="profilebox" class="card mb-3"
+  style=" height:190px; border-color: white;  background: linear-gradient(180deg, rgb(27, 1, 97) 50%, rgb(255, 255, 255) 50%);">
+  <div class="row mt-5 ml-2">
     <div class="col-sm-1 " id="profile_pic">
-      <img src="{{user.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%;"/>
+      <img src="{{user.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%;" />
     </div>
     <div class="col-sm-11" style="width: min-content;">
       <div class="card-body" id="profile_desc">
@@ -19,81 +20,81 @@
 
 
 <div class="card text-center">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'show_profile_route' %}">Listings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'show_profile_orders_route' %}">Orders</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'show_profile_reviews_route' %}" tabindex="-1">Reviews</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="{% url 'show_profile_balance_route' %}" tabindex="-1">Balance</a>
-          </li>
-      </ul>
-    </div>
-    <div class="card-body">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'show_profile_route' %}">Listings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'show_profile_orders_route' %}">Orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'show_profile_reviews_route' %}" tabindex="-1">Reviews</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="{% url 'show_profile_balance_route' %}" tabindex="-1">Balance</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
 
-      <div class="container">
-      <h3 style="border-bottom: 1px solid rgb(168, 168, 168);" ><b>My Balance</b></h3>
+    <div class="container">
+      <h3 style="border-bottom: 1px solid rgb(168, 168, 168);"><b>My Balance</b></h3>
       </br>
       <h5 class="text-muted">Available balance:</h5>
       <h3 style="color: rgb(32, 196, 32)"><b> S${{user.profile.balance}}</b></h3>
-      </div>
+    </div>
 
-      <div class="container">
+    <div class="container">
 
-        <div class="container-fluid p-md-5 p-3">
-          <h3 class="border-btm-gold"> Transaction Details </h3>
-          <div class="row d-none d-md-flex">
-              <div class="col-3">
-                  <b>Item</b>
-              </div>
-              <div class="col-2">
-                  <b>Student</b>
-              </div>
-              <div class="col-2">
-                  <b>Transaction id</b>
-              </div>
-              <div class="col-2">
-                  <b>Unit Cost</b>
-              </div>
-              <div class="col-2">
-                <b>Status</b>
-            </div>
+      <div class="container-fluid p-md-5 p-3">
+        <h3 class="border-btm-gold"> Transaction Details </h3>
+        <div class="row d-none d-md-flex">
+          <div class="col-3">
+            <b>Item</b>
           </div>
-          <hr>
-          {%for order in orders %}
-          {%if order.product.owner == user%}
-          <div class="row mt-3">
-              <div class="col-md-3 col-10">
-                  <b>{{order.title}}</b>
-              </div>
-              <div class="col-md-2 col-7">
-                  <p>{{order.owner}}</p>
-              </div>
-              <div class="col-2 d-none d-md-block">
-                  <p>{{order.secret_id}}</p>
-              </div>
-              <div class="col-2 d-none d-md-block">
-                  <p>${{order.product.price}}</p>
-              </div>
-              <div class="col-2 d-none d-md-block">
-                {% if order.resolve == 'resolved'%}
-                <p style='color: rgb(41, 182, 41)'><b>{{order.resolve}}</b></p>
-                {%else%}
-                <p style='color: rgb(196, 28, 28)'><b>{{order.resolve}}</b></p>
-                {%endif%}
-            </div>
+          <div class="col-2">
+            <b>Student</b>
           </div>
-          {%endif%}
-          {%endfor%}
+          <div class="col-2">
+            <b>Transaction id</b>
+          </div>
+          <div class="col-2">
+            <b>Unit Cost</b>
+          </div>
+          <div class="col-2">
+            <b>Status</b>
+          </div>
+        </div>
+        <hr>
+        {%for order in orders %}
+        {%if order.product.owner == user%}
+        <div class="row mt-3">
+          <div class="col-md-3 col-10">
+            <b>{{order.title}}</b>
+          </div>
+          <div class="col-md-2 col-7">
+            <p>{{order.owner}}</p>
+          </div>
+          <div class="col-2 d-none d-md-block">
+            <p>{{order.secret_id}}</p>
+          </div>
+          <div class="col-2 d-none d-md-block">
+            <p>${{order.product.price}}</p>
+          </div>
+          <div class="col-2 d-none d-md-block">
+            {% if order.resolve == 'resolved'%}
+            <p style='color: rgb(41, 182, 41)'><b>{{order.resolve}}</b></p>
+            {%else%}
+            <p style='color: rgb(196, 28, 28)'><b>{{order.resolve}}</b></p>
+            {%endif%}
+          </div>
+        </div>
+        {%endif%}
+        {%endfor%}
       </div>
-  </div>
+    </div>
 
 
-  
-{%endblock%}
+
+    {%endblock%}

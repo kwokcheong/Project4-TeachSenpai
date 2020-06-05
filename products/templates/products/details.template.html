@@ -5,126 +5,139 @@
 {% block content %}
 
 <div class="container-fluid">
+    <div class="row double" style="display: flex; justify-content: space-evenly;">
+        <div class="column-2 left" style="min-width:23rem; max-width: 65rem; ">
+            <div class="container-fluid">
+                <div class="row" style="display: flex;">
+                    <div class="col-md-11">
+                        <nav>
+                            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                <a class="nav-item nav-link active" id="nav-active-tab" data-toggle="tab"
+                                    href="#nav-active" role="tab" aria-controls="nav-active"
+                                    aria-selected="true">Overview</a>
+                                <a class="nav-item nav-link" id="nav-resolved-tab" data-toggle="tab"
+                                    href="#nav-resolved" role="tab" aria-controls="nav-resolved"
+                                    aria-selected="false">Reviews</a>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-active" role="tabpanel"
+                                aria-labelledby="nav-active-tab">
+                                <div class="card" style="padding: 0px;">
+                                    <div class="card" style="width:100%; border:white;">
+                                        <div class="card-header">
+                                            <div class="row">
+                                                <div class="col-xs-2">
+                                                    <img src="{{product.owner.profile.profileimg}}" class="card-img"
+                                                        alt="profilepic"
+                                                        style="border-radius: 100%; height: 50px; width: 50px;" />
+                                                    {{product.owner.profile.username}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body" style="text-align: center;">
+                                            Tags: {% for t in product.tag.all %} <span
+                                                class="badge badge-primary">{{t.title}}</span> {%endfor%}
+                                            <span class="badge badge-warning"> {{product.category.title}}</span>
+                                            <div class="mb-3 mt-3 text-left">
+                                                <img src="{{product.image.cdn_url}}"
+                                                    style="width:100%; object-fit: cover;" class="image-fluid"
+                                                    alt="prdimg" />
+                                            </div>
+                                            <div class="card-header">
+                                                <h3 style="font-family: 'Source Sans Pro', sans-serif;">
+                                                    <b>{{product.title}}</b></h3>
+                                            </div>
+                                            <h5 style="text-align: left; margin-top:20px;"><b>About this
+                                                    consultation:</b> </h5>
+                                            <p class="card-text"
+                                                style="white-space: pre-wrap; margin-top:5px; text-align: left;">
+                                                {{product.desc}}</p>
+                                            {%if product.video%}
+                                            <h5 style="text-align: left; margin-top:20px;"><b>Video introduction: </b>
+                                            </h5>
+                                            <div class="flex-video widescreen">
+                                                <iframe width="400" height="290" src="{{product.video}}" frameborder="0"
+                                                    allowfullscreen></iframe>
+                                            </div>
+                                            {%endif%}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-resolved" role="tabpanel"
+                                aria-labelledby="nav-resolved-tab">
 
-<div class="row double" style="display: flex; justify-content: space-evenly;"> 
-    <div class="column-2 left" style="min-width:23rem; max-width: 65rem; " >
-        <div class="container-fluid" >
-            <div class="row" style="display: flex;">
-                <div class="col-md-11">
-                    <nav>
-                        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link active" id="nav-active-tab" data-toggle="tab" href="#nav-active" role="tab" aria-controls="nav-active" aria-selected="true">Overview</a>
-                            <a class="nav-item nav-link" id="nav-resolved-tab" data-toggle="tab" href="#nav-resolved" role="tab" aria-controls="nav-resolved" aria-selected="false">Reviews</a>
-                        </div>
-                    </nav>
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-active" role="tabpanel" aria-labelledby="nav-active-tab">
-                          <div class="card" style="padding: 0px;">
-        
-                                <div class="card" style="width:100%; border:white;">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="col-xs-2" >
-                                        <img src="{{product.owner.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 50px; width: 50px;"/>
-                                            {{product.owner.profile.username}}
-                                        </div>
-                                    </div>
-                                    </div>
-                                    <div class="card-body" style="text-align: center;">
-                                        Tags: {% for t in product.tag.all %} <span class="badge badge-primary">{{t.title}}</span> {%endfor%}
-                                        <span class="badge badge-warning"> {{product.category.title}}</span>
-                                        <div class="mb-3 mt-3 text-left">
-                                            <img src="{{product.image.cdn_url}}" style="width:100%; object-fit: cover;" class="image-fluid" alt="prdimg/>
-                                          </div>
-                                          <div class="card-header">
-                                            <h3 style="font-family: 'Source Sans Pro', sans-serif;"><b>{{product.title}}</b></h3>
-                                        </div>
-                                          <h5 style="text-align: left; margin-top:20px;"><b>About this consultation:</b> </h5>
-                                          <p class="card-text" style="white-space: pre-wrap; margin-top:5px; text-align: left;"> {{product.desc}}</p>
-                                          {%if product.video%}
-                                          <h5 style="text-align: left; margin-top:20px;"><b>Video introduction: </b> </h5>
-                                          <div class="flex-video widescreen">
-                                            <iframe width="400" height="290" src="{{product.video}}" frameborder="0" allowfullscreen></iframe>
-                                        </div>
-                                        {%endif%}
-                                    </div>
-                                  </div>
-
-                        </div>
-                        </div>
-                        <div class="tab-pane fade" id="nav-resolved" role="tabpanel" aria-labelledby="nav-resolved-tab">
-        
                                 <div class="card" style="padding: 0px;min-width: 45px; max-width: 65rem; ">
                                     <div class="card-header">
                                         <div class="row">
-                                            <div class="col-xs-2" >
-                                        <img src="{{product.owner.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 50px; width: 50px;"/>
-                                            {{product.owner.profile.username}}
+                                            <div class="col-xs-2">
+                                                <img src="{{product.owner.profile.profileimg}}" class="card-img"
+                                                    alt="profilepic"
+                                                    style="border-radius: 100%; height: 50px; width: 50px;" />
+                                                {{product.owner.profile.username}}
+                                            </div>
                                         </div>
-                                    </div>
                                     </div>
                                     <div class="card-body">
                                         <div class="container" style="margin-bottom: 60px;">
-                                        <h5><b>About the tutor: </b></h5>
-                                        <p style="white-space: pre-wrap; margin-top:5px; text-align: left;">{{product.owner.profile.profiledesc}}</p>
+                                            <h5><b>About the tutor: </b></h5>
+                                            <p style="white-space: pre-wrap; margin-top:5px; text-align: left;">
+                                                {{product.owner.profile.profiledesc}}</p>
                                         </div>
-                                        
                                         <div class="container" style="justify-content: space-around;">
-                                        <h5><b>Reviews for product: </b></h5>
-                                        {%for review in reviews%}
-                                        <div class="card" style="margin-top:20px;">
-                                            <div class="card-header">
-                                                <img src="{{review.owner.profile.profileimg}}" class="card-img" alt="profilepic" style="border-radius: 100%; height: 35px; width: 35px;"/>
-                                                {{review.owner.profile.username}}
+                                            <h5><b>Reviews for product: </b></h5>
+                                            {%for review in reviews%}
+                                            <div class="card" style="margin-top:20px;">
+                                                <div class="card-header">
+                                                    <img src="{{review.owner.profile.profileimg}}" class="card-img"
+                                                        alt="profilepic"
+                                                        style="border-radius: 100%; height: 35px; width: 35px;" />
+                                                    {{review.owner.profile.username}}
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{review.title}}</h5>
+                                                    <p class="card-text">{{review.content}}</p>
+                                                </div>
                                             </div>
-                                            <div class="card-body">
-                                              <h5 class="card-title">{{review.title}}</h5>
-                                              <p class="card-text">{{review.content}}</p>
-                                            </div>
-                                          </div>
-                        
-                                        {%endfor%}
+                                            {%endfor%}
+                                        </div>
                                     </div>
-                                    </div>
-
-     
-                                  </div>
-
-                        </div>
-                  
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-    </div>   
+        </div>
 
-    <div class="column-2 right" style="margin-top: 40px;">
-        <div class="card text-center" style="max-width: 400px;">
-            <div class="card-header">
-              Featured
+        <div class="column-2 right" style="margin-top: 40px;">
+            <div class="card text-center" style="max-width: 400px;">
+                <div class="card-header">
+                    Featured
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Ask away!</h5>
+                    <p class="card-text text-muted">Our tutor will support and answer your questions. Please include a
+                        topic header and topic requirements before placing an order.</p>
+                    {% if product.owner != user%}
+                    <a class="btn btn-success" href="{% url 'create_order_route' product_id=product.id %}">Continue
+                        (S${{product.price}})</a>
+                    {%endif%}
+                </div>
+                <div class="card-footer text-muted">
+                    {%if product.owner != user%}
+                    Link above will lead you to questions form.
+                    {%else%}
+                    You are the owner of this product.
+                    {%endif%}
+                </div>
             </div>
-            <div class="card-body">
-              <h5 class="card-title">Ask away!</h5>
-              <p class="card-text text-muted">Our tutor will support and answer your questions. Please include a topic header and topic requirements before placing an order.</p>
-              {% if product.owner != user%}
-            <a class="btn btn-success" href="{% url 'create_order_route' product_id=product.id %}">Continue (S${{product.price}})</a>
-            {%endif%}
-            </div>
-            <div class="card-footer text-muted">
-                {%if product.owner != user%}
-                Link above will lead you to questions form.
-                {%else%}
-                You are the owner of this product.
-                {%endif%}
-            </div>
-          </div>
+        </div>
+
     </div>
-
-</div>
 
 
 
 </div>
 {% endblock %}
-
-

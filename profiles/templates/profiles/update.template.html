@@ -12,34 +12,34 @@
 {%block content%}
 <div class="container-fluid">
 
-    <div class="row double" style="display: flex; justify-content: space-evenly;"> 
-        <div class="column-2 left" style=" margin-top: 40px;" >
+    <div class="row double" style="display: flex; justify-content: space-evenly;">
+        <div class="column-2 left" style=" margin-top: 40px;">
             {{user.profile.username}}
-            
+
             <h2 style="border-bottom: 2px solid blue;">Transaction History</h2>
             {%for order in orders%}
             {%if order.owner == user%}
             <ul>
-            <li><b>{{order.title}} </b></br> Order No.  {{order.secret_id}}</li>
+                <li><b>{{order.title}} </b></br> Order No. {{order.secret_id}}</li>
             </ul>
             </br>
             {%endif%}
             {%endfor%}
-            
-        </div>   
-    
+
+        </div>
+
         <div class="column-2 right" style="margin-top: 40px;">
             <h4>My Profile</h4>
             <h5>Manage and protect your account</h5>
             <form method="POST">
                 {% csrf_token %}
                 {{ form|crispy}}
-                <input class="btn btn-primary theme" type="Submit"/>
-                </form>
-                </div>
-                
-
+                <input class="btn btn-primary theme" type="Submit" />
+            </form>
         </div>
+
+
+    </div>
 </div>
 
 

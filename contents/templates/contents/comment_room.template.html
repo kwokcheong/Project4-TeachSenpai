@@ -3,30 +3,29 @@
 {%load crispy_forms_tags %}
 {%block title%}Chat room{%endblock%}
 {%block content%}
-
-
-<h1 style="margin-bottom: 20px; border-bottom: 2px solid rgb(153, 153, 153);"><a class="btn btn-secondary btn-sm" href="{% url 'show_content_route' order_id=material.order.id %}"><i class="fas fa-angle-left"></i></a> Chat Room </h1>
-
-
+<h1 style="margin-bottom: 20px; border-bottom: 2px solid rgb(153, 153, 153);"><a class="btn btn-secondary btn-sm"
+        href="{% url 'show_content_route' order_id=material.order.id %}"><i class="fas fa-angle-left"></i></a> Chat Room
+</h1>
 <div class="container">
     {% for comment in comments%}
     <div class="row" style="margin-bottom: 10px;">
-    <p class="card-title"><img src="{{comment.owner.profile.profileimg}}" style="height: 30px; width: 30px; border-radius: 100%;"/><b>{{comment.owner.username}}: </b> </p>
-    <p style="white-space: pre-wrap; margin-left:8px; margin-top:2px;">{{comment.body}}</p>
+        <p class="card-title"><img src="{{comment.owner.profile.profileimg}}"
+                style="height: 30px; width: 30px; border-radius: 100%;" alt="profileimg" /><b>{{comment.owner.username}}: </b> </p>
+        <p style="white-space: pre-wrap; margin-left:8px; margin-top:2px;">{{comment.body}}</p>
     </div>
     {%if comment.image%}
-    <div class="row" style="height: 400px; width: 300px; border:0.2px solid rgb(153, 153, 153); margin-bottom: 20px;"><img style="max-width:100%;
-        max-height:100%;" src="{{comment.image.cdn_url}}" alt="comment_image"/></div>
+    <div class="row" style="height: 400px; width: 300px; border:0.2px solid rgb(153, 153, 153); margin-bottom: 20px;">
+        <img style="max-width:100%;
+        max-height:100%;" src="{{comment.image.cdn_url}}" alt="comment_image" /></div>
     {%endif%}
     {%endfor%}
 </div>
-
-    <div class="container">
+<div class="container">
     <h3>Your Comment: </h3>
     <form method="POST" class="once-only">
-    {% csrf_token %}
-    {{ form|crispy}}
-    <button class="btn btn-secondary" type="Submit">Submit</button>
+        {% csrf_token %}
+        {{ form|crispy}}
+        <button class="btn btn-secondary" type="Submit">Submit</button>
     </form>
 </div>
 {%endblock%}
