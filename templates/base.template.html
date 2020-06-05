@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
   <script src="https://code.jquery.com/jquery-3.5.1.slim.js"
     integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
-  <script type="text/javascript"> (function () { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+  <script> (function () { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
@@ -27,7 +27,7 @@
   <!-- Top nav bar -->
   <header class="header logo">
     <div class="logo" style="margin-left: 2px;">
-      <i class="fa fa-bars" style="font-size:24px" class="hamburger" id="hamburger_icon" onclick="toggleNav()"></i>
+      <i class="hamburger fa fa-bars" style="font-size:24px" id="hamburger_icon" onclick="toggleNav()"></i>
       <a href="{% url 'homepage' %}"
         style="text-decoration: none; color:rgb(26, 26, 26); font-family: 'Fredoka One', cursive; font-size: 25px; ">Teach<span
           style="color:rgb(53, 2, 196); font-family: 'Fredoka One', cursive; font-size: 26px;">S</span>enpai</a>
