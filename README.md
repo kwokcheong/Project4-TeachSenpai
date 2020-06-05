@@ -178,7 +178,7 @@ Heroku:
     Input .env secret key values inside app settings. Set IP: 0.0.0.0 and Port:5000.
     Install Heroku CLI on Windows and login.
     To push to Heroku from VSC, enter 'git push heroku master'.
-    
+
 
 ## Credits
 ### Media
@@ -188,16 +188,12 @@ Icons are from the [Font Awesome CDN](https://fontawesome.com/v4.7.0/icons/)
 
 ### Acknowledgements
 
-Responsive navbar tutorial by Youtuber [Dev Ed](https://www.youtube.com/watch?v=gXkqy0b4M5g&t=127s)
+FAQ page credits to CodePen user [Baahubali](https://codepen.io/anupkumar92)
 
-Parallax effect on cursor credits to CodePen user [GreenSock](https://codepen.io/GreenSock/pen/OeqgrZ)
+Add cart order details into session credits to fellow coursemate [elch93](https://github.com/elch93)
 
-Gradient background tutorial by Youtuber [DarkCode](https://www.youtube.com/watch?v=NnrBempao2M&t=169s)
+Sidebar javascript inspired by CodePen user[ouhiH](https://codepen.io/goodywebs/pen/ouhiH)
 
-Account form layout credits to CodePen user [Tirth Patel](https://codepen.io/T-P/pen/bpWqrr)
-
-Shop cart layout inspired by Dribble user [Olia Gozha's design](https://dribbble.com/shots/5039057-Shopping-cart-V2)
-
-Image hover effect credits to CodePen user [Naoya](https://codepen.io/nxworld/pen/ZYNOBZ) 
+images in landing page credits to freepik user[pikisuperstar] 
 
 - This is for educational use.
