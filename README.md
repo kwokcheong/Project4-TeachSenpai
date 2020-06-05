@@ -197,6 +197,8 @@ Heroku:
 ### Media
 I do not own any of the photos used for the website and they were taken from various websites.
 
+Images in landing page credits to freepik user [pikisuperstar] 
+
 Icons are from the [Font Awesome CDN](https://fontawesome.com/v4.7.0/icons/)
 
 ### Acknowledgements
@@ -206,7 +208,5 @@ FAQ page credits to CodePen user [Baahubali](https://codepen.io/anupkumar92)
 Add cart order details into session credits to fellow coursemate [elch93](https://github.com/elch93)
 
 Sidebar javascript inspired by CodePen user [ouhiH](https://codepen.io/goodywebs/pen/ouhiH)
-
-images in landing page credits to freepik user [pikisuperstar] 
 
 - This is for educational use.
