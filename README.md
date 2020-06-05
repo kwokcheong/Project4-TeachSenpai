@@ -78,7 +78,16 @@ Every user can be a teacher or a student. There is no requirement for them to sp
 `As a teacher, I would like to communicate with my students.`
 
 ### Wireframe mockup
+
+##### Flow Chart
 <img height="500" src="static\image\schematic.png"/>
+
+##### Wireframe
+<img height="500" src="static\image\IMG_0379.PNG"/>
+
+<img height="500" src="static\image\IMG_0380.PNG"/>
+
+<img height="500" src="static\image\IMG_0381.PNG"/>
 
 
 ## Technologies
@@ -192,8 +201,8 @@ FAQ page credits to CodePen user [Baahubali](https://codepen.io/anupkumar92)
 
 Add cart order details into session credits to fellow coursemate [elch93](https://github.com/elch93)
 
-Sidebar javascript inspired by CodePen user[ouhiH](https://codepen.io/goodywebs/pen/ouhiH)
+Sidebar javascript inspired by CodePen user [ouhiH](https://codepen.io/goodywebs/pen/ouhiH)
 
-images in landing page credits to freepik user[pikisuperstar] 
+images in landing page credits to freepik user [pikisuperstar] 
 
 - This is for educational use.
