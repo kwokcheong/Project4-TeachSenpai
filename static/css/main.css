@@ -199,7 +199,7 @@ line-height: 22px;
   border-radius: 0%;
 }
 
-#card-info{
+.card-info{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -529,7 +529,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
 
-    #product_cards{
+    .product_cards{
       width: 200px;
   }
 
@@ -560,7 +560,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
 
-    #product_cards{
+    .product_cards{
       width: 200px;
   }
   .logo a{
@@ -581,7 +581,7 @@ and (-webkit-min-device-pixel-ratio: 3) {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-  #product_cards{
+  .product_cards{
     width: 320px;
 }
 .logo a{
