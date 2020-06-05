@@ -34,7 +34,7 @@
                                         Tags: {% for t in product.tag.all %} <span class="badge badge-primary">{{t.title}}</span> {%endfor%}
                                         <span class="badge badge-warning"> {{product.category.title}}</span>
                                         <div class="mb-3 mt-3 text-left">
-                                            <img src="{{product.image.cdn_url}}" style="width:100%; object-fit: cover;" class="image-fluid" />
+                                            <img src="{{product.image.cdn_url}}" style="width:100%; object-fit: cover;" class="image-fluid" alt="prdimg/>
                                           </div>
                                           <div class="card-header">
                                             <h3 style="font-family: 'Source Sans Pro', sans-serif;"><b>{{product.title}}</b></h3>
