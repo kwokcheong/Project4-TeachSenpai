@@ -11,7 +11,7 @@ cycler==0.10.0
 DateTime==4.3
 defusedxml==0.6.0
 dj-database-url==0.5.0
-Django==2.2.6
+Django==2.2.22
 django-allauth==0.41.0
 django-crispy-forms==1.9.1
 django-youtubefield @ git+git://github.com/ko1es/django-youtubefield.git@1041b07212f1121b373d269bc62f020f73c68fa7
