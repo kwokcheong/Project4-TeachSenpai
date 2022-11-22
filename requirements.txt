@@ -30,7 +30,7 @@ oauthlib==3.1.0
 packaging==20.3
 passlib==1.7.2
 phpmyadmin==0.0.1
-Pillow==7.1.2
+Pillow==9.3.0
 pipdeptree==0.13.2
 pluggy==0.13.1
 psycopg2==2.8.5
